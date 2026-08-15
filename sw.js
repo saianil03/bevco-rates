@@ -1,0 +1,55 @@
+/* BEVCO Rates service worker.
+   Strategy:
+     - navigation + app shell  : stale-while-revalidate, so the page opens
+                                 instantly offline and quietly updates after
+     - data files              : network-first, falling back to cache, because
+                                 a stale price is worse than a slow one
+   Bump CACHE when the shell changes; old caches are dropped on activate. */
+var CACHE = "bevco-v1";
+var SHELL = ["./", "./index.html", "./manifest.json",
+             "./icons/icon-192.png", "./icons/icon-512.png"];
+var DATA = ["data.json", "breakdown.json", "history.json"];
+
+self.addEventListener("install", function (e) {
+  e.waitUntil(caches.open(CACHE).then(function (c) {
+    return c.addAll(SHELL).catch(function () { /* a miss must not block install */ });
+  }).then(function () { return self.skipWaiting(); }));
+});
+
+self.addEventListener("activate", function (e) {
+  e.waitUntil(caches.keys().then(function (keys) {
+    return Promise.all(keys.filter(function (k) { return k !== CACHE; })
+                           .map(function (k) { return caches.delete(k); }));
+  }).then(function () { return self.clients.claim(); }));
+});
+
+self.addEventListener("fetch", function (e) {
+  var req = e.request;
+  if (req.method !== "GET") return;
+  var url = new URL(req.url);
+  if (url.origin !== self.location.origin) return;
+
+  var isData = DATA.some(function (n) { return url.pathname.endsWith(n); });
+
+  if (isData) {
+    e.respondWith(
+      fetch(req).then(function (res) {
+        var copy = res.clone();
+        caches.open(CACHE).then(function (c) { c.put(req, copy); });
+        return res;
+      }).catch(function () { return caches.match(req); })
+    );
+    return;
+  }
+
+  e.respondWith(
+    caches.match(req).then(function (hit) {
+      var net = fetch(req).then(function (res) {
+        var copy = res.clone();
+        caches.open(CACHE).then(function (c) { c.put(req, copy); });
+        return res;
+      }).catch(function () { return hit; });
+      return hit || net;
+    })
+  );
+});

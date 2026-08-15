@@ -1,0 +1,1294 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BEVCO Rates &mdash; Kerala FL-1 price list</title>
+<meta name="description" content="Searchable, always-current mirror of the Kerala State Beverages Corporation FL-1 retail price list.">
+<meta name="theme-color" content="#101014">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<style>
+:root{
+  --bg:#101014; --surface:#17171d; --surface-2:#1e1e26;
+  --line:#2b2b36; --line-2:#3a3a48;
+  --text:#f2f1ef; --text-2:#a4a3b0; --dim:#6f6e7d;
+  --hot:#ff5c2b; --hot-dim:#3a1a10; --mint:#4ee39a; --gold:#e8c37a;
+  --sans:"Helvetica Neue",Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.45 var(--sans)}
+.wrap{max-width:1120px;margin:0 auto}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+#skip{position:absolute;left:-999px;top:8px;z-index:70;background:var(--hot);color:#150803;
+  padding:10px 16px;font:700 12px/1 var(--mono)}
+#skip:focus{left:8px}
+#prog{position:fixed;top:0;left:0;height:2px;width:0;background:var(--hot);z-index:60;
+  transition:width .1s linear;pointer-events:none}
+
+/* ============ HERO ============ */
+.hero{padding:40px 20px 26px;border-bottom:2px solid var(--text)}
+.eyebrow{display:flex;align-items:center;gap:10px;margin:0 0 20px;
+  font:600 11px/1 var(--mono);letter-spacing:.24em;text-transform:uppercase;color:var(--hot)}
+.eyebrow::after{content:"";flex:1;height:1px;background:var(--line-2);
+  transform-origin:left;animation:rule .9s var(--ease) .1s both}
+@keyframes rule{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+h1{margin:0;font-weight:800;letter-spacing:-.045em;line-height:.92;
+  font-size:clamp(40px,10.5vw,88px);text-transform:uppercase}
+h1 .ln{display:block;animation:rise .75s var(--ease) both}
+h1 .ln:nth-child(1){animation-delay:.05s}
+h1 .ln:nth-child(2){animation-delay:.15s}
+h1 .ln:nth-child(3){animation-delay:.25s}
+@keyframes rise{from{opacity:0;transform:translateY(.34em)}to{opacity:1;transform:none}}
+.drain{position:relative;display:inline-block}
+.drain .out{-webkit-text-stroke:1.5px var(--text);color:transparent;paint-order:stroke fill}
+.drain .fl{position:absolute;inset:0;color:var(--text);animation:drain 1.1s var(--ease) .75s both}
+@keyframes drain{from{clip-path:inset(0 0 0 0)}to{clip-path:inset(0 0 0 100%)}}
+.hero>p{margin:20px 0 0;max-width:46ch;color:var(--text-2);font-size:15.5px;line-height:1.55;
+  animation:rise .7s var(--ease) .35s both}
+.stats{display:flex;flex-wrap:wrap;margin-top:26px;border:1px solid var(--line);
+  animation:rise .7s var(--ease) .45s both}
+.stat{flex:1 1 120px;padding:14px 16px;border-right:1px solid var(--line);min-width:0}
+.stat:last-child{border-right:none}
+.stat b{display:block;font-size:22px;font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.stat span{display:block;margin-top:4px;font:600 9.5px/1.3 var(--mono);
+  letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.stat.live b{color:var(--mint)}
+.stat.stale b{color:var(--hot)}
+
+/* ============ TOOLBAR ============ */
+.bar{position:sticky;top:0;z-index:30;background:rgba(16,16,20,.94);
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);padding:12px 16px;
+  transition:padding .25s var(--ease),box-shadow .25s var(--ease),border-color .25s}
+.bar.compact{padding:8px 16px;box-shadow:0 10px 30px -12px #000;border-color:var(--line-2)}
+/* On scroll the toolbar tightens, but the size filter NEVER collapses —
+   hiding it made the active size invisible. Only the price range and the
+   recent-search chips fold away, and the remaining controls get shorter. */
+.range,.recents{max-height:64px;opacity:1;overflow:hidden;
+  transition:max-height .28s var(--ease),opacity .22s,margin-top .28s var(--ease)}
+.bar.compact .range,.bar.compact .recents{max-height:0;opacity:0;margin-top:0}
+.bar.compact input[type=search]{padding-top:10px;padding-bottom:10px}
+.bar.compact .strip{margin-top:8px}
+.bar.compact .tab{padding-top:6px;padding-bottom:6px}
+.bar.compact .tab svg{height:19px;width:9.5px}
+.find{position:relative}
+.find svg.mag{position:absolute;left:15px;top:50%;transform:translateY(-50%);
+  width:16px;height:16px;color:var(--dim);pointer-events:none;transition:color .2s}
+.find:focus-within svg.mag{color:var(--hot)}
+#clearq{position:absolute;right:8px;top:50%;transform:translateY(-50%) scale(.6);
+  width:28px;height:28px;display:grid;place-items:center;background:none;border:none;
+  color:var(--dim);cursor:pointer;opacity:0;pointer-events:none;
+  transition:opacity .18s,transform .18s var(--ease)}
+#clearq.on{opacity:1;transform:translateY(-50%) scale(1);pointer-events:auto}
+#clearq:hover{color:var(--hot)}
+input[type=search]{width:100%;padding:14px 40px 14px 42px;border:1px solid var(--line-2);
+  background:var(--surface);color:var(--text);font:500 16px/1 var(--sans);border-radius:0;
+  -webkit-appearance:none;appearance:none;transition:border-color .2s,background .2s}
+input[type=search]::placeholder{color:var(--dim);font-weight:400}
+input[type=search]:focus{outline:none;border-color:var(--hot);background:var(--surface-2)}
+input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none}
+.recents{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.recents button{background:none;border:1px dashed var(--line-2);color:var(--dim);
+  font:600 10px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;
+  padding:5px 9px;cursor:pointer}
+.recents button:hover{border-color:var(--hot);color:var(--hot)}
+
+.strip{display:flex;overflow-x:auto;margin-top:10px;scrollbar-width:none;border:1px solid var(--line)}
+.strip::-webkit-scrollbar{display:none}
+.tab{position:relative;flex:0 0 auto;display:inline-flex;align-items:center;gap:7px;
+  padding:9px 13px;background:transparent;border:none;border-right:1px solid var(--line);
+  color:var(--text-2);font:600 11.5px/1 var(--mono);letter-spacing:.1em;
+  text-transform:uppercase;cursor:pointer;white-space:nowrap;overflow:hidden;
+  transition:color .22s var(--ease)}
+.tab:last-child{border-right:none}
+.tab>*{position:relative;z-index:1}
+.tab::before{content:"";position:absolute;inset:0;background:var(--hot);
+  transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease);z-index:0}
+.tab.imp::before{background:var(--mint)}
+.tab svg{width:13px;height:26px;flex:0 0 auto}
+.tab:hover{color:var(--text)}
+.tab[aria-pressed=true]{color:#150803}
+.tab[aria-pressed=true]::before{transform:scaleX(1)}
+.tab.imp[aria-pressed=true]{color:#04170d}
+.tab:focus-visible{outline:2px solid var(--hot);outline-offset:-2px}
+
+.range{display:flex;align-items:center;gap:14px;margin-top:12px}
+.rlabel{font:700 13px/1 var(--mono);color:var(--text);white-space:nowrap;font-variant-numeric:tabular-nums}
+.rlabel small{display:block;font:600 8.5px/1.4 var(--mono);letter-spacing:.16em;
+  color:var(--dim);text-transform:uppercase}
+.track{position:relative;flex:1;height:30px;min-width:90px}
+.hist{position:absolute;left:0;right:0;bottom:14px;height:16px;width:100%;opacity:.5;pointer-events:none}
+.rail{position:absolute;bottom:12px;left:0;right:0;height:2px;background:var(--line-2)}
+.fillbar{position:absolute;bottom:12px;height:2px;background:var(--hot)}
+.track input{position:absolute;bottom:2px;left:0;width:100%;height:22px;margin:0;background:none;
+  pointer-events:none;-webkit-appearance:none;appearance:none}
+.track input:focus{outline:none}
+.track input::-webkit-slider-thumb{-webkit-appearance:none;pointer-events:auto;width:15px;height:15px;
+  background:var(--hot);border:none;border-radius:0;transform:rotate(45deg);cursor:grab;transition:box-shadow .2s}
+.track input::-moz-range-thumb{pointer-events:auto;width:13px;height:13px;background:var(--hot);
+  border:none;border-radius:0;cursor:grab}
+.track.dragging input::-webkit-slider-thumb{box-shadow:0 0 0 6px var(--hot-dim)}
+
+/* ============ TALLY + SORT ============ */
+.tally{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;
+  padding:18px 20px 10px;font:600 10.5px/1.4 var(--mono);
+  letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+#tally b{color:var(--text);font-variant-numeric:tabular-nums}
+.acts{display:flex;gap:6px;flex-wrap:wrap}
+.act{background:none;border:1px solid var(--line-2);color:var(--text-2);font:inherit;
+  padding:6px 11px;cursor:pointer;transition:border-color .2s,color .2s,background .2s}
+.act:hover{border-color:var(--hot);color:var(--hot)}
+.act.on{background:var(--hot);border-color:var(--hot);color:#150803}
+.act:focus-visible{outline:2px solid var(--hot);outline-offset:2px}
+.sumbar{display:flex;gap:0;margin:0 20px 12px;border:1px solid var(--line);flex-wrap:wrap}
+.sumbar div{flex:1 1 96px;padding:10px 13px;border-right:1px solid var(--line);min-width:0}
+.sumbar div:last-child{border-right:none}
+.sumbar b{display:block;font-size:15px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.sumbar span{display:block;margin-top:3px;font:600 8.5px/1.3 var(--mono);
+  letter-spacing:.15em;text-transform:uppercase;color:var(--dim)}
+
+/* ============ GRID ============ */
+.grid{list-style:none;margin:0;padding:0 16px 90px;display:grid;
+  grid-template-columns:1fr;gap:1px;background:var(--line)}
+@media(min-width:660px){.grid{grid-template-columns:1fr 1fr}}
+@media(min-width:1000px){.grid{grid-template-columns:1fr 1fr 1fr}}
+.card{position:relative;background:var(--bg);padding:15px 15px 13px 21px;
+  display:flex;flex-direction:column;min-height:150px;overflow:hidden;
+  cursor:pointer;transition:background .2s}
+.card:hover{background:var(--surface)}
+.card.pinned{background:#1a1410}
+.card.pinned::after{content:"PINNED";position:absolute;top:0;right:0;
+  background:var(--hot);color:#150803;font:700 8px/1 var(--mono);letter-spacing:.14em;padding:4px 7px}
+.card.hit{animation:hit 1.6s var(--ease)}
+@keyframes hit{0%,100%{background:var(--bg)}18%{background:#2a1b12}}
+.spine{position:absolute;left:0;top:0;bottom:0;width:4px;transition:width .22s var(--ease)}
+.card:hover .spine{width:9px}
+.mark{position:absolute;right:-10px;bottom:-16px;width:78px;height:150px;
+  opacity:.13;pointer-events:none;transition:opacity .28s var(--ease),transform .34s var(--ease)}
+.card:hover .mark{opacity:.34;transform:translateY(-5px) rotate(-3deg)}
+.top{display:flex;align-items:flex-start;gap:8px;position:relative;z-index:1}
+.brand{flex:1;font-weight:700;font-size:14.5px;line-height:1.25;letter-spacing:-.015em;padding-right:34px}
+.badge{flex:0 0 auto;font:700 8px/1 var(--mono);letter-spacing:.12em;padding:4px 6px;
+  border:1px solid var(--gold);color:var(--gold);white-space:nowrap}
+.tagline{margin-top:6px;font:600 9.5px/1.4 var(--mono);letter-spacing:.15em;
+  text-transform:uppercase;color:var(--dim);position:relative;z-index:1}
+.tagline .imp{color:var(--mint)}
+.sizes{display:flex;gap:4px;flex-wrap:wrap;margin-top:9px;position:relative;z-index:1}
+.sz{font:600 9px/1 var(--mono);letter-spacing:.06em;padding:4px 6px;
+  border:1px solid var(--line-2);color:var(--dim)}
+.sz.best{border-color:var(--mint);color:var(--mint)}
+.vbar{position:relative;height:3px;background:var(--line);margin-top:auto;z-index:1}
+.vbar i{position:absolute;top:-2px;width:2px;height:7px;background:var(--text)}
+.vbar em{position:absolute;left:0;top:0;height:3px;opacity:.5}
+.foot{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;
+  margin-top:11px;position:relative;z-index:1}
+.price{font-size:29px;font-weight:800;letter-spacing:-.045em;line-height:.9;font-variant-numeric:tabular-nums}
+.per{font:600 10px/1.2 var(--mono);letter-spacing:.05em;color:var(--hot);
+  text-align:right;white-space:nowrap;padding-bottom:3px}
+mark{background:var(--hot);color:#150803;padding:0 2px;border-radius:0}
+.card.enter{animation:cardin .42s var(--ease) both}
+@keyframes cardin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.price.flash{animation:flash 1s var(--ease)}
+@keyframes flash{0%{color:var(--hot);transform:scale(1.06)}60%{color:var(--hot)}100%{}}
+
+/* dense mode */
+.grid.dense{grid-template-columns:1fr}
+.grid.dense .card{flex-direction:row;align-items:center;gap:12px;min-height:0;padding:10px 14px 10px 18px}
+.grid.dense .mark,.grid.dense .vbar,.grid.dense .sizes{display:none}
+.grid.dense .top{flex:1;min-width:0}
+.grid.dense .brand{padding-right:0;font-size:13.5px}
+.grid.dense .tagline{margin-top:3px}
+.grid.dense .foot{margin-top:0;flex:0 0 auto;align-items:center;gap:14px}
+.grid.dense .price{font-size:19px}
+
+/* skeletons */
+.sk{position:relative;background:var(--bg);padding:16px 16px 14px 22px;min-height:150px;overflow:hidden}
+.sk i{display:block;background:var(--surface-2);border-radius:2px}
+.sk .a{height:13px;width:72%}.sk .b{height:9px;width:44%;margin-top:11px}
+.sk .c{height:26px;width:38%;margin-top:46px}
+.sk::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(100deg,transparent 20%,rgba(255,255,255,.055) 45%,transparent 70%);
+  transform:translateX(-100%);animation:shim 1.35s infinite}
+@keyframes shim{to{transform:translateX(100%)}}
+
+.msg{grid-column:1/-1;background:var(--bg);padding:56px 24px;text-align:center}
+.msg svg{display:block;margin:0 auto 16px;width:42px;height:80px;opacity:.6}
+.msg p{margin:0 0 6px;color:var(--text-2);font-size:15px}
+.msg .act{margin-top:14px;text-transform:uppercase;font:600 10.5px/1 var(--mono);letter-spacing:.14em}
+.msg code{display:inline-block;margin-top:14px;padding:8px 12px;background:var(--surface-2);
+  border:1px solid var(--line-2);font:12px/1.4 var(--mono);color:var(--mint)}
+#sentinel{grid-column:1/-1;height:1px;background:var(--bg)}
+
+/* compare tray */
+#tray{position:fixed;left:0;right:0;bottom:0;z-index:45;background:rgba(23,23,29,.97);
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  border-top:1px solid var(--hot);padding:11px 14px;transform:translateY(120%);
+  transition:transform .32s var(--ease)}
+#tray.on{transform:none}
+.trayhead{display:flex;justify-content:space-between;align-items:center;
+  font:600 9.5px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--dim);
+  margin-bottom:9px}
+.trayrow{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
+.trayrow::-webkit-scrollbar{display:none}
+.pin{flex:0 0 auto;min-width:132px;border:1px solid var(--line-2);padding:8px 9px;position:relative}
+.pin b{display:block;font-size:11px;font-weight:700;line-height:1.3;padding-right:14px}
+.pin s{display:block;text-decoration:none;margin-top:5px;font:600 9px/1 var(--mono);color:var(--dim)}
+.pin u{display:block;text-decoration:none;margin-top:6px;font-size:16px;font-weight:800;
+  font-variant-numeric:tabular-nums}
+.pin em{display:block;font-style:normal;margin-top:3px;font:600 9px/1 var(--mono);color:var(--hot)}
+.pin.win{border-color:var(--mint)}
+.pin.win em{color:var(--mint)}
+.pin .x{position:absolute;top:3px;right:3px;background:none;border:none;color:var(--dim);
+  cursor:pointer;font:700 13px/1 var(--sans);padding:2px 4px}
+.pin .x:hover{color:var(--hot)}
+.qty{display:flex;align-items:center;gap:8px;margin-top:7px}
+.qty button{width:22px;height:22px;background:var(--surface-2);border:1px solid var(--line-2);
+  color:var(--text);font:700 13px/1 var(--sans);cursor:pointer;padding:0}
+.qty button:hover{border-color:var(--hot);color:var(--hot)}
+.qty span{font:700 12px/1 var(--mono);min-width:14px;text-align:center;font-variant-numeric:tabular-nums}
+.traytot{display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+  margin-top:10px;padding-top:10px;border-top:1px solid var(--line-2)}
+.traytot b{font-size:20px;font-weight:800;font-variant-numeric:tabular-nums}
+.traytot span{font:600 9.5px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+
+/* ---- sheets: breakdown / budget / size traps / changes ---- */
+.sheet{position:fixed;inset:0;z-index:75;background:rgba(9,9,12,.9);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+  overflow-y:auto;opacity:0;pointer-events:none;transition:opacity .22s}
+.sheet.on{opacity:1;pointer-events:auto}
+.sheetbox{max-width:760px;margin:0 auto;min-height:100%;background:var(--bg);
+  border-left:1px solid var(--line);border-right:1px solid var(--line);padding:22px 20px 70px}
+.sheethead{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;
+  margin-bottom:6px}
+.sheethead h2{margin:0;font:800 15px/1.2 var(--mono);letter-spacing:.16em;
+  text-transform:uppercase;color:var(--hot)}
+.sheethead button{background:none;border:1px solid var(--line-2);color:var(--text-2);
+  font:700 15px/1 var(--sans);padding:7px 11px;cursor:pointer}
+.sheethead button:hover{border-color:var(--hot);color:var(--hot)}
+.sheetsub{margin:0 0 20px;font-size:13.5px;line-height:1.6;color:var(--text-2);max-width:60ch}
+.sheet input[type=search],.sheet input[type=number]{margin-bottom:14px}
+.sheet input[type=number]{width:100%;padding:13px 14px;border:1px solid var(--line-2);
+  background:var(--surface);color:var(--text);font:700 20px/1 var(--mono);
+  -webkit-appearance:none;appearance:none}
+.sheet input[type=number]:focus{outline:none;border-color:var(--hot)}
+
+/* cost waterfall */
+.wf{margin:16px 0 6px}
+.wfbar{display:flex;height:26px;border:1px solid var(--line-2);overflow:hidden}
+.wfbar span{height:100%}
+.wfkey{margin-top:14px;display:grid;grid-template-columns:1fr auto auto;gap:8px 12px;
+  align-items:baseline;font-size:13px}
+.wfkey i{display:inline-block;width:10px;height:10px;margin-right:8px;vertical-align:baseline}
+.wfkey b{font-variant-numeric:tabular-nums;font-weight:700}
+.wfkey s{text-decoration:none;color:var(--dim);font:600 10.5px/1 var(--mono);
+  font-variant-numeric:tabular-nums}
+.wfkey .tot{border-top:1px solid var(--line-2);padding-top:10px;margin-top:4px;font-weight:800}
+.headline{margin:18px 0 0;padding:16px;border:1px solid var(--hot);background:var(--hot-dim)}
+.headline b{display:block;font-size:30px;font-weight:800;letter-spacing:-.03em;color:var(--hot)}
+.headline span{display:block;margin-top:5px;font-size:13px;color:var(--text-2)}
+.pickrow{display:flex;flex-direction:column;gap:1px;background:var(--line);
+  border:1px solid var(--line);max-height:280px;overflow-y:auto}
+.pickrow button{display:flex;justify-content:space-between;gap:12px;align-items:baseline;
+  background:var(--bg);border:none;color:var(--text);text-align:left;padding:11px 13px;
+  cursor:pointer;font:inherit}
+.pickrow button:hover{background:var(--surface)}
+.pickrow em{font-style:normal;font:600 10px/1 var(--mono);color:var(--dim);white-space:nowrap}
+.pickrow strong{font-weight:700;font-size:13.5px}
+
+/* generic sheet result rows */
+.rrow{display:flex;align-items:center;gap:12px;padding:11px 2px;border-bottom:1px solid var(--line)}
+.rrow:last-child{border-bottom:none}
+.rrow .nm{flex:1;min-width:0;font-size:13.5px;font-weight:700;line-height:1.3}
+.rrow .nm s{display:block;text-decoration:none;margin-top:4px;font:600 9.5px/1 var(--mono);
+  letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.rrow .vv{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.rrow .vv b{font-size:17px;font-weight:800}
+.rrow .vv s{display:block;text-decoration:none;margin-top:3px;font:600 10px/1 var(--mono);color:var(--hot)}
+.up{color:var(--hot)}.down{color:var(--mint)}
+.grp{margin:26px 0 10px;font:700 10.5px/1 var(--mono);letter-spacing:.18em;
+  text-transform:uppercase;color:var(--dim);border-bottom:1px solid var(--line);padding-bottom:9px}
+
+/* ---- 9: cork pops when a bottle joins the list ---- */
+@keyframes corkpop{
+  0%{transform:translate(0,0) rotate(0);opacity:1}
+  55%{transform:translate(5px,-30px) rotate(40deg);opacity:1}
+  100%{transform:translate(10px,-44px) rotate(72deg);opacity:0}}
+.cork{position:absolute;top:9px;right:16px;width:9px;height:13px;border-radius:2px;
+  background:var(--gold);z-index:3;pointer-events:none;
+  animation:corkpop .62s cubic-bezier(.2,.7,.3,1) forwards}
+.cork::after{content:"";position:absolute;inset:1px 1px auto;height:3px;
+  background:rgba(0,0,0,.22);border-radius:1px}
+@keyframes cardlift{0%{transform:none}42%{transform:translateY(-5px)}100%{transform:none}}
+.card.popping{animation:cardlift .5s var(--ease)}
+
+/* ---- 15: ripple spreads from the fingertip ---- */
+@keyframes rip{0%{transform:scale(0);opacity:.5}70%,100%{transform:scale(4.2);opacity:0}}
+.rip{position:absolute;width:26px;height:26px;margin:-13px 0 0 -13px;border-radius:50%;
+  background:var(--hot);pointer-events:none;z-index:0;animation:rip .62s ease-out forwards}
+.rip.onlit{background:#fff}
+
+/* ---- Kerala: kasavu border, two fine gold lines on off-white cloth ---- */
+.kasavu{height:5px;border-top:1px solid var(--gold);border-bottom:1px solid var(--gold);
+  opacity:.42;margin:0}
+.kasavu.tight{width:96px;margin:0 auto}
+.mal{font-family:"Noto Sans Malayalam","Nirmala UI","Malayalam MN",var(--sans)}
+
+/* ---- footer plate: warning + maker's seal ---- */
+.plate{margin-top:30px;text-align:center}
+.warn{margin:20px auto 0;max-width:46ch}
+.warn .mal{display:block;font-size:14px;line-height:1.7;color:var(--text-2)}
+.warn em{display:block;font-style:normal;margin-top:5px;
+  font:600 10px/1.6 var(--mono);letter-spacing:.19em;text-transform:uppercase;color:var(--dim)}
+.seal{display:block;margin:26px auto 0;width:150px;height:150px;opacity:.66;
+  transition:opacity .4s var(--ease)}
+.seal:hover{opacity:1}
+/* Arc text lives on the TOP semicircle only. A full ring at this radius needs
+   ~227 units for the label but the ring is 308, so the tail wrapped round the
+   bottom and sat on top of the date. Half-ring + flat date = no collision. */
+.sealtxt{font:600 7.5px var(--mono);letter-spacing:.16em;fill:var(--gold)}
+.sealsub{font:600 6.5px var(--mono);letter-spacing:.22em;fill:var(--dim);text-transform:uppercase}
+
+/* sparkline on cards */
+.spark{position:absolute;right:12px;top:13px;width:44px;height:16px;z-index:1;opacity:.85}
+
+/* help sheet + toast */
+#help{position:fixed;inset:0;z-index:80;background:rgba(9,9,12,.86);
+  display:grid;place-items:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .22s}
+#help.on{opacity:1;pointer-events:auto}
+.helpbox{background:var(--surface);border:1px solid var(--line-2);max-width:420px;width:100%;padding:24px}
+.helpbox h2{margin:0 0 16px;font:800 13px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--hot)}
+.helpbox dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:10px 14px;align-items:baseline}
+.helpbox dt{font:700 11px/1 var(--mono);background:var(--surface-2);border:1px solid var(--line-2);
+  padding:5px 8px;justify-self:start}
+.helpbox dd{margin:0;font-size:13px;color:var(--text-2)}
+#toast{position:fixed;left:50%;bottom:96px;transform:translate(-50%,14px);z-index:70;
+  background:var(--mint);color:#04170d;font:700 11px/1 var(--mono);letter-spacing:.12em;
+  text-transform:uppercase;padding:11px 16px;opacity:0;pointer-events:none;
+  transition:opacity .24s,transform .24s var(--ease)}
+#toast.on{opacity:1;transform:translate(-50%,0)}
+
+#top{position:fixed;right:14px;bottom:88px;z-index:40;width:42px;height:42px;
+  display:grid;place-items:center;background:var(--surface-2);color:var(--text);
+  border:1px solid var(--line-2);cursor:pointer;opacity:0;transform:translateY(10px);
+  pointer-events:none;transition:opacity .25s,transform .25s var(--ease)}
+#top.on{opacity:1;transform:none;pointer-events:auto}
+#top:hover{border-color:var(--hot);color:var(--hot)}
+
+footer{border-top:2px solid var(--text);padding:28px 20px 96px}
+footer p{margin:0 0 12px;font-size:13px;line-height:1.65;color:var(--text-2);max-width:64ch}
+footer p:last-child{margin-bottom:0}
+footer b{color:var(--text);font-weight:700}
+[hidden]{display:none!important}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .drain .fl{display:none}
+}
+@media print{
+  :root{--bg:#fff;--text:#000;--text-2:#333;--dim:#666;--line:#ccc;--line-2:#999;--surface:#fff}
+  body{background:#fff;color:#000}
+  .bar,#tray,#top,#prog,#help,#toast,.acts,.hero>p,.eyebrow,.msg .act,#sentinel{display:none!important}
+  .grid{display:block;padding:0}
+  .card{break-inside:avoid;border-bottom:1px solid #ccc;min-height:0;padding:8px 0;flex-direction:row;
+    align-items:center;gap:12px;background:#fff!important}
+  .mark,.vbar,.sizes,.spine{display:none}
+  .price{font-size:16px}.per{color:#666}
+  h1{font-size:26px}
+}
+</style></head>
+<body>
+<a id="skip" href="#list">Skip to prices</a>
+<div id="prog"></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" id="symbols"></svg>
+
+<div class="wrap">
+<header class="hero">
+  <p class="eyebrow"><span class="mal">കേരളം</span> &middot; Kerala &middot; FL-1 Retail</p>
+  <h1><span class="ln">Every</span>
+    <span class="ln"><span class="drain"><span class="out">bottle,</span><span class="fl" aria-hidden="true">bottle,</span></span></span>
+    <span class="ln">Every price.</span></h1>
+  <p>The full Kerala State Beverages Corporation counter list &mdash; searchable,
+     ranked cheapest first, with cost per 100&nbsp;ml already worked out.</p>
+  <div class="stats">
+    <div class="stat"><b id="s-count">0</b><span>Bottles listed</span></div>
+    <div class="stat"><b id="s-eff">&mdash;</b><span>In force since</span></div>
+    <div class="stat" id="s-srcwrap"><b id="s-src">&mdash;</b><span id="s-srclabel">Source</span></div>
+  </div>
+  <div class="kasavu" style="margin-top:24px" aria-hidden="true"></div>
+</header>
+
+<div class="bar" id="controls" hidden>
+  <div class="find">
+    <svg class="mag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+      <circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/></svg>
+    <input type="search" id="q" placeholder="Search a brand  —  press /" autocomplete="off" spellcheck="false">
+    <button id="clearq" aria-label="Clear search">
+      <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <div class="recents" id="recents"></div>
+  <div class="strip" id="types"></div>
+  <div class="strip" id="sizes"></div>
+  <div class="range">
+    <span class="rlabel"><small>From</small><span id="lo">&mdash;</span></span>
+    <span class="track" id="track">
+      <svg class="hist" id="hist" viewBox="0 0 200 16" preserveAspectRatio="none"></svg>
+      <span class="rail"></span><span class="fillbar" id="fill"></span>
+      <input type="range" id="rlo" min="0" max="1000" value="0" step="1" aria-label="Minimum price">
+      <input type="range" id="rhi" min="0" max="1000" value="1000" step="1" aria-label="Maximum price">
+    </span>
+    <span class="rlabel"><small>Up to</small><span id="hi">&mdash;</span></span>
+  </div>
+</div>
+
+<div class="tally" id="tallybar" hidden>
+  <span id="tally" aria-live="polite"></span>
+  <span class="acts">
+    <button class="act" id="sort">Cheapest</button>
+    <button class="act" id="dense">Compact</button>
+    <button class="act" id="lucky">Surprise me</button>
+    <button class="act" id="btnbreak">Breakdown</button>
+    <button class="act" id="btnbudget">Budget</button>
+    <button class="act" id="btntrap">Size traps</button>
+    <button class="act" id="btnchange">Changes</button>
+    <button class="act" id="share">Copy link</button>
+    <button class="act" id="reset">Reset</button>
+    <button class="act" id="helpbtn" aria-label="Keyboard shortcuts">?</button>
+  </span>
+</div>
+<div class="sumbar" id="sumbar" hidden></div>
+
+<ul class="grid" id="list"></ul>
+
+<footer>
+  <p><b>These are FL-1 counter prices, per bottle, in rupees.</b>
+     The official PDF also carries a warehouse price per case, roughly ten times larger.
+     Confusing the two is the most common mistake people make with this document.</p>
+  <p>Spirit type is read from the BEVCO product code. Where the bottle label
+     disagrees with the code, the label wins.</p>
+  <p>Unofficial mirror, rebuilt from the official price list PDFs.
+     The price board at the shop is the final authority.</p>
+
+  <div class="plate">
+    <div class="kasavu tight" aria-hidden="true"></div>
+    <blockquote class="warn">
+      <span class="mal">മദ്യപാനം ആരോഗ്യത്തിന് ഹാനികരം</span>
+      <em>Consumption of alcohol is injurious to health</em>
+    </blockquote>
+
+    <svg class="seal" viewBox="0 0 140 140" role="img"
+         aria-label="Maker's seal: created by The_Deja_Vu, Kerala, 2026">
+      <defs>
+        <path id="sealarc" fill="none" d="M18,70 A52,52 0 0 1 122,70"/>
+      </defs>
+      <circle cx="70" cy="70" r="64" fill="none" stroke="var(--gold)" stroke-width=".7" opacity=".45"/>
+      <circle cx="70" cy="70" r="61" fill="none" stroke="var(--gold)" stroke-width=".7" opacity=".45"/>
+      <circle cx="70" cy="70" r="34" fill="none" stroke="var(--line-2)" stroke-width=".7"/>
+      <text class="sealtxt" text-anchor="middle">
+        <textPath href="#sealarc" startOffset="50%">Created by The_Deja_Vu</textPath>
+      </text>
+      <g fill="var(--gold)" opacity=".7">
+        <rect x="16" y="68" width="4" height="4" transform="rotate(45 18 70)"/>
+        <rect x="120" y="68" width="4" height="4" transform="rotate(45 122 70)"/>
+      </g>
+      <use href="#b-Whisky" x="59" y="45" width="22" height="49.5"/>
+      <text class="sealsub" x="70" y="114" text-anchor="middle">Kerala &#183; 2026</text>
+    </svg>
+    <div class="kasavu tight" style="margin-top:22px" aria-hidden="true"></div>
+  </div>
+</footer>
+</div>
+
+<div id="tray"><div class="trayhead"><span id="trayn">Comparing</span>
+  <button class="act" id="trayclear">Clear</button></div>
+  <div class="trayrow" id="trayrow"></div>
+  <div class="traytot" id="traytot"></div></div>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Tools">
+  <div class="sheetbox">
+    <div class="sheethead"><h2 id="sheettitle"></h2>
+      <button id="sheetclose" aria-label="Close">&times;</button></div>
+    <div id="sheetbody"></div>
+  </div>
+</div>
+
+<div id="help" role="dialog" aria-label="Keyboard shortcuts"><div class="helpbox">
+  <h2>Keyboard</h2>
+  <dl>
+    <dt>/</dt><dd>Jump to search</dd>
+    <dt>Esc</dt><dd>Clear search, or close this</dd>
+    <dt>1&ndash;9</dt><dd>Toggle a spirit filter</dd>
+    <dt>0</dt><dd>Clear the spirit filter</dd>
+    <dt>s</dt><dd>Cycle the sort order</dd>
+    <dt>d</dt><dd>Compact / roomy layout</dd>
+    <dt>r</dt><dd>Surprise me</dd>
+    <dt>?</dt><dd>This panel</dd>
+  </dl></div></div>
+
+<div id="toast" role="status"></div>
+<button id="top" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+
+<script id="seed" type="application/json">{"effective":"11-05-2026","published":"03-Aug-26","checked":"2026-08-15","count":4435,"b":["SOUTHERN CHOICE BRANDY","GB PREMIUM BRANDY","SOUTHERN CHOICE PREMIUM BRANDY","SPI M GOLD INDIAN BRANDY","SPI METRO SPECIAL INDIAN BRANDY","SPI METRO SPECIAL LIVE INDIAN BRANDY","SPI M GOLD LIVE INDIAN BRANDY","CB CHARLZ N BEAVER BRANDY","CB CHARLZ N BEAVER WHITE BRANDY","SOUTHERN CHOICE LIVE BRANDY","SOUTHERN CHOICE WHITE BRANDY","SOUTHERN CHOICE PREMIUM LIVE BRANDY","NICOL'S BLACK & GOLD FRENCH BRANDY VSOP","NICOL'S XCEL RESERVE FRENCH BRANDY","SPI METRO SPECIAL WHISKY","SPI M GOLD WHISKY","CB CHARLZ N BEAVER WHISKY","SOUTHERN CHOICE WHISKY","SOUTHERN CHOICE PREMIUM WHISKY","1943 BLACK & GOLD RARE PREMIUM WHISKY","SOUTHERN CHOICE WHITE RUM","SPI METRO RUM","SPI M GOLD RUM","CB CHARLZ N BEAVER RUM","CB CHARLZ N BEAVER WHITE RUM","SOUTHERN CHOICE RUM","SOUTHERN CHOICE LIVE WHITE RUM","SOUTHERN CHOICE LEMON RUM","SOUTHERN CHOICE PREMIUM RUM","SOUTHERN CHOICE PREMIUM WHITE RUM","NICOL'S COCO CARIB COCONUT RUM","NICOL'S BLACK BANDIT ORIGINAL SPICED RUM","CB CHARLZ N BEAVER GIN","SOUTHERN CHOICE GIN","SOUTHERN CHOICE VODKA","SPI METRO SPECIAL VODKA","SPI METRO SPECIAL ORANGE VODKA","SPI M GOLD VODKA","SPI M GOLD ORANGE VODKA","CB CHARLZ N BEAVER VODKA","CB CHARLZ N BEAVER ORANGE VODKA","SOUTHERN CHOICE LIVE VODKA","SOUTHERN CHOICE ORANGE VODKA","SOUTHERN CHOICE PREMIUM VODKA","SOUTHERN CHOICE PREMIUM ORANGE VODKA","NICOL'S V VODKA PREMIUM GRAIN","MOOD MAKER BRANDY","JAMES MC GILL BRANDY","LEMOUNT WHITE BRANDY","LEMOUNT GOLDEN BRANDY","WELLINGTON ISLAND INDIAN BRANDY","BOMBAY SPECIAL DOCTORS BRANDY","LEMOUNT LUXURY GRAIN WHISKY","JAMAICAN MAGIC RUM","LEMOUNT BLACK RUM","WELLINGTON ISLAND XXX RUM","BOMBAY SPECIAL XXX RUM","JAMES MC GILL PREMIUM RUM","CENTRAL PROVINCE COCONUT WHITE RUM","LEMOUNT DUET GIN","MOOD MAKER ORANGE VODKA","CENTRAL PROVINCE TRIPLE DISTILLED VODKA","MAQINTOSH FINEST GRAIN WHISKY","MAQINTOSH BLUE RESERVE WHISKY","AMRUT FUSION SINGLE MALT WHISKY","AMRUT TWO INDIES RUM RHUM- RON","AMRUT TWO INDIES WHITE RUM","AMRUT TWO INDIES DARK RUM RHUM-RON","AMRUT VELLAM GOLD RUM","ZATARA LIME WHITE RUM","ZATARA FINEST WHITE RUM","ZATARA ORANGE WHITE RUM","ZATARA MANGO WHITE RUM","GREYHOUND PEACH FLAVOURED VODKA","GREYHOUND TRIPLE DISTILLED VODKA","GREYHOUND MOSAMBI FLAVOURED VODKA","GREYHOUND STRAWBERRY FLAVOURED VODKA","IMPACT BRANDY","EPISODE GRAPE BRANDY","CALENTER DELUXE VSOP BRANDY","CALENTER PREMIUM VSOP BRANDY","HIGH IMPACT BRANDY","ROYAL GREEN DELUXE BLENDED WHISKY","IMPACT XXX RUM","EPISODE DELUXE XXX RUM","CALENTER PREMIUM RUM","CALENTER RESERVE RUM","HIGH IMPACT XXX RUM","MOONWALK ULTRA PREMIUM VODKA","HIGH IMPACT ORANGE VODKA","OLD PORT BRANDY","CLUB HOUSE RESERVE BRANDY","PAPILLON VSOP BRANDY","OLD PORT FINE BRANDY","DUPLEIX XO BRANDY","OLD PORT CLASSIC BRANDY","COLUMBUS PREMIUM INDIAN BRANDY","AMRUT PRESTIGE SELECT WHISKY","CLUB HOUSE SUPERIOR WHISKY","OLD PORT XXX RUM","OLD PORT DELUXE RUM","OLD PORT WHITE RUM","OLD PORT CLASSIC XXX RUM","CLUB HOUSE PREMIUM RUM","AMRUT'S FINEST DARK RUM","OLD PORT RUM","OLD PORT RARE WHITE RUM","OLD PORT XXX WHITE RUM","OLD PORT CLASSIC XXX WHITE RUM","CLUB HOUSE ORANGE VODKA","CLUB HOUSE TRIPLE DISTILLED VODKA","CLUB HOUSE LEMON VODKA","MUSCOVY CLASSIC VODKA","CLUB HOUSE CLASSIC VODKA","MUSCOVY FINEST LEMON VODKA","MUSCOVY DELUXE ORANGE VODKA","CLUB HOUSE MANGO VODKA","KYRON PREMIUM BRANDY FRENCH BLEND","MASTER CELLAR SELECTION KYRON PREMIUM BRANDY","OFFICER'S CHOICE DELUXE BRANDY","STERLING RESERVE PREMIUM CELLAR BRANDY","GOLDEN MIST SUPREME BRANDY","OFFICER'S CHOICE PRESTIGE WHISKY","ICONIQ WHITE PREMIER INTERNATIONAL WHISKY","JOLLY ROGER PREMIUM XXX RUM","OFFICER'S CHOICE XXX RUM","KINGSMAN XO 999 BRANDY","MONTARA GOLD VSOP BRANDY","THE WEEKEND 999 WHISKY","CROWN OG RUM","PINARITA VODKA","WILLIAM LAWSON'S BLENDED SCOTCH WHISKY","BACARDI CARTA BLANCA CLASSIC SUPERIOR WHITE RUM","BACARDI CARTA ORO SUPERIOR GOLD RUM","BACARDI MANGO CHILLI ORIGINAL MANGO CHILLI RUM","BACARDI LIMON ORIGINAL CITRUS RUM","BACARDI ORANGE ORIGINAL ORANGE RUM","BACARDI GUAVA ORIGINAL GUAVA RUM","BACARDI GINGER RUM","NAUTILUS PREMIUM BLENDED XO BRANDY","TRIPLE CROWN SPECIAL BRANDY","GOLDEN OAK BARREL AGED BLENDED CLASSIC WHISKY","OLD MONK MATURED XXX PREMIUM RUM","OLD MONK ORANGE RUM","OLD MONK THE LEGEND RUM VERY OLD VATTED","7 YEARS OLD BLENDED OLD MONK VERY OLD VATTED SPECIAL XXX RUM","OLD MONK SUPREME XXX RUM VERY OLD VATTED","BOB'S BLACK RUM","OLD MONK AMBER MELLOW & MATURED RUM","OLD MONK COFFEE EXTRA ORDINARY XO COFFEE FLAVOURED PREMIUM RUM","OLD MONK LEMON DELUXE PREMIUM RUM","OLD MONK WHITE CLASSIC PREMIUM RUM","OLD MONK SPICED EXTRA ORDINARY XO SPICED FLAVOURED PREMIUM RUM","OLD MONK FIRE XO EXTRA ORDINARY CINNAMON FLAVOURED PREMIUM RUM","OLD MONK LEMON PREMIUM FLAVOURED RUM","OLD MONK MANGO AND CHILLI PREMIUM FLAVOURED RUM","OLD MONK THE ORIGINAL WHITE SUPER PREMIUM RUM","KNIGHT RIDER PREMIUM VODKA","KNIGHT RIDER PREMIUM ORANGE VODKA","KNIGHT RIDER PREMIUM LEMON VODKA","KNIGHT RIDER PREMIUM GREEN APPLE VODKA","OAKSMITH GOLD INTERNATIONAL BLENDED WHISKY","OAKSMITH INTERNATIONAL BLENDED WHISKY","BOB'S DELUXE BRANDY","GOLD CREST FRENCH LEGACY V.S.O.P BRANDY","HAZE FRENCH HERITAGE XO BRANDY","GOLD CREST PREMIUM FRENCH HERITAGE BRANDY","HIGHBURY CLASSIC SUPERIOR GRAIN WHISKY","BOB'S DELUXE RUM","PINK MYSTIQUE LONDON DRY GIN","NEON COFFEE VODKA","NEON PINEAPPLE VODKA","NEON ORANGE VODKA","NEON GUAVA VODKA","NEON LEMON VODKA","NEON PREMIUM VODKA","NEON HONEY X CHILLI VODKA","NEON PINEAPPLE X CHILLI VODKA","LEGACY PREMIUM BLENDED WHISKY","BLACK BY BACARDI CLASSIC ORIGINAL PREMIUM CRAFTED RUM","KHODAYS CLASSIC BRANDY","KHODAYS METRO BRANDY","KHODAYS KING BRANDY","HONEYWELL BRANDY","RED KNIGHT MALT WHISKY","HERCULES XXX RUM","HERCULES SPECIAL RESERVE 3'X' RUM","HERCULES SPECIAL WHITE RUM","KHODAYS KING RUM","KHODAYS METRO RUM","ESTON SALUTE X.O. BRANDY","DR. DAN RARE GRAPE BRANDY","ESTON SALUTE RUM","DR. DAN XXX RUM","BROKEN HEART ORANGE CLASSIC VODKA","BROKEN HEART CRYSTAL CLASSIC VODKA","BROKEN HEART CRYSTAL MANGO CHILLI VODKA","DR. DAN MANGO CHILLI VODKA","INDRI MASTER BLENDER'S SELECT SINGLE MALT INDIAN WHISKY","CAMIKARA AGRICOLE RUM CASK 3 YO AGED","DDL'S ROYAL ARMY GRAPE BLENDED BRANDY","CARLOS NAPOLEON VSOP ULTRA BLEND BRANDY","DDL'S CARLOS VSOP BRANDY","KING CARLOS IX PREMIUM BRANDY","DDL'S COMBINATION MATURED GRAPE BRANDY","DDL'S CURACAO NAPOLEON VSOP BRANDY","DDL'S LEOPOLD II BRANDY VSOP","DDL'S JOAN OF ARC VS BRANDY","DDL'S JOAN OF ARC XO EXCELLENCE BRANDY","0 HOUR WHISKY","COMBINATION MATURED DARK RUM","DDL'S ROYAL ARMY XXX RUM","DDL'S KALAPANI XXX RUM","DDL'S XTREAM VODKA","DDL'S XTREAM ORANGE VODKA","DDL'S FREEZE VODKA","DDL'S FREEZE ORANGE VODKA","DDL'S FREEZE MIXED BERRY VODKA","DDL'S FREEZE SPEARMINT VODKA","EMPEE'S SIXER FINE BRANDY","CHEVALIER DE PARIS SPL RESERVE XO BRANDY","MALABAR HOUSE PREMIUM VSOP BRANDY","ROYAL PALACE PREMIUM XO BRANDY","ROYAL PALACE PREMIUM WHITE BRANDY","EMPEE'S SIXER WHITE INDIAN BRANDY","EMPEE'S NAPOLEON CLASSIC VSOP INDIAN BRANDY","ROYAL PALACE PREMIUM XXX RUM","EMPEE'S SIXER XXX RUM","EMPEE'S OLD SECRET PREMIUM XXX RUM","COMMANDO XXX RUM","PREMIUM JUNO ORANGE VODKA","PREMIUM JUNO PINK VODKA","POWER ORANGE VODKA","JUNO PREMIUM GRAIN VODKA","KINGS BLUE BRANDY","COLOMBO COCONUT BRANDY","TRADERS XO BRANDY","MONICA BRANDY","MONICA WHITE BRANDY","OMORFIA PREMIUM BRANDY","PLANTERS CHOICE GRAPE BRANDY","TRADERS DELUXE RUM","MONICA WHITE RUM","MONICA RUM","COLOMBO COCONUT RUM","PLANTERS CHOICE SPICED RUM","OLD HABBIT BRANDY","999 POWER STAR FINE BRANDY","BOTTOMS UP BRANDY","JERSY BRANDY","EMPIRE JONTY BRANDY","OLD HABBIT WHITE BRANDY","OLD HABBIT VSOP BRANDY","CLASSIC BOTTOMS UP WHISKY","BOTTOMS UP ULTRA PREMIUM WHISKY","JERSY XXX RUM","OLD HABBIT WHITE RUM","EMPIRE JONTY RUM","OLD HABBIT PREMIUM XXX RUM","OLD HABBIT XXX RUM","OLD HABBIT GREEN APPLE VODKA","OLD HABBIT VODKA","EMPIRE OLD HABBIT VSOP BRANDY","JONTY BRANDY","OLD HABBIT PREMIUM WHISKY","LION KING EXQUISITE BLENDED WHISKY","BOTTOMS UP PREMIUM WHISKY","999 POWER STAR FINE RUM","OLD HABBIT LEMON WHITE RUM","EMPIRE OLD HABBIT XXX RUM","BOTTOMS UP XXX RUM","JONTY XXX RUM","OLD HABBIT ORANGE VODKA","CLASSIC OLD HABBIT VODKA","999 POWER STAR ORANGE VODKA","999 POWER STAR GINGER LIME VODKA","999 POWER STAR LEMON KANTHARI VODKA","999 POWER STAR TAMARIND CHILLY VODKA","GOA GOLD BRANDY","KING PAUL NAPOLEON BRANDY","HONEY QUEEN XO BRANDY","RITZ BLACK PREMIUM WHISKY","KING PAUL PRESTIGEV WHISKY","GOA GOLD RUM","GOA GOLD WHITE RUM","BIG BULL XXX ORIGINAL RUM","KING PAUL MATURED PREMIUM RUM","V21 ULTRA SMOOTH VODKA ORIGINAL","V21 ULTRA SMOOTH VODKA GREEN APPLE","V21 ULTRA SMOOTH VODKA ORANGE","HOLIDAY SPECIAL LEMON VODKA","HOLIDAY SPECIAL ORANGE VODKA","IGNITE GOLD BRANDY","IGNITE GOLD CLASSIC BRANDY","IGNITE GOLD PREMIUM BRANDY","THE NIZAMIAN BRANDY","JOE DAVIS PREMIUM BRANDY","ROYAL SIGNATURE PREMIUM WHISKY","IGNITE GREEN SUPREME WHISKY","JOE DAVIS CONTEMPORARY WHISKY","HUSKIES INDIAN SINGLE MALT WHISKY","GOAN PRIDE SPECIAL RUM","GOAN PRIDE SUPERIER RUM","STONE CHARIOTT RICH CAFE RUM","STONE CHARIOTT SPICED RUM","STONE CHARIOTT DARK RUM","IGNITE GOLD PREMIUM RUM","GRAND AVENUE RARE DRY GIN","IGNITE RED ORANGE VODKA","RUN WIN VODKA KACHA MANGO","RUN WIN VODKA GREEN APPLE","IGNITE RED MANGO CHILLI VODKA","THE ROYAL MONKEY INDIAN BRANDY","JANATHA DELUXE INDIAN BRANDY","SEVEN BARRELS INDIAN BRANDY","ROWDY BABY ORIGINAL INDIAN BRANDY","ISBD BIG BROTHER SPECIAL INDIAN BRANDY","INDOSCOTTISH MATURED INDIAN BRANDY","MALAYALEES VATTE WHITE BRANDY","REAL BUDDY INDIAN BRANDY","SEVEN BARRELS PREMIUM INDIAN BRANDY","SEVEN BARRELS WHITE BRANDY","JANATHA PEPPER BRANDY","ISBD BIG BROTHER 2.O INDIAN BRANDY","THE ROYAL MONKEY RESERVE INDIAN BRANDY","THE ROYAL MONKEY BLENDED WHISKY","JANATHA CLASSIC WHITE BRANDY","INDOSCOTTISH RARE WHISKY","REAL BUDDY RARE WHISKY","SEVEN BARRELS HERITAGE WHISKY","THE ROYAL MONKEY RESERVE RUM","ISBD BIG BROTHER BLENDED WHISKY","THE ROYAL MONKEY RUM","JANATHA DELUXE RUM","SEVEN BARRELS RUM","ROWDY BABY XXX RUM","ISBD BIG BROTHER DARK RUM","REAL BUDDY DARK RUM","REAL BUDDY WHITE RUM","JANATHA CLASSIC WHITE RUM","SEVEN BARRELS SUPERIOR RUM","JANATHA BLACK PEPPER RUM","MALAYALEES VATTE WHITE RUM","ISBD BIG BROTHER 2.O XXX RUM","SEVEN BARRELS ORANGE VODKA","REAL BUDDY ORANGE VODKA","AMAZING PREMIUM BRANDY","NIGHT BIRD PREMIUM XO BRANDY","AMAZING PREMIUM WHITE BRANDY","SOULMATE BLU PREMIUM WHISKY","IGL AMAZING RARE CRAFT WHISKY","IGL'S ZUMBA LEMONI NATURALLY CITRUS RUM","AMAZING SPICED DARK RUM","AMAZING PREMIUM GRAIN VODKA","AMAZING PREMIUM GRAIN VODKA ORANGE","AMAZING PREMIUM GRAIN VODKA GREEN APPLE","AMAZING PREMIUM GRAIN VODKA CRANBERRY","ENSO JAPANESE WHISKY","EDEN BLENDED MALT WHISKY","BONGA BONGA MYSTERY LIQUEUR","WINGMAN BLENDED MALT WHISKY","GLEN EDEN BLENDED SCOTCH WHISKY","WINGMAN SPICED TROPICAL RUM","MONTCLAIR FRENCH BRANDY","HILLFORT PREMIUM BLENDED MALT WHISKY","NICOBAR INDIAN DRY GIN","TITANIUM TRIPLE DISTILLED ORANGE VODKA","TITANIUM TRIPLE DISTILLED VODKA","MCDOWELL'S PREMIUM DARK RUM","MCDOWELL'S PREMIUM CITRON RUM","MCDOWELL'S PREMIUM VODKA","SEAGRAM'S ROYAL STAG DOUBLE DARK PEATY WHISKY","SEAGRAM'S ROYAL STAG DELUXE WHISKY","SEAGRAM'S BLENDERS PRIDE ULTRA PREMIUM WHISKY","SEAGRAM'S BLENDERS PRIDE FOUR ELEMENTS PREMIUM WHISKY","UNIVERSAL SPIRITS CLASSIC MARCOPOLO DELUXE BRANDY","UNIVERSAL SPIRITS NO.1 GRAPE BRANDY","UNIVERSAL SPIRITS NAPOLEON DELUXE INDIAN BRANDY","UNIVERSAL SPIRITS OLD MADRAS VSOP BRANDY","UNIVERSAL SPIRITS MARCOPOLO DELUXE XXX RUM","UNIVERSAL SPIRITS OLD MADRAS XXX RUM","UNIVERSAL SPIRITS VODKA ORANGE","UNIVERSAL SPIRITS VODKA PURE GRAIN","LA FRANZ PREMIUM BRANDY C 7","HIGH COMMAND DELUXE BRANDY","MOGHUL MONARCH PREMIUM BLENDED BRANDY C 7","RED ARROW SPECIAL RESERVE INDIAN BRANDY","HENRY XIV GRANDE SELECTION BRANDY","BLACKWOOD RESERVE PREMIUM SELECT BRANDY","MOGHUL MONARCH RARE PREMIUM WHISKY C 9","HIGH COMMAND SELECT WHISKY","BLACKWOOD RESERVE PREMIUM SELECT WHISKY","RED ARROW SPECIAL RESERVE WHISKY","HIGHLAND CREST PREMIUM BLENDED WHISKY","HENRY XIV MASTER'S RESERVE WHISKY","LA FRANZ PREMIUM XXX RUM C 5","HIGH COMMAND MATURED XXX RUM","MOGHUL MONARCH PREMIUM XXX RUM C 5","BLACKWOOD RESERVE PREMIUM SELECT RUM","RED ARROW SPECIAL RESERVE RUM","HENRY XIV ROYAL RESERVE RUM","GINGERINE LONDON DRY GIN","ZAKHA PREMIUM GRAIN VODKA","ZEDUCTION PREMIUM GRAIN VODKA","BRIHAN'S SUPERIOR GRAPE BRANDY","MORPHEUS BLUE XO SUPERIOR BRANDY","WHYTEHALL PREMIUM BRANDY","ROYAL RANTHAMBORE HERITAGE COLLECTION ROYAL CRAFTED RESERVE WHISKY","MORPHEUS RARE LUXURY WHISKY","RED RUSSIAN ORANGE VODKA","PAUL JOHN XO VINTAGE 100% PREMIUM GRAPE BRANDY","ROULETTE PREMIUM BLENDED GRAPE BRANDY","JOHNS ROULETTE PREMIUM BRANDY","PAUL JOHN INDIAN SINGLE MALT WHISKY BOLD","PAUL JOHN INDIAN SINGLE MALT WHISKY NIRVANA","ROULETTE PREMIUM WHISKY","ROULETTE CLASSIC PREMIUM WHISKY","PAUL JOHN INDIAN SINGLE MALT WHISKY BRILLIANCE EXCLUSIF","PAUL JOHN INDIAN SINGLE MALT WHISKY BOLD EXCLUSIF","ROULETTE CLASSIC UNPEATED PREMIUM WHISKY","PAUL JOHN INDIAN SINGLE MALT WHISKY NIRVANA UNPEATED","PAUL JOHN INDIAN SINGLE MALT WHISKY BRILLIANCE","ROULETTE CLASSIC RUM","ROULETTE DRY GIN","MALHAR CLASSIC LONDON DRY INDIAN CRAFT GIN","ROULETTE CLASSIC VODKA","JOHNS ORIGINAL CHOICE GOLD INDIAN BRANDY","ORIGINAL TRAVELLER INDIAN BRANDY","MONT CASTLE INDIAN BRANDY","JOHNS ORIGINAL CHOICE GOLD RUM","ORIGINAL TRAVELLER RUM","OLD CHEF VSOP INDIAN BRANDY","MARKER CLASSIC INDIAN BRANDY","GUEST HOUSE PREMIUM VSOP BRANDY","TOP STAR FINE INDIAN BRANDY","MALABAR HOUSE WHITE INDIAN BRANDY","SNJ NO.1 XO PREMIUM INDIAN BRANDY","OLD CHEF DELUXE XXX RUM","MALABAR HOUSE PREMIUM XXX RUM","MARKER CLASSIC XXX RUM","GUEST HOUSE PREMIUM XXX RUM","TOP STAR FINE XXX RUM","SNJ NO.1 PREMIUM XXX RUM","GUEST HOUSE LIMON VODKA","SNJ NO-1 PREMIUM ORANGE VODKA","RARE HONOUR PREMIUM BRANDY","GRAND MASTER PREMIUM BRANDY","CASTLE VSOP BRANDY","FRENCH EXCLUSIVE VSOP BRANDY","CASTLE SPECIAL INDIAN BRANDY","FRENCH EXCLUSIVE PREMIUM BRANDY","OAK VAT PREMIUM BRANDY","CARDINAL DELUXE BRANDY","OAK VAT PREMIUM WHISHY","CLASSIC GRANDEE XXX RUM","OAK VAT PREMIUM RUM","OAK VAT SPECIAL RUM","CLASSIC GRANDEE RESERVE RUM","GRAND MASTER PREMIUM RUM","RARE HONOUR PREMIUM RUM","RARE HONOUR ORANGE VODKA","RARE HONOUR PREMIUM ORANGE VODKA","BCB NO.1 CLASSIC BRANDY","BLENDER'S CHOICE NO.1 BRANDY","MORNING WALKERS XO BRANDY","ST. ANGELOSE XO BRANDY","CHAIRMAN'S CHOICE XO BRANDY","MAGIC BLEND NO.1 BRANDY","KS 99 LIFE TIME BRANDY","GREAT WALL BRANDY","BRO DADDY NO.1 BRANDY","SPRING TIME WHITE BRANDY","ROYAL OLD FORT WHISKY","MAGIC BLEND DELUXE WHISKY","OLD PEARL NO.1 MATURED XXX RUM","ROYAL OLD FORT NO.1 XXX RUM","SPRING TIME NO.1 XXX RUM","KANNUR KRAZE SUPERIOR RUM","K.S 99 LIFE TIME MATURED XXX RUM","MAGIC BLEND RESERVED XXX RUM","KS BLITZ ORANGE VODKA","BRITISH EMPIRE PURE GRAPE BRANDY","KING LOUIS XIV MATURED GRAPE BRANDY","ROYAL PALACE CLASSIC BRANDY","BRITISH EMPIRE RARE BLENDED WHISKY","ZEEMAN MATURED PREMIUM XXX RUM","LA MARTINE VSOP CLASSIC BRANDY","1848 DELUXE XO BRANDY","COPPER BARREL VSOP DELUXE BRANDY","LA MARTINE PREMIUM VSOP SPECIAL BRANDY","COPPER BARREL VS BRANDY","KONIGE FUSION FINEST PREMIUM VSOP BRANDY","EMPEROR VSOP BRANDY","LA MARTINE GOLD PREMIUM BRANDY","ASPIRA LEMON TWIST DELUXE RUM","COPPER BARREL XXX RUM","ASPIRA BERRY BLAST DELUXE RUM","ASPIRA PREMIUM DARK RUM","COPPER BARREL DARK RUM","EMPEROR RUM","ASPIRA GINGER PREMIUM RUM","PRADO FINEST RESERVE INDIAN BRANDY","BLACK BOY INDIAN BRANDY","KOMBAN INDIAN BRANDY","KOMBAN BLACK & WILD INDIAN BRANDY","LIQON CLASSIC INDIAN BRANDY","LIQON CLASSIC WHITE BRANDY","CABRIA INDIAN BRANDY","CABRIA WHITE BRANDY","THAMPURAN ROYAL INDIAN BRANDY","BLACK BOY WHITE BRANDY","PRADO PREMIUM WHISKY","BLACK BOY WHISKY","LIQON RARE BLENDED WHISKY","CABARIA GOLD WHISKY","KOMBAN BLACK & WILD BLENDED WHISKY","THAMPURAN ROYAL GOLD WHISKY","PRADO PREMIUM RUM","BLACK BOY RUM","BLACK BOY WHITE RUM","KOMBAN RUM","KOMBAN BLACK & WILD SUPERIOR RUM","LIQON DARK RUM","PRADO ORIGINAL SPICED RUM","CABRIA RUM","THAMPURAN EXTRA SPECIAL DARK RUM","THAMPURAN ORIGINAL SPICED RUM","PRADO PREMIUM BOTANICAL GIN","LIQON DESI MANGO VODKA","PRADO CRYSTAL VODKA","CABARIA LEMON VODKA","CABARIA ORANGE VODKA","BLACK BOY ORANGE VODKA","GOLCONDA INDIAN BRANDY","NO.1 HONEY BEE INDIAN BRANDY","WHITE MISCHIEF CLASSIC INDIAN BRANDY","NO.1 HONEY BEE RESERVE INDIAN BRANDY","BAGPIPER FINE BLENDED BRANDY","GRAYSON'S KINGS CREST FINE INDIAN BRANDY","BAGPIPER DELUXE XXX RUM","GRAYSON'S KINGS CREST XXX RUM","BLUE RIBAND FINE GIN","BLUE RIBAND FINE DUET GIN","GRAYSON'S KINGSWELL MANGO CHILLI FLAVORED VODKA","GRAYSON'S KINGSWELL CRYSTAL VODKA","WHITE MISCHIEF VODKA","ROMANOV RED VODKA","NORMANDY'S DADDY WILSON INDIAN BRANDY","PEOUS & WILSON INDIAN BRANDY","NORMANDY'S DADDY WILSON WHITE BRANDY","NORMANDY'S BLACK SALUTE INDIAN BRANDY","NORMANDY'S KADUVA INDIAN BRANDY","NBD SWADESHI FINE INDIAN BRANDY","KADUVA RESERVE INDIAN BRANDY","DADDY WILSON SPECIAL RESERVE INDIAN BRANDY","CIVILIAN SPECIAL RESERVE INDIAN BRANDY","KADUVA CLASSIC INDIAN BRANDY","NORMANDY'S DADDY WILSON SPECIAL RESERVE WHISKY","CIVILIAN SPECIAL RESERVE WHISKY","NORMANDY'S DADDY WILSON PURE BLENDED RUM","NORMANDY'S DADDY WILSON WHITE RUM","NORMANDY'S BLACK SALUTE RUM","KADUVA RESERVE XXX RUM","KADUVA WHITE RUM","DADDY WILSON SPECIAL RESERVE XXX RUM","CIVILIAN SPECIAL RESERVE RUM","PEOUS & WILSON XXX RUM","KADUVA CLASSIC XXX RUM","KADUVA CLASSIC WHITE RUM","DADDY WILSON GIN","MANKA BOTANICAL GIN","NORMANDY'S DADDY WILSON ORANGE VODKA","NORMANDY'S KANTHARI CHILLI VODKA","NBD ALPHONSO MANGO VODKA","KADUVA ORANGE VODKA","MANKA PURE VODKA","NORMANDY'S DADDY WILSON VODKA","NBD JADIKO NUTMEG FLAVORED VODKA","NBD JADIKO RESERVE NUTMEG FLAVOURED VODKA","KADUVA CLASSIC ORANGE VODKA","BLACK & GOLD FRENCH VSOP BRANDY","NICOL'S BLACK & GOLD RARE RESERVE FRENCH BRANDY VSOP","BLACK & GOLD RARE PREMIUM WHISKY","BLACK BULL MATURED XXX RUM","BLACK BANDIT ORIGINAL SPICED RUM","GOLD HOUSE PREMIUM XXX RUM","EVERYDAY GOLD CLASSIC BRANDY","ROYAL ARMS PREMIUM VSOP BRANDY","OASIS CLASSIC BRANDY","ROYAL ARMS BLUE RESERVE BRANDY","V JOHN FINE INDIAN BRANDY","POLO FINE BRANDY","ROYAL ARMS WHITE BRANDY","FAME DOCTOR'S BRANDY","POLO DELUXE WHISKY","ROYAL ARMS SPECIAL RESERVE WHISKY","V JOHN XXX RUM","EVERYDAY GOLD XXX RUM","OASIS CLASSIC RUM","ROYAL ARMS BLACK SUPERIOR XXX RUM","EVERYDAY GOLD LEMO WHITE RUM","POLO XXX RUM","FAME XXX RUM","EVERYDAY GOLD ORANGE VODKA","POLO FINE VODKA","ROYAL ARMS ORANGE VODKA","GRAND DUKE INDIAN BRANDY","ORIGINAL TRAVELLER WHISKY","BLACK PELICAN RUM","IMPERIAL VS RESERVE BRANDY","IMPERIAL'S GOLD NAPOLEON VSOP BRANDY","IMPERIAL'S GOLD NAPOLEON VS BRANDY","IMPERIAL VSOP BRANDY","AMAZON XXX RUM","AMAZON DELUXE WHITE RUM","AMAZON DELUXE XXX RUM","AMAZON MATURED WHITE RUM","RADICO 8 PM BERMUDA XXX RUM","1965 SPIRIT OF VICTORY PREMIUM XXX RUM","1965 SPIRIT OF VICTORY LEMON DASH PREMIUM FLAVOURED RUM","LORD NELSON XXX RUM","RADICO MAGIC MOMENTS GRAIN VODKA","MAGIC MOMENTS REMIX VIVID PINK VODKA","RADICO MORPHEUS XO BLENDED RARE BRANDY","RADICO OLD ADMIRAL BRANDY","8 PM EXCELLENCY BRANDY","AFTER DARK DELUXE WHISKY","8 PM PREMIUM BLACK WHISKY","RADICO CONTESSA WHITE RUM","CONTESSA CLASSIC RUM","MAGIC MOMENTS REMIX FLAVOURED VODKA CHOCOLATE","MAGIC MOMENTS REMIX SMOOTH FLAVOURED VODKA ORANGE","M2 MAGIC MOMENTS VERVE LEMON LUSH PREMIUM FLAVOURED VODKA","M2 MAGIC MOMENTS VERVE CRANBERRY TEASE PREMIUM FLAVOURED VODKA","M2 MAGIC MOMENTS VERVE PREMIUM VODKA","M2 MAGIC MOMENTS FLAVOURS OF INDIA JAMUN SPICY MINT VIVID FLAVOURED VODKA","M2 MAGIC MOMENTS FLAVOURS OF INDIA ALPHONSO MANGO VIVID FLAVOURED VODKA","RICHMONDS RESERVE XO BRANDY","GREEN & GOLD LUXE BRANDY","RICHMONDS RESERVE PRESTIGE WHISKY","TOBY'S BAY CITRUS BOMB RUM","TOBY'S BAY SPICED RUM","TOBY'S BAY TANGO RUM","ARMSTRONG SUPERIOR ORIGINAL LEMONY RUM","ARMSTRONG SUPERIOR ORIGINAL SILVER RUM","WISEMONKEY CAFE RUM","WISEMONKEY INDIAN SPICED RUM","NO.1 MCDOWELL'S INDIAN BRANDY","MCDOWELL'S VSOP DELUXE BLENDED BRANDY","CAESAR GENUINE BLENDED BRANDY","DSP BLACK INDIAN BRANDY","MCDOWELL'S NO.1 PLATINUM BLENDED BRANDY","GOLDEN STRIPES VSOP BLENDED BRANDY","MCDOWELL'S NO.1 RESERVE INDIAN BRANDY","DSP BLACK FINE INDIAN BRANDY","GRAYSON'S MILLENNIAL'S CLUB INDIAN BRANDY","ROYAL CHALLENGE BLENDED BRANDY","CAESAR PREMIUM FRENCH BRANDY","GOLDEN STRIPES VSOP WHITE BLENDED BRANDY","LOUIS VERNANT XO PREMIUM BLENDED BRANDY","ANTIQUITY XO BLENDED BRANDY","GRAYSON'S FINE INDIAN BRANDY","GRAYSON'S SILVER STRIPES WHITE INDIAN BRANDY","GRAYSON'S MAXX ROYALE WHISKY","INBREW'S GREEN LABEL'THE RICH BLEND' WHISKY","MCDOWELL'S NO.1 RESERVE WHISKY","SIGNATURE RARE AGED WHISKY","DSP BLACK DELUXE WHISKY","ROYAL CHALLENGE SELECT PREMIUM WHISKY","ANTIQUITY BLUE ULTRA PREMIUM WHISKY","BAGPIPER GOLD PREMIUM WHISKY","BAGPIPER REGULAR WHISKY","GRAYSON'S MILLENNIAL'S CLUB XXX RUM","DSP BLACK RUM","OLD CASK RESERVE XXX RUM","MCDOWELL'S NO.1 CELEBRATION MATURED XXX GOLD RUM","MCDOWELL'S NO.1 CELEBRATION LUXURY XXX RUM","MCDOWELL'S NO.1 SPECIAL RESERVE RUM","KINGSWELL RARE XXX RUM","PREMIUM ROMANOV VODKA ORANGE","GRAYSON'S KINGSWELL ORANGE FLAVORED VODKA","GRAYSON'S MILLENNIAL'S CLUB ORANGE VODKA","GRAYSON'S LIMON VODKA","TBDL VORION INDIAN GOLD BRANDY","TBDL VORION ELITE INDIAN GOLD BRANDY","KADAMARK SPECIAL DELUXE BRANDY","KADAMARK CLASSIC DELUXE BRANDY","GOLDFINCH DELUXE PREMIUM BRANDY","STD EAGLE XO PREMIUM BRANDY","SANTANA XXX PREMIUM RUM","TBDL VORION GOLD XXX RUM","TBDL VORION GOLD ELITE XXX RUM","STD GORKHA XXX RUM","KADAMARK 3X RUM","KADAMARK ELITE SPECIAL RUM","HAMMER & TONGS CLASSIC RUM","HICHKI PREMIUM GIN","RESOLUTE PINK VODKA","FREEMAN ORANGE CLASSIC VODKA","FREEMAN PREMIUM ORANGE VODKA","FREEMAN LEMON CLASSIC VODKA","FREEMAN PREMIUM LEMON VODKA","FREEMAN PREMIUM VODKA","COURRIER NAPOLEON CRAFTED FRENCH BRANDY GREEN","FINEST COURRIER NAPOLEON BRANDY","MANSION HOUSE CHAMBERS BRANDY","MANSION HOUSE RESERVE FRENCH BRANDY","3 CHEERS PREMIUM WHITE BRANDY","MANSION HOUSE FLANDY LEMON WHITE BRANDY","MONARCH EXPERTLY CRAFTED FINE BRANDY LEGACY EDITION","MANSION HOUSE FRENCH BRANDY REDEFINED","COURRIER NAPOLEON GOLD BRANDY","SEVEN ISLANDS PURE MALT WHISKY","MANSION HOUSE GOLD BARREL WHISKY","SEAGRAM'S IMPERIAL BLUE SUPERIOR GRAIN WHISKY","SITARA INDIAN CRAFT RUM-BARREL AGED WHITE RUM","SEAGRAM'S IMPERIAL RED RUM","TI'S MADIRAA DELUXE XXX RUM","WHITE HOUSE SUPERIOR DARK XXX RUM","KARGIL INDIAN DARK RUM","KARGIL INDIAN WHITE RUM","SITARA INDIAN CRAFT RUM-BOTANICAL SPICED RUM","SAMSARA CONTEMPORARY INDIAN GIN NEW WORLD EXPERIMENTS-THE CITY OF PINK","FROM THE HOUSE OF SAMSARA AMARA ARTISANAL PINK VODKA","JAWAN PREMIUM BRANDY","JAWAN SPECIAL XXX RUM","JAWAN XXX RUM","JAWAN SUPER XXX RUM","JAWAN PREMIUM XXX RUM","MGM NO.1 BRANDY","MGM WHITE CASTLE WHITE BRANDY","MGM FRIENDS PREMIUM RESERVE BRANDY","MGM LIFE STYLE PREMIUM GRAPE BRANDY","MGM CELEBRITY PREMIUM GRAPE BRANDY","MGM GOLD RESERVE PREMIUM BRANDY","MGM VINTAGE SUPER PREMIUM BRANDY","MGM TIMELESS VSOP BRANDY","MGM INDIAN CHALLENGE SUPER PREMIUM WHISKEY","MGM EXOTICA XXX RUM","LE HABANA MATURED XXX RUM","DIAMOND DELUXE XXX RUM","MGM BLUE MOUNTAIN COFFEE VODKA","MGM ORANGE KIZ VODKA","MGM PREMIUM PURE ORANGE VODKA","MGM PREMIUM PURE LIMON VODKA","MGM PREMIUM PURE GOVA VODKA","MGM MAGALI PREMIUM VODKA","MGM CRYSTAL CLEAR VODKA","MGM PREMIUM PURE APPLE VODKA","MGM MISTY MOUNTAIN JAMUN VODKA","BLENDA CLASSIC WHITE BRANDY","RDS-PREMIUM BRANDY","GLENMAC PREMIUM BRANDY","CLARIVELLE XO BRANDY","LEE MCKENSEY PREMIUM WHISKEY","NEXORA V.S.O.P. BRANDY","KICKMATE CLASSIC RUM","GLENMAC RESERVE RUM","SARVORIA FINEST GRAIN VODKA","SIRI'S CLASSIC RED VSOP BRANDY","SIRI'S FRENCH QUARTERS XO PREMIUM BRANDY","REVENTON RESERVE XO BRANDY","SIRI'S OLD LABEL VSOP BRANDY","SIRI'S CLASSIC BLUE FINEST WHISKY","SIRIS SENTINI PRIDE PREMIUM BLEDED WHISKY","ROYAL STREET XXX RUM","SKYRIM LIMONI WHITE RUM","SIRI'S OLD LABEL XXX RUM","SYRCA ORANGE FUSE, A FLAVOURED VODKA","SYRCA GREEN APPLE FUSE, A FLAVOURED VODKA","KERALA STYLE BRANDY","ADVOCATE BRANDY","KENNEDY BRANDY","KOZHIKODEN BRANDY","MASTER PIECE BRANDY","KENNEDY RUM","ACHAYAN RUM","KERALA COCONUT WHITE RUM","KERALA STYLE RUM","OXXO RUM","LOVE BIRDS VODKA","BLACK DOG CENTENARY BLACK RESERVE AGED & RARE BLENDED SCOTCH WHISKY","ROYAL CHALLENGE AMERICAN PRIDE LUXE GOLD WHISKY","SMIRNOFF ORANGE VODKA","SMIRNOFF GREEN APPLE VODKA","SMIRNOFF VODKA","SMIRNOFF MINTY JAMUN TWIST TRIPLE DISTILLED FLAVOURED VODKA","SMIRNOFF MIRCHI MANGO TWIST TRIPLE DISTILLED FLAVOURED VODKA","SMIRNOFF ZESTY LIME TWIST TRIPLE DISTILLED FLAVOURED VODKA","THE WAREHOUSE MATURED SUPERIOR GRAPE BRANDY VSOP","VINBROS NAPOLEON VSOP FRENCH BRANDY","LIFE STYLE VSQ PREMIUM BRANDY","GOLD CROWN BRANDY VSOP","FLAMINGO FINE FRENCH BRANDY VSOP","SOUTHERN SPICE VSOP PREMIUM BRANDY","OLD CRUIZE MATURED SUPERIOR CANE RUM XXX","THE WAREHOUSE MATURED SUPERIOR CANE RUM ORIGINAL DELUXE","ICEON ROCKS VODKA PINEAPPLE","ICEON ROCKS VODKA ORANGE","ICEON ROCKS VODKA APPLE","GOLDEN DALE INDIAN BRANDY","SG 64 GOLD PREMIUM BRANDY",".44 CALIBER BLENDED RESERVE WHISKY","SG 64 PREMIUM RUM","ELMIRA ULTRA RUM","GEIST WITTY WIT","GEIST UNCLE DUNKEL","GEIST REPEAT STRONG","GEIST POP FICTION","LONE WOLF WILD SUPREME STRONG","LONE WOLF WILD ULTRA STRONG","PROOST POWER BEER STRONG","PROOST WILD BEER STRONG","PROOST ELITE BEER STRONG","PROOST TROY BEER STRONG","PROOST SUPER STRONG BEER","PROOST PREMIUM BEER STRONG","PROOST SUPREME BEER STRONG","PROOST PLATINUM BEER STRONG","PROOST MAGNUM BEER STRONG","PROOST GOLD BEER STRONG","PROOST THUNDER STRONG BEER","PROOST AQUA BEER STRONG","PROOST MIDNIGHT BEER STRONG","PROOST TITAN BEER STRONG","PROOST MYSTIC BEER STRONG","PROOST BOLD BEER STRONG","PROOST CLASSIC BEER STRONG","PROOST SEASIDE BEER STRONG","BUDWEISER PREMIUM INTERNATIONAL BEER","BUDWEISER MAGNUM PREMIUM INTERNATIONAL BEER","BUDWEISER MAGNUM KING OF BEERS","BUDWEISER GLOBAL KING OF BEERS","BUDWEISER MAGNUM GLOBAL KING OF BEERS","BUDWEISER UNIVERSAL KING OF BEERS","BUDWEISER MAGNUM SUPER PREMIUM BEER","BUDWEISER MAGNUM SUPER PREMIUM INTERNATIONAL BEER","BUDWEISER ULTIMATE KING OF BEERS","BUDWEISER MAGNUM PREMIUM BEER","BUDWEISER SUPER PREMIUM INTERNATIONAL BEER","BUDWEISER MAGNUM INTERNATIONAL BEER","BUDWEISER GLOBAL BEER","BUDWEISER INTERNATIONAL BEER","BUDWEISER INTERNATIONAL SUPER PREMIUM BEER","BUDWEISER ULTIMATE BEER","BUDWEISER MAGNUM GLOBAL BEER","BUDWEISER MAGNUM INTERNATIONAL SUPER PREMIUM BEER","BUDWEISER MAGNUM SUPER GLOBAL BEER","HAYWARDS 5000 STRONG BEER","HAYWARDS 5000 STRONG MALT BEER","MOUNT'S 6000 PREMIUM STRONG BEER","MOUNT'S 6000 SUPER STRONG BEER","MOUNT'S 6000 STRONG BEER","LEMOUNT PREMIUM FINE STRONG BEER","LEMOUNT PREMIUM SUPER FINE STRONG BEER","STOK STRONG PREMIUM BEER","DABANG PREMIUM STRONG BEER","MEDUSA PREMIUM STRONG BEER","MEDUSA HOUSE OF THE DRAGON FIRE EDITION PREMIUM BEER","MEDUSA AIR MILD BEER","MEDUSA PRIME STRONG BEER","MEDUSA AIR FINE MILD BEER","MEDUSA HOUSE OF THE DRAGON FIRE EDITION ULTRA PREMIUM BEER","STERREN 6 PREMIUM STRONG BEER","SPIEL EXTRA STRONG BEER","STERREN 7 CLASSIC STRONG BEER","STERREN 7 PREMIUM STRONG BEER","SPIEL GERMAN CLASSIC STRONG BEER","FOSTER'S PUNCH STRONG BEER","FOSTER'S GOLD SUPER STRONG BEER","FOSTER'S PLATINUM PREMIUM STRONG BEER","STERREN 7 SPECIAL MALTED BEER","FOSTER'S POWER STRONG BEER","FOSTER'S ORIGINAL CLASSIC STRONG BEER","KOLT STRIKER SPECIAL STRONG BEER","STERREN 7 ELITE SPECIAL STRONG BEER","STERREN 7 STRONG BEER","BLACK PEARL SUPERIOR STRONG BEER","SPIEL PREMIUM STRONG BEER","FOSTER'S MALT BEER","FOSTER'S BOLT STRONG BEER","FOSTER'S AUSTRALIAN STRONG PREMIUM BEER","FOSTER'S AUSTRALIAN PREMIUM LAGER BEER","FOSTER'S RED STRONG BEER","STERREN 7 GOLD STRONG BEER","FOSTER'S SPECIAL SELECT STRONG BEER","FLYING MONKEY ULTRA PREMIUM STRONG BEER","KARJURA STRONG PLUS BEER","KARJURA PREMIUM STRONG BEER","KARJURA ULTRA PREMIUM STRONG BEER","KARJURA BASMATI STRONG BEER","KARJURA RAW MANGO BEER","FLYING MONKEY CLASSIC STRONG BEER","FLYING MONKEY FIRE STRONG BEER","FLYING MONKEY BELGIAN STYLE CRAFT BEER","FLYING MONKEY ULTRA CLASSIC STRONG BEER","BLOCKBUSTER STRONG PLUS BEER","BLOCKBUSTER BEERYANI BEER","BLOCKBUSTER GOLD STRONG BEER","BLOCKBUSTER MATINEE CRANBERRY BEER","KINGFISHER ULTRA LAGER BEER","HEINEKEN LAGER BEER","KINGFISHER ULTRA MAX PREMIUM STRONG BEER","AMSTEL BIER PREMIUM STRONG BEER","KINGFISHER STORM SUPERIOR STRONG BEER","KINGFISHER STRONG SUPERIOR MALT BEER","KINGFISHER BLUE SELECT STRONG BEER","ZINGARO PREMIUM STRONG BEER","ZINGARO SUPREME STRONG PREMIUM BEER","BULLET EXTRA STRONG BEER","BULLET SUPER SELECT STRONG BEER","KINGFISHER EXTRA PREMIUM LAGER BEER","KINGFISHER ULTRA GOLD STANDARD BEER","KINGFISHER SIGNATURE STRONG BEER","KINGFISHER ROBUST STRONG BEER","KINGFISHER STORM SELECT STRONG BEER","KINGFISHER ULTRA MAX GOLD STANDARD STRONG BEER","AMSTEL BIER GRANDE INTERNATIONAL STRONG BEER","KINGFISHER PREMIUM SIGNATURE BEER","KINGFISHER GOLDEN PREMIUM BEER","HEINEKEN ORIGINAL PREMIUM MALT LAGER BEER","HEINEKEN SILVER PREMIUM MALT LAGER BEER","KINGFISHER ULTRA RESERVE LAGER BEER","KINGFISHER ULTRA SELECT LAGER BEER","KINGFISHER ULTRA SUPERIOR LAGER BEER","KINGFISHER MEGA STRONG PREMIUM BEER","KINGFISHER EXTRA SMOOTH STRONG PREMIUM BEER","KINGFISHER SMOOTH STRONG PREMIUM BEER","KINGFISHER ELITE SMOOTH STRONG PREMIUM BEER","KINGFISHER BLUE SUPERIOR STRONG BEER","KINGFISHER BLUE FINEST STRONG BEER","KINGFISHER ULTRA MAX SELECT STRONG BEER","KINGFISHER ULTRA MAX GOLD STANDARD ELITE BEER","KINGFISHER STORM SPECIAL STRONG BEER","KINGFISHER STORM SUPER PREMIUM STRONG BEER","AMSTEL BIER GRANDE ROYALE","AMSTEL BIER GRANDE INTERNATIONAL PREMIUM STRONG BEER","BULLET CLASSIC STRONG BEER","ZINGARO SELECT STRONG BEER","BRITISH EMPIRE PLATINUM STRONG BEER","BRITISH EMPIRE NEO CLASSIC STRONG BEER","REPEAT EXTRA STRONG BEER","BRITISH EMPIRE ULTRA PREMIUM STRONG BEER","SNJ 10000 SUPER STRONG BEER","HIGH VOLTAGE SUPER STRONG BEER","HOEGAARDEN BELGIAN WITBIER","HAYWARDS 5000 EXTRA SUPERIOR STRONG BEER","HOEGAARDEN BLANCHE BIER","HOEGAARDEN INTERNATIONAL WITBIER","HAYWARDS 5000 SUPER STRONG MALT BEER","HOEGAARDEN NECTARINE WITBIER","HOEGAARDEN NECTARINE INTERNATIONAL WITBIER","HOEGAARDEN ROSEE WITBIER","HOEGAARDEN ROSEE INTERNATIONAL WITBIER","HOEGAARDEN BELGIAN WIT BEER","HOEGAARDEN WIT BEER","HOEGAARDEN WITBIER","HUNTER PLATINA SUPER STRONG BEER","POWER10000 SUPER STRONG BEER","BLACK FORT REFRESHING STRONG BEER","BRITISH EMPIRE PREMIUM STRONG BEER","BRITISH EMPIRE CLASSIC STRONG BEER","BRITISH EMPIRE WHEAT SPECIAL STRONG BEER","BRITISH EMPIRE 100% MALT PREMIUM STRONG BEER","BRITISH EMPIRE FINEST STRONG BEER","SNJ 10000 CLASSIC STRONG BEER","BRITISH EMPIRE GOLD PREMIUM STRONG BEER","BUDWEISER SUPER PREMIUM KING OF BEERS","BUDWEISER MAGNUM SUPER PREMIUM KING OF BEERS","CORONA EXTRA SUPER PREMIUM MILD BEER","BECK'S ICE SUPER STRENGTH","CORONA EXTRA PREMIUM BEER","BECK'S ICE SUPERIOR STRENGTH ULTRA CLASSIC STRENGTH","CORONA EXTRA BEER","CORONA EXTRA INTERNATIONAL BEER","CORONA EXTRA LAGER BEER","SOM WOODPECKER HANDCRAFTED WHEAT BEER","WOODPECKER HANDCRAFTED PREMIUM STRONG BEER","WOODPECKER HANDCRAFTED STRONG BEER","WOODPECKER IRISH RED ALE BEER","WOODPECKER APPLE CIDER BEER","WOODPECKER WHEAT CRAFT BEER","SOM LEGEND PREMIUM SUPER STRONG BEER","BRITISH EMPIRE GRAND STRONG BEER","BRITISH EMPIRE SUPERIOR STRONG BEER","BRITISH EMPIRE CLASSIC EXTRA STRONG BEER","BRITISH EMPIRE SELECT STRONG BEER","SNJ 10000 PREMIUM STRONG BEER","KINGFISHER PREMIUM EXQUISITE LAGER BEER","KINGFISHER ULTRA WITBIER","KINGFISHER ULTRA WITBIER CLASSIC BELGIAN WHITE","KINGFISHER ULTRA WITBIER TRUE BELGIAN WHITE","KINGFISHER STRONG PREMIUM MALT BEER","HUNTER PREMIUM STRONG BEER","WOODPECKER NATURAL LAGER PREMIUM STRONG BEER","WOODPECKER NATURAL LAGER PREMIUM MILD BEER","SUNNY BEACHES REFRESHING PREMIUM STRONG BEER","BLITZ EXTRA BRUT","BOB'S NO.21 PORT WINE","BLITZ MAXX","BLITZ LIGHT","TIPSY ORANGE","TIPSY LEMON","TIPSY CRANBERRY","TIPSY BLACK CURRENT","TIPSY PASSION FRUIT","XCITE PINEAPPLE","XCITE GUAVA","XCITE ORANGE","XCITE MIXED BERRIES","XCITE PEACH","BOB'S WHITE PORT WINE","SUPER MAKA DI STRONG","SUPER MAKA DI POLICHU EDITION","SUPER MAKA DI STRONG PRIME","FRATELLI CABERNET FRANC SHIRAZ","FRATELLI CLASSIC MERLOT","FRATELLI CLASSIC CHENIN","FRATELLI CLASSIC SHIRAZ","SIDUS PREMIUM PORT WINE","FRATELLI WINES SHIRAZ ROSE","FRATELLI WINES CABERNET SAUVIGNON","FRATELLI WINES SAUVIGNON BLANC","KYRA PREMIUM RED WINE","SETTE","NOI SPARKLING","FRATELLI WINES CHARDONNAY","FRATELLI WINES SHIRAZ","ZIVA RED WINE","FRATELLI WINES PINOT NOIR","MOSSO PEACH WINE","FRATELLI SHOTGUN MAXX","FRATELLI SHOTGUN MAXX BERRY BLAST","FRATELLI SHOTGUN MAXX MANGO BLAST","FRATELLI SHOTGUN MAXX PATIALA","F7 RED WINE","FRATELLI BRUT METHODE TRADITIONNELLE","GRAND AVENUE PREMIUM FIZZY SPLASH","THE CHARIOT SPECIAL EDITION WINE","GRAND AVENUE RED WINE","GOAN PRIDE CABERNET SHIRAZ RED WINE","GOAN PRIDE SHIRAZ PREMIUM RED WINE","WINE ODE","GROVER LA RESERVE BARREL SELECTE","VILLA 89 PREMIUM PORT WINE","RAYA GOLD RED WINE","RAYA GOLD WHITE WINE","GROVER CHENE GRANDE RESERVE RED WINE","GROVER CHENE GRANDE RESERVE CHARDONNAY WHITE WINE","MUSE RED SWEET WINE","GROVER ART COLLECTION MERLOT RED WINE","GROVER ART COLLECTION ROSE WINE","GROVER ART COLLECTION SHIRAZ RED WINE","GROVER ART COLLECTION VIOGNIER WHITE WINE","GROVER ART COLLECTION CABERNET SHIRAZ RED WINE","GROVER ART COLLECTION SAUVIGNON BLANC WHITE WINE","GROVER ART COLLECTION CHENIN BLANC WHITE WINE","GROVER ART COLLECTION LATE HARVEST CHENIN BLANC WHITE WINE","GROVER ART COLLECTION RIESLING WHITE WINE","BRO CODE GRAND RESERVA","BRO CODE CRAFTED BRUT","BRO CODE KRAFT SEKT","BRO CODE EL CLASSICO","BIG BRO FURY","BIG BRO OMERTA","BRO CODE CLAIRMONT","BRO CODE CALLISTA","BRO CODE CRESTA","BRO CODE CIEL","BRO CODE RED CLAIRMONT","BRO CODE RED CALLISTA","BRO CODE RED CRESTA","BRO CODE RED CIEL","BRO CODE LEM-ON FIRE CLAIRMONT","BRO CODE LEM-ON FIRE CALLISTA","BRO CODE LEM-ON FIRE CRESTA","BRO CODE LEM-ON FIRE CIEL","BRO CODE SUN OF A BEACH CLAIRMONT","BRO CODE SUN OF A BEACH CALLISTA","BRO CODE SUN OF A BEACH CRESTA","BRO CODE SUN OF A BEACH CIEL","BRO CODE COLA VERY D! CLAIRMONT","BRO CODE COLA VERY D! CALLISTA","BRO CODE COLA VERY D! CRESTA","BRO CODE COLA VERY D! CIEL","BRO BOMB SHOOTING O'RANGE MK 81","BRO BOMB SHOOTING O'RANGE MK 82","BRO BOMB CRAN-KA-BOOM! MK-82 LD","BRO BOMB CRAN-KA-BOOM! MK-82 HD","BRO CODE BUZZ","BRO CODE BLANC","BRO CODE SALUT","BROSE VIBE","BROSE VIBE BRUT ROSE","BRO RED CARMINE","STRONGWIZER STRONG BREW WINE","CRAFTBERG SMOOTH BREW WINE","FLIPPER PINA COLADA COCKTAIL WINE","FLIPPER ONE FOR THE ROAD COCKTAIL WINE","FLIPPER BLUE LAGOON COCKTAIL WINE","FLIPPER X ON THE BEACH COCKTAIL WINE","FLIPPER SCREW DRIVER COCKTAIL WINE","BURST MOJITO ULTRA PREMIUM COOLER WINE","BURST GIMLET ULTRA PREMIUM COOLER WINE","BURST GREEN APPLE ULTRA PREMIUM COOLER WINE","BURST CRANBERRY ULTRA PREMIUM COOLER WINE","BURST GINGER LEMON ULTRA PREMIUM COOLER WINE","BURST ORANGE ULTRA PREMIUM COOLER WINE","ST. MORTIZ RESERVE WINE","ELEGA PREMIUM WINE","KOCHERY HORTY BLACK WINE DRY","KOCHERY HORTY RED WINE DRY","KOCHERY HORTY SWEET RED WINE","KOCHERY HORTY PREMIUM BLACK ROCK SWEET WINE","KOCHERY HORTY PREMIUM SUN RISE RED SWEET WINE","KOCHERY HORTY AMLA WINE DRY","KOCHERY HORTY PINEAPPLE WINE","KOCHERY HORTY CASHEW FRUIT WINE","KOCHERY HORTY POOVAN PAZHAM WINE","KOCHERY HORTY NUTMUG WINE","KOCHERY HORTY PREMIUM MISTY FOG RED WINE SWEET","KOCHERY HORTY PREMIUM MOUNT HILLS BLACK WINE DRY","KOCHERY HORTY WHITE WINE SWEET","KOCHERY HORTY WHITE WINE DRY","KOCHERY HORTY HARVEST LEGEND PREMIUM WINE","KOCHERY HORTY SIVASO PREMIUM RED WINE SWEET","KOCHERY HORTY BLACK VELVET WINE SWEET","KOCHERY HORTY JACK FRUIT WINE","KOCHERY HORTY MARK ONE MIXED FRUIT WINE","BIG BANYAN SAUVIGNON BLANC WHITE WINE","BIG BANYAN CHENIN BLANC WHITE WINE","BIG BANYAN SHIRAZ RED WINE","BIG BANYAN CABERNET SAUVIGNON RED WINE","BIG BANYAN ROSA ROSSA ROSE WINE","BELLISSIMA LATE HARVEST MUSCAT DESSERT WINE","BIG BANYAN MERLOT RED WINE","L'ANGOOR RED WINE","L'ANGOOR WHITE WINE","LIMITED SHIRAZ RED WINE","PANTHERA FINESSE","PANTHERA EFFERVESCENT","LIQON RED WINE","CABRIA PORTO RED WINE","LIQON WHITE WINE","PRADO RED WINE","PRADO WHITE WINE","CABRIA SPARKLING RED WINE","LIQON SPARKLING RED WINE","KOMBAN PORTO RED WINE","DISCO PANDA MANGO TANGO EXTRA STRENGTH","DISCO PANDA LEMON SHANDY EXTRA STRENGTH","JINWOO TRADITIONAL RICE SOJU","JINWOO GREEN GRAPE SOJU","JINWOO PEACH SOJU","JINWOO WATERMELON SOJU","JINWOO GREEN APPLE SOJU","DISCO PANDA MANGO TANGO PREMIUM SUPER STRONG","DISCO PANDA BERRY BLAST PREMIUM SUPER STRONG","DISCO PANDA LEMON SHANDY PREMIUM SUPER STRONG","DISCO PANDA BERRY BLAST EXTRA STRENGTH","DISCO PANDA COLA POP EXTRA STRENGTH","JINWOO BLUEBERRY SOJU","JINWOO STRAWBERRY SOJU","VINHO DE GOA PREMIUM PORT WINE","VINHO TINTO NURTURED PORT WINE","VITUS VALLEY CABERNET SHIRAZ","VINHO SANTO DESSERT WHITE WINE","VITUS VALLEY CHENIN BLANC WHITE WINE","VITUS VALLEY DARK SHIRAZ RED WINE","FORTY 5 FORTIFIED RED WINE","DAVANA VERMOUTH INDICA EXTRA SPECIAL RECIPE BIANCO","DAVANA VERMOUTH INDICA EXTRA SPECIAL RECIPE ROSSO","VINHO TINTO NURTURED REDWINE","VINHO SANTO AROMATIZED WHITE WINE","AK 47 PORTO BIANCO WINE","AK 47 PREMIUM RED PORT WINE","BELLA ROUGE CABERNET SHIRAZ","BELLA BLANC CHENIN VIOGNIER","REISHA SHIRAZ RESERVE","REISHA VIOGNIER RESERVE","BELLA ZINFANDEL ROSE WINE","CRUISER BRUT FIZZ","FREEDOM SPRITZER CRANBERRY TWIST","KOKO PUNCH","KOKO PUNCH BLACK","FREEDOM SPRITZER TANGO ORANGE TWIST","KOKO PUNCH GREEN","KOKO PUNCH TANGO ORANGE","KOKO PUNCH SANGRIA","KOKO PUNCH BERRY","KOKO PUNCH MOJITO","SULA SECO METHODE CLASSIQUE","SULA VINEYARDS RIESLING","SULA DINDORI RESERVE SHIRAZ","SULA VINEYARDS CHENIN BLANC","SULA VINEYARDS SHIRAZ CABERNET","DIA RED WINE SPARKLER","SULA VINEYARDS ZINFANDEL","MOSAIC RED WINE","SATORI RED WINE","SULA LATE HARVEST CHENIN BLANC","THE SOURCE SAUVIGNON BLANC RESERVE","THE SOURCE CABERNET SAUVIGNON","SULA BRUT CREMANT DE NASHIK","RASA SYRAH","THE SOURCE GRENACHE ROSE","SULA VINEYARDS SAUVIGNON BLANC","SULA VINEYARDS DINDORI RESERVE SHIRAZ","MADERA NASHIK VALLEY RED WINE","SAMARA RED WINE","PORT WINE 1000 SPARKLING","SIRA WINE","VINOZZA HORTIWINE BANANA","HANNA HORTIWINE DATES","SAKA HORTIWINE PINEAPPLE","SIRA GREEN MANGO CHILLI SPLASH WINE","SIRA MANGO SPLASH FRUIT WINE","SIRA PINEAPPLE MAGIC WHITE WINE","SIRA JACK FRUIT WHITE WINE","SIRA RESERVE GRAPE RED WINE","SIRA MIXED FRUIT WITH CHILLI EXTRA STRENGTH","GROVER VA RESERVE COLLECTION WHITE","GROVER VA RESERVE COLLECTION RED","GROVER SOIREE BRUT ROSE METHODE TRADITIONNELLE","GROVER SOIREE BRUT METHODE TRADITIONNELLE","AMORA RED WINE","AMORA WHITE WINE","GROVER MISFIT CRAFT SPARK","GROVER MISFIT CRANBERRY","GROVER MISFIT MIMOSA","MISFIT KIR ROYALE BLACK CURRANT FIZZ","MISFIT BELLINI PEACH FIZZ","MISFIT SANGRIA PARTY FIZZ","RIO STRONG FIZZY PORT WINE","RIO STRONG EXTRA DRY FIZZY WINE","FRIZZANO ITALIAN COLLECTION BIANCO WHITE SPARKLING WINE","FRIZZANO ITALIAN COLLECTION FORTE STRONG SPARKLING WINE","FRIZZANO ITALIAN COLLECTION ROSATO ROSE SPARKLING WINE","FRIZZANO ITALIAN COLLECTION ROSSO RED SPARKLING WINE","FRIZZANO ITALIAN COLLECTION DOLCE SWEET SPARKLING WINE","FRIZZANO ITALIAN COLLECTION SENZA SUGARFREE SPARKLING WINE","GOOD EARTH WINE ANTARAA CABERNET SHIRAZ","GOOD EARTH WINE BLEU SHIRAZ CABERNET","GOOD EARTH WINE BELLA SHIRAZ ROSE","GOOD EARTH WINE BLANCA CHENIN BLANC","CASABLANCA VINO SPUMANTE SPARKLING WINE","FRIZZANO SPARKLING WINE CHARMAT METHOD SEMI - DRY","RIO RED","RIO GOLD","VECCHIA ROMAGNA 1820 CLASSICA BRANDY","A. BARONET V.S.O.P. NAPOLEON FINEST BRANDY","SCOTTISH LEADER ORIGINAL BLENDED SCOTCH WHISKY","EVAN WILLIAMS KENTUCKY STRAIGHT BOURBON WHISKEY","THE DALMORE AGED 12 YEARS HIGHLAND SINGLE MALT SCOTCH WHISKY","JURA SINGLE MALT SCOTCH WHISKY AGED 12 YEARS","JOHN BARR BLENDED SCOTCH WHISKY RESERVE BLEND","JURA SINGLE MALT SCOTCH WHISKY AGED 18 YEARS","JURA SINGLE MALT SCOTCH WHISKY BOURBON CASK","TAMNAVULIN SPEYSIDE SINGLE MALT SCOTCH WHISKY DOUBLE CASK","TITO'S HANDMADE VODKA","STOLI VODKA","U'LUVKA VODKA","STOLI SALTED CARAMEL FLAVORED VODKA","BELUGA TRANSATLANTIC RACING VODKA","DON ANGEL RARE RESERVE TEQUILA BLANCO","DOS FLAMOS TEQUILA BLANCO","JAGERMEISTER LIQUEUR","MEUKOW V.S.O.P. SUPERIOR COGNAC","DEWAR'S WHITE LABEL BLENDED SCOTCH WHISKY","DEWAR'S AGED 12 YEARS BLENDED SCOTCH WHISKY","DEWAR'S AGED 15 YEARS BLENDED SCOTCH WHISKY","DEWAR'S AGED 18 YEARS BLENDED SCOTCH WHISKY","AULTMORE SPEYSIDE SINGLE MALT SCOTCH WHISKY AGED 12 YEARS","ABERFELDY HIGHLAND SINGLE MALT SCOTCH WHISKY 12 YEARS","ROYAL BRACKLA HIGHLAND SINGLE MALT SCOTCH WHISKY AGED 12 YEARS","DEWAR'S BLENDED SCOTCH WHISKY PORTUGUESE SMOOTH","BACARDI ANEJO CUATRO AGED 4 YEARS","BACARDI RESERVA OCHO","BACARDI GRAN RESERVA DIEZ","BOMBAY SAPPHIRE GIN","GREY GOOSE VODKA","GREY GOOSE ALTIUS","CAMINO REAL BLANCO","CAMINO REAL GOLD","PATRON 100% PURO DE AGAVE REPOSADO","PATRON 100% PURO DE AGAVE SILVER","PATRON EL ALTO","PATRON SILVER TEQUILA","PATRON REPOSADO TEQUILA","PATRON ANEJO TEQUILA","GOLD NAPOLEON FRENCH SPIRIT BRANDY","BARDINET FINEST VSOP BRANDY","BEEHIVE VSOP BRANDY","BEEHIVE FLAVOURED EXTRA SMOOTH HONEY BRANDY","MARTELL VS COGNAC","JAMESON TRIPLE DISTILLED IRISH WHISKEY","CHIVAS REGAL AGED 12 YEARS BLENDED SCOTCH WHISKY","BALLANTINE'S FINEST BLENDED SCOTCH WHISKY","THE GLENLIVET SINGLE MALT SCOTCH WHISKY 12 YEARS OF AGE","CHIVAS REGAL AGED 15 YEARS BLENDED SCOTCH WHISKY","CHIVAS REGAL AGED 18 YEARS BLENDED SCOTCH WHISKY GOLD SIGNATURE","THE GLENWALK BLENDED SCOTCH WHISKY","ABERLOUR SPEYSIDE SINGLE MALT SCOTCH WHISKY 12 YEARS OLD","BALLANTINE'S BLENDED SCOTCH WHISKY AGED 7 YEARS AMERICAN BARREL","JAMESON IRISH WHISKEY STOUT EDITION","THE GLENLIVET SINGLE MALT SCOTCH WHISKY 15 YEARS OF AGE","THE GLENWALK BLENDED SCOTCH WHISKY AGED FOR 5 YEARS SMOKY EDITION","THE GLENWALK BLENDED SCOTCH WHISKY AGED FOR 7 YEARS PEATED EDITION","THE GLENWALK BLENDED SCOTCH WHISKY AGED FOR 7 YEARS SMOKY EDITION","SIR EDWARD'S FINEST BLENDED SCOTCH WHISKY","LORD KINGSLEY BLENDED SCOTCH WHISKY","THE GLENWALK BLENDED SCOTCH WHISKY AGED FOR 5 YEARS PEATED EDITION","KHUKRI XXX RUM","KHUKRI SPICED RUM","BEEFEATER LONDON DRY GIN","BEEFEATER PINK STRAWBERRY FLAVORED DISTILLED GIN","ABSOLUT VODKA","KIPRINSKI PURE GRAIN VODKA","ABSOLUT CITRON","ABSOLUT MANDRIN","ABSOLUT RASPBERRI","ABSOLUT GRAPEFRUIT","ABSOLUT LIME","SOBIESKI 100% RYE VODKA","SOBIESKI GRAPEFRUIT","SHELTER6 VODKA","SANJOSE PINEAPPLE CHILI","KAHLUA COFFEE LIQUEUR","ST REMY VSOP FRENCH BRANDY FRANCAIS","REMY MARTIN COGNAC FINE CHAMPAGNE VSOP","ST REMY EXTRA OLD XO FRENCH BRANDY FRANCAIS","GOD'S OWN VSOP BRANDY","GOD'S OWN COGNAC VS","JULES DOMET NAPOLEON VSOP","THE GLENGARRY RESERVE HIGHLAND BLENDED SCOTCH WHISKY","HIBIKI JAPANESE HARMONY BLENDED JAPANESE WHISKY","TEACHER'S HIGHLAND CREAM","JIM BEAM KENTUCKY STRAIGHT BOURBON WHISKEY","MAKER'S MARK KENTUCKY STRAIGHT BOURBON WHISKY","LAPHROAIG 10 YO ISLAY SINGLE MALT SCOTCH WHISKY","LAPHROAIG ISLAY SINGLE MALT SCOTCH WHISKY SELECT","THE ARDMORE HIGHLAND SINGLE MALT SCOTCH WHISKY","BOWMORE ISLAY SINGLE MALT SCOTCH WHISKY","JIM BEAM BLACK BOURBON WHISKEY","SUNTORY WHISKY TOKI BLENDED JAPANESE WHISKY","TEACHER'S ORIGIN BLENDED SCOTCH WHISKY","JIM BEAM HONEY","JIM BEAM ORANGE","BUSHMILLS THE ORIGINAL IRISH WHISKEY","LUCIFERS GOLD A BLEND OF BOURBON & SCOTCH WHISKY","BUSHMILLS AGED 12 YEARS SINGLE MALT IRISH WHISKEY","THE GLENGARRY BLENDED SCOTCH WHISKY","GLEN EDEN SINGLE MALT SCOTCH WHISKY","MOUNT GAY BARBADOS RUM ECLIPSE HERITAGE BLEND","VIVA EL RON DE CUBA CUBAN WHITE RUM","VIVA EL RON LIMON","DIPLOMATICO RON ANTIGUO RESERVA EXCLUSIVA","STAR & KEY SINGLE CASK SINGLE ESTATE RUM V.S.O.P.","THE BOTANIST ISLAY DRY GIN","TOM & MEW LONDON DRY GIN","ROKU GIN","ROKU GIN SAKURA BLOOM EDITION","HAKU VODKA","VODKA ONEGIN","BUEN AMIGO TEQUILA SILVER","JOSE CUERVO ESPECIAL BLUE AGAVE SILVER TEQUILA","JOSE CUERVO ESPECIAL BLUE AGAVE REPOSADO TEQUILA","TEQUILA RESERVA 1800 BLANCO","TEQUILA RESERVA 1800 ANEJO","BUEN AMIGO TEQUILA BLANCO","BUEN AMIGO TEQUILA GOLD","COINTREAU LIQUEUR","GRAND ROUEN VSOP BRANDY","LOUVI MORAIN VSOP BRANDY","ORLEON RESERVE VSOP SPIRIT","SIMSSONS BOURBON WHISKEY","SIMSSONS IRISH WHISKEY","TALISKER SINGLE MALT SCOTCH WHISKY AGED 10 YEARS","J&B RARE BLENDED SCOTCH WHISKY","DALWHINNIE HIGHLAND SINGLE MALT SCOTCH WHISKY 15 YEARS","CAOL ILA AGED 12 YEARS ISLAY SINGLE MALT SCOTCH WHISKY","JACK DANIEL'S OLD NO.7 BRAND QUALITY TENNESSEE SOUR MASH WHISKEY","JACK DANIEL'S GENTLEMAN JACK DOUBLE MELLOWED TENNESSEE WHISKEY","WOODFORD RESERVE KENTUCKY STRAIGHT BOURBON WHISKEY","JACK DANIEL'S SINGLE BARREL SELECT TENNESSEE WHISKEY","GORDON'S LONDON DRY GIN","CIROC SNAP FROST VODKA","JACK DANIEL'S TENNESSEE HONEY SMOOTH & BALANCED ORIGINAL RECIPE","JACK DANIEL'S TENNESSEE FIRE CINNAMON SPICE ORIGINAL RECIPE","JACK DANIEL'S TENNESSEE APPLE CRISP & DELICIOUS ORIGINAL RECIPE","BENCHMARK OLD NO. 8 BRAND KENTUCKY STRAIGHT BOURBON WHISKEY","BUFFALO TRACE KENTUCKY STRAIGHT BOURBON WHISKEY","WELLER THE ORIGINAL WHEATED BOURBON SPECIAL RESERVE KENTUCKY STRAIGHT BOURBON WHISKEY","WELLER THE ORIGINAL WHEATED BOURBON AGED 12 YEARS KENTUCKY STRAIGHT BOURBON WHISKEY","SAZERAC RYE STRAIGHT RYE WHISKEY","DORDOGNE VSOP FRENCH SPIRIT","DORDOGNE XO PREMIUM GRAPE BRANDY","MAGPIE GOLD BLENDED SCOTCH WHISKY","THE MAGFYRE PREMIUM BLENDED WHISKY","GRANT'S TRIPLE WOOD BLENDED SCOTCH WHISKY","GLENFIDDICH SINGLE MALT SCOTCH WHISKY AGED 12 YEARS","GLENFIDDICH SINGLE MALT SCOTCH WHISKY AGED 15 YEARS","MONKEY SHOULDER BLENDED MALT SCOTCH WHISKY","THE BALVENIE DOUBLEWOOD 12 YEAR OLD SINGLE MALT SCOTCH WHISKY","HENDRICK'S GIN","FRENCH SAINTS","ST RHINE VSOP CAPE BRANDY","ST RHINE VS CAPE BRANDY","BEAU CAPE 5 YEARS BLENDED VSOP BRANDY","BLACK SMOKE 12 YEARS BLENDED WHISKY","BLACK SMOKE 8 YEARS OLD WHISKY","JOHNNIE WALKER RED LABEL BLENDED SCOTCH WHISKY","JOHNNIE WALKER BLACK LABEL BLENDED SCOTCH WHISKY","JOHNNIE WALKER DOUBLE BLACK BLENDED SCOTCH WHISKY","JOHNNIE WALKER GOLD LABEL RESERVE BLENDED SCOTCH WHISKY","JOHNNIE WALKER AGED 18 YEARS BLENDED SCOTCH WHISKY","JOHNNIE WALKER BLUE LABEL BLENDED SCOTCH WHISKY","GLENKINCHIE SINGLE MALT SCOTCH WHISKY 12 YEARS OLD","BLACK & WHITE BLENDED SCOTCH WHISKY","VAT 69 BLENDED SCOTCH WHISKY","THE SINGLETON SINGLE MALT SCOTCH WHISKY 12 YEARS OLD","JOHNNIE WALKER BLONDE BLENDED SCOTCH WHISKY","COPPER DOG SPEYSIDE BLENDED MALT SCOTCH WHISKY","THE SINGLETON SINGLE MALT SCOTCH WHISKY 15 YEARS OLD","THE SINGLETON SINGLE MALT SCOTCH WHISKY 18 YEARS OLD","LAGAVULIN ISLAY SINGLE MALT SCOTCH WHISKY AGED 16 YEARS","TANQUERAY LONDON DRY GIN","TANQUERAY NO. TEN BATCH DISTILLED GIN","TANQUERAY MALACCA DISTILLED GIN","TANQUERAY RANGPUR LIME DISTILLED GIN","KETEL ONE VODKA","DON JULIO 1942","DON JULIO REPOSADO","DON JULIO BLANCO","BAILEYS THE ORIGINAL IRISH CREAM","BUSH BALLAD SHIRAZ","BUSH BALLAD CHARDONNAY","BUSH BALLAD SHIRAZ CABERNET","BUSH BALLAD MERLOT","BUSH BALLAD SAUVIGNON BLANC","MATEUS THE ORIGINAL ROSE WINE","MONTE PACIFICO CHARDONNAY","MONTE PACIFICO MERLOT","WHAT THE FOX CABERNET SAUVIGNON","WHAT THE FOX BRUT SPARKLING WINE","GOLDEN SPARROW CELLAR COLLECTION CHARDONNAY RUBICONE DRY WHITE WINE","GOLDEN SPARROW CELLAR COLLECTION SANGIOVESE RUBICONE MEDIUM DRY RED WINE","RIUNITE LAMBRUSCO EMILIA ITALIA","RIUNITE PROSECCO TREVISO EXTRA DRY SPARKLING WINE","MARTINI ROSSO AROMATIZED WINE (VERMOUTH)","JACOB'S CREEK CLASSIC SHIRAZ CABERNET","JACOB'S CREEK CHARDONNAY PINOT NOIR","JACOB'S CREEK CLASSIC MERLOT","JACOB'S CREEK CLASSIC CHARDONNAY","JACOB'S CREEK CLASSIC RIESLING","JACOB'S CREEK CLASSIC CABERNET SAUVIGNON","CAMPO VIEJO RIOJA TEMPRANILLO","CAMPO VIEJO RIOJA BLANCO","QUESTA MERLOT","QUESTA CHARDONNAY","19:59 SINGLE VARIETAL CABERNET SAUVIGNON","19:59 SINGLE VARIETAL RIESLING"],"t":["Whisky","Brandy","Rum","Vodka","Gin","Beer","Wine","Tequila","Liqueur"],"d":[[0,750,1550,1,0],[0,375,780,1,0],[0,180,350,1,0],[1,750,1380,1,0],[1,375,700,1,0],[1,180,340,1,0],[1,500,630,1,0],[1,1000,1260,1,0],[2,750,1920,1,0],[2,375,970,1,0],[2,180,420,1,0],[3,750,1060,1,0],[3,375,570,1,0],[3,180,300,1,0],[3,500,800,1,0],[3,1000,1360,1,0],[4,750,1060,1,0],[4,375,570,1,0],[4,180,300,1,0],[4,500,800,1,0],[4,1000,1360,1,0],[5,750,1060,1,0],[5,375,570,1,0],[5,180,300,1,0],[5,500,800,1,0],[5,1000,1360,1,0],[6,750,1060,1,0],[6,375,570,1,0],[6,180,300,1,0],[6,500,800,1,0],[6,1000,1360,1,0],[7,750,1380,1,0],[7,375,700,1,0],[7,180,330,1,0],[7,500,630,1,0],[7,1000,1260,1,0],[8,750,1380,1,0],[8,375,700,1,0],[8,180,330,1,0],[8,500,630,1,0],[8,1000,1260,1,0],[9,750,1550,1,0],[9,375,780,1,0],[9,180,350,1,0],[10,750,1550,1,0],[10,375,780,1,0],[10,180,350,1,0],[11,750,1920,1,0],[11,375,970,1,0],[11,180,420,1,0],[12,750,1350,1,0],[12,375,700,1,0],[12,180,350,1,0],[12,500,830,1,0],[12,1000,1620,1,0],[13,750,1270,1,0],[13,375,650,1,0],[13,180,330,1,0],[13,1000,1650,1,0],[14,750,1060,0,0],[14,375,570,0,0],[14,180,300,0,0],[14,500,800,0,0],[14,1000,1360,0,0],[15,750,1060,0,0],[15,375,570,0,0],[15,180,300,0,0],[15,500,800,0,0],[15,1000,1360,0,0],[16,750,1380,0,0],[16,375,700,0,0],[16,180,330,0,0],[16,500,630,0,0],[16,1000,1260,0,0],[17,750,1550,0,0],[17,375,780,0,0],[17,180,350,0,0],[18,750,1920,0,0],[18,375,970,0,0],[18,180,420,0,0],[19,750,1440,0,0],[19,375,720,0,0],[19,180,350,0,0],[20,750,1550,2,0],[20,375,780,2,0],[20,180,350,2,0],[21,750,1060,2,0],[21,375,570,2,0],[21,180,300,2,0],[21,500,800,2,0],[21,1000,1360,2,0],[22,750,1060,2,0],[22,375,570,2,0],[22,180,300,2,0],[22,500,800,2,0],[22,1000,1360,2,0],[23,750,1380,2,0],[23,375,700,2,0],[23,180,330,2,0],[23,500,630,2,0],[23,1000,1260,2,0],[24,750,1380,2,0],[24,375,700,2,0],[24,180,330,2,0],[24,500,630,2,0],[24,1000,1260,2,0],[25,750,1550,2,0],[25,375,780,2,0],[25,180,350,2,0],[26,750,1550,2,0],[26,375,780,2,0],[26,180,350,2,0],[27,750,1550,2,0],[27,375,780,2,0],[27,180,350,2,0],[28,750,1920,2,0],[28,375,970,2,0],[28,180,420,2,0],[29,750,1920,2,0],[29,375,970,2,0],[29,180,420,2,0],[30,750,1380,2,0],[30,375,710,2,0],[30,180,370,2,0],[31,750,1370,2,0],[31,375,710,2,0],[31,180,360,2,0],[32,750,1300,4,0],[32,375,660,4,0],[32,180,310,4,0],[32,500,580,4,0],[32,1000,1160,4,0],[33,750,1470,4,0],[33,375,740,4,0],[33,180,330,4,0],[34,750,1550,3,0],[34,375,780,3,0],[34,180,350,3,0],[35,750,1060,3,0],[35,375,570,3,0],[35,180,300,3,0],[35,500,800,3,0],[35,1000,1360,3,0],[36,750,1060,3,0],[36,375,570,3,0],[36,180,300,3,0],[36,500,800,3,0],[36,1000,1360,3,0],[37,750,1060,3,0],[37,375,570,3,0],[37,180,300,3,0],[37,500,800,3,0],[37,1000,1360,3,0],[38,750,1060,3,0],[38,375,570,3,0],[38,180,300,3,0],[38,500,800,3,0],[38,1000,1360,3,0],[39,750,1380,3,0],[39,375,700,3,0],[39,180,330,3,0],[39,500,630,3,0],[39,1000,1260,3,0],[40,750,1380,3,0],[40,375,700,3,0],[40,180,330,3,0],[40,500,630,3,0],[40,1000,1260,3,0],[41,750,1550,3,0],[41,375,780,3,0],[41,180,350,3,0],[42,750,1550,3,0],[42,375,780,3,0],[42,180,350,3,0],[43,750,1920,3,0],[43,375,970,3,0],[43,180,420,3,0],[44,750,1920,3,0],[44,375,970,3,0],[44,180,420,3,0],[45,750,1280,3,0],[45,375,660,3,0],[45,180,340,3,0],[46,750,390,1,0],[46,375,300,1,0],[46,180,160,1,0],[46,500,390,1,0],[46,1000,550,1,0],[47,750,700,1,0],[47,375,320,1,0],[47,180,180,1,0],[47,500,420,1,0],[47,1000,800,1,0],[48,750,990,1,0],[48,375,490,1,0],[48,180,250,1,0],[48,500,580,1,0],[48,1000,1100,1,0],[49,750,900,1,0],[49,375,440,1,0],[49,180,230,1,0],[49,500,570,1,0],[49,1000,990,1,0],[50,750,900,1,0],[50,375,420,1,0],[50,180,200,1,0],[50,500,480,1,0],[50,1000,950,1,0],[51,750,490,1,0],[51,375,280,1,0],[51,180,170,1,0],[51,500,400,1,0],[51,1000,720,1,0],[52,750,930,0,0],[52,375,450,0,0],[52,180,200,0,0],[52,500,480,0,0],[52,1000,960,0,0],[53,750,390,2,0],[53,375,300,2,0],[53,180,160,2,0],[53,500,390,2,0],[53,1000,550,2,0],[54,750,850,2,0],[54,375,420,2,0],[54,180,200,2,0],[54,500,480,2,0],[54,1000,960,2,0],[55,750,900,2,0],[55,375,420,2,0],[55,180,200,2,0],[55,500,470,2,0],[55,1000,950,2,0],[56,750,490,2,0],[56,375,280,2,0],[56,180,170,2,0],[56,500,400,2,0],[56,1000,720,2,0],[57,750,700,2,0],[57,375,320,2,0],[57,180,180,2,0],[57,500,420,2,0],[57,1000,800,2,0],[58,750,1130,2,0],[58,375,570,2,0],[58,180,220,2,0],[58,500,480,2,0],[58,1000,980,2,0],[59,750,1200,4,0],[59,375,600,4,0],[59,180,300,4,0],[59,500,670,4,0],[59,1000,1300,4,0],[60,750,810,3,0],[60,375,330,3,0],[60,180,170,3,0],[60,500,400,3,0],[60,1000,750,3,0],[61,750,1130,3,0],[61,375,570,3,0],[61,180,220,3,0],[61,500,480,3,0],[61,1000,980,3,0],[62,750,1270,0,0],[62,375,640,0,0],[62,1000,1640,0,0],[63,750,1710,0,0],[63,1000,1990,0,0],[64,750,6800,0,0],[65,750,2200,2,0],[66,750,2200,2,0],[67,750,2200,2,0],[68,750,1520,2,0],[69,750,1500,2,0],[69,500,880,2,0],[70,750,1500,2,0],[70,500,880,2,0],[71,750,1500,2,0],[71,500,880,2,0],[72,750,1500,2,0],[72,500,880,2,0],[73,750,1200,3,0],[74,750,1200,3,0],[75,750,1200,3,0],[76,750,1200,3,0],[77,750,750,1,0],[77,375,330,1,0],[77,180,170,1,0],[77,500,420,1,0],[77,1000,850,1,0],[78,750,910,1,0],[78,375,440,1,0],[78,180,200,1,0],[78,500,470,1,0],[78,1000,970,1,0],[79,750,1200,1,0],[79,375,600,1,0],[79,180,300,1,0],[79,500,650,1,0],[79,1000,1320,1,0],[80,750,1250,1,0],[80,375,630,1,0],[80,180,320,1,0],[80,500,700,1,0],[80,1000,1400,1,0],[81,750,950,1,0],[81,375,460,1,0],[81,180,250,1,0],[81,500,490,1,0],[81,1000,990,1,0],[82,750,1330,0,0],[82,375,680,0,0],[82,180,330,0,0],[82,500,800,0,0],[82,1000,1600,0,0],[83,750,750,2,0],[83,375,330,2,0],[83,180,170,2,0],[83,500,420,2,0],[83,1000,850,2,0],[84,750,910,2,0],[84,375,440,2,0],[84,180,200,2,0],[84,500,470,2,0],[84,1000,970,2,0],[85,750,1200,2,0],[85,375,600,2,0],[85,180,300,2,0],[85,500,650,2,0],[85,1000,1320,2,0],[86,750,1250,2,0],[86,375,630,2,0],[86,180,320,2,0],[86,500,700,2,0],[86,1000,1400,2,0],[87,750,950,2,0],[87,375,460,2,0],[87,180,250,2,0],[87,500,490,2,0],[87,1000,990,2,0],[88,750,1120,3,0],[88,375,570,3,0],[88,180,300,3,0],[88,500,750,3,0],[88,1000,1450,3,0],[89,750,950,3,0],[89,375,460,3,0],[89,180,250,3,0],[89,500,480,3,0],[89,1000,980,3,0],[90,750,540,1,0],[90,375,290,1,0],[90,180,150,1,0],[90,500,340,1,0],[90,1000,690,1,0],[91,750,980,1,0],[91,375,370,1,0],[91,500,530,1,0],[91,1000,1310,1,0],[92,750,960,1,0],[92,375,400,1,0],[92,500,490,1,0],[92,1000,960,1,0],[93,750,630,1,0],[93,375,300,1,0],[93,180,150,1,0],[93,500,370,1,0],[93,1000,700,1,0],[94,750,1340,1,0],[94,500,650,1,0],[95,750,670,1,0],[95,375,330,1,0],[95,180,170,1,0],[95,500,400,1,0],[95,1000,780,1,0],[96,750,670,1,0],[96,375,340,1,0],[96,180,180,1,0],[96,500,420,1,0],[96,1000,800,1,0],[97,750,760,0,0],[97,375,380,0,0],[97,180,180,0,0],[97,500,530,0,0],[97,1000,1260,0,0],[98,750,850,0,0],[98,500,490,0,0],[99,375,300,2,0],[99,180,150,2,0],[99,500,350,2,0],[99,1000,700,2,0],[100,750,630,2,0],[100,375,300,2,0],[100,180,150,2,0],[100,500,370,2,0],[100,1000,750,2,0],[101,750,540,2,0],[101,375,290,2,0],[101,180,150,2,0],[101,500,340,2,0],[101,1000,690,2,0],[102,375,330,2,0],[102,180,170,2,0],[102,500,400,2,0],[102,1000,780,2,0],[103,750,940,2,0],[103,375,360,2,0],[103,500,530,2,0],[103,1000,1260,2,0],[104,750,900,2,0],[104,500,480,2,0],[104,1000,960,2,0],[105,750,540,2,0],[105,375,290,2,0],[105,180,150,2,0],[105,500,340,2,0],[105,1000,690,2,0],[106,750,630,2,0],[106,375,300,2,0],[106,180,150,2,0],[106,500,370,2,0],[106,1000,750,2,0],[107,375,300,2,0],[107,180,150,2,0],[107,500,350,2,0],[107,1000,700,2,0],[108,750,670,2,0],[108,375,330,2,0],[108,180,170,2,0],[108,500,400,2,0],[108,1000,780,2,0],[109,750,980,3,0],[109,375,370,3,0],[109,500,530,3,0],[109,1000,1310,3,0],[110,500,750,3,0],[110,1000,1360,3,0],[111,500,750,3,0],[111,1000,1360,3,0],[112,375,300,3,0],[112,180,160,3,0],[112,500,400,3,0],[112,1000,750,3,0],[113,500,530,3,0],[113,1000,1050,3,0],[114,750,800,3,0],[114,375,350,3,0],[114,500,480,3,0],[114,1000,980,3,0],[115,375,300,3,0],[115,180,160,3,0],[115,500,400,3,0],[115,1000,750,3,0],[116,500,530,3,0],[116,1000,1050,3,0],[117,750,1400,1,0],[117,375,700,1,0],[117,180,340,1,0],[118,750,1800,1,0],[118,375,900,1,0],[118,180,450,1,0],[119,750,880,1,0],[119,375,450,1,0],[119,180,240,1,0],[119,500,480,1,0],[119,1000,1090,1,0],[120,750,1500,1,0],[120,375,750,1,0],[120,180,370,1,0],[121,750,1130,1,0],[121,375,570,1,0],[121,180,270,1,0],[121,500,670,1,0],[121,1000,1290,1,0],[122,750,880,0,0],[122,375,450,0,0],[122,180,240,0,0],[122,500,490,0,0],[122,1000,990,0,0],[123,750,1340,0,0],[123,375,680,0,0],[123,180,330,0,0],[123,500,850,0,0],[123,1000,1710,0,0],[124,750,1130,2,0],[124,375,560,2,0],[124,180,260,2,0],[124,500,680,2,0],[124,1000,1330,2,0],[125,750,880,2,0],[125,375,450,2,0],[125,180,240,2,0],[125,500,480,2,0],[125,1000,1150,2,0],[126,750,1400,1,0],[126,500,850,1,0],[126,1000,1700,1,0],[127,750,1380,1,0],[127,500,850,1,0],[127,1000,1680,1,0],[128,750,1400,0,0],[128,500,850,0,0],[128,1000,1700,0,0],[129,750,1400,2,0],[129,500,850,2,0],[129,1000,1700,2,0],[130,750,1400,3,0],[130,500,850,3,0],[130,1000,1700,3,0],[131,750,2890,0,0],[132,750,1550,2,0],[132,375,780,2,0],[132,500,1040,2,0],[133,750,1680,2,0],[134,750,1700,2,0],[134,375,850,2,0],[134,500,1100,2,0],[135,750,1580,2,0],[135,375,760,2,0],[135,500,1040,2,0],[136,750,1550,2,0],[136,375,800,2,0],[136,500,1030,2,0],[137,750,1700,2,0],[137,375,810,2,0],[137,500,1130,2,0],[138,750,1710,2,0],[138,375,830,2,0],[138,500,1140,2,0],[139,750,1750,1,0],[139,375,880,1,0],[139,180,430,1,0],[140,750,1220,1,0],[140,375,640,1,0],[140,500,740,1,0],[141,750,1940,0,0],[142,750,1140,2,0],[142,375,590,2,0],[142,180,280,2,0],[142,500,720,2,0],[142,1000,1440,2,0],[143,750,1200,2,0],[143,375,620,2,0],[143,180,310,2,0],[144,750,1670,2,0],[144,180,410,2,0],[145,750,1020,2,0],[145,375,530,2,0],[145,180,250,2,0],[145,500,640,2,0],[145,1000,1240,2,0],[146,750,1620,2,0],[147,500,390,2,0],[147,1000,770,2,0],[148,750,2000,2,0],[148,375,1020,2,0],[149,750,2000,2,0],[149,375,1020,2,0],[150,750,1200,2,0],[150,375,620,2,0],[150,180,310,2,0],[151,750,1200,2,0],[151,375,620,2,0],[151,180,310,2,0],[152,750,2000,2,0],[152,375,1020,2,0],[153,750,2000,2,0],[153,375,1020,2,0],[154,750,1580,2,0],[154,375,760,2,0],[155,750,1580,2,0],[155,375,760,2,0],[156,750,1550,2,0],[156,375,780,2,0],[157,750,1250,3,0],[157,375,630,3,0],[157,180,310,3,0],[157,500,760,3,0],[158,750,1250,3,0],[158,375,630,3,0],[158,180,310,3,0],[158,500,760,3,0],[159,750,1250,3,0],[159,375,630,3,0],[159,180,310,3,0],[159,500,760,3,0],[160,750,1250,3,0],[160,375,630,3,0],[160,180,310,3,0],[160,500,760,3,0],[161,750,2200,0,0],[162,750,1720,0,0],[163,500,390,1,0],[163,1000,770,1,0],[164,750,1230,1,0],[164,375,640,1,0],[164,180,320,1,0],[164,500,770,1,0],[164,1000,1490,1,0],[165,750,1790,1,0],[165,375,920,1,0],[165,180,480,1,0],[166,750,1050,1,0],[166,375,540,1,0],[166,500,580,1,0],[166,1000,1100,1,0],[167,750,1840,0,0],[167,375,990,0,0],[167,180,550,0,0],[167,1000,2400,0,0],[168,500,390,2,0],[168,1000,770,2,0],[169,750,1380,4,0],[169,1000,2340,4,0],[170,750,1260,3,0],[170,375,650,3,0],[170,180,310,3,0],[170,500,810,3,0],[171,750,1230,3,0],[171,375,630,3,0],[171,180,300,3,0],[171,500,790,3,0],[172,750,1230,3,0],[172,375,630,3,0],[172,180,300,3,0],[172,500,790,3,0],[173,750,1230,3,0],[173,375,630,3,0],[173,180,300,3,0],[173,500,790,3,0],[174,750,1230,3,0],[174,375,620,3,0],[174,180,300,3,0],[174,500,780,3,0],[175,750,1080,3,0],[175,375,560,3,0],[175,180,270,3,0],[175,500,650,3,0],[176,750,1260,3,0],[176,375,650,3,0],[176,180,310,3,0],[176,500,810,3,0],[177,750,1260,3,0],[177,375,650,3,0],[177,180,310,3,0],[177,500,810,3,0],[178,750,2100,0,0],[178,375,1080,0,0],[179,750,1220,2,0],[179,375,720,2,0],[179,500,950,2,0],[180,750,950,1,0],[180,375,390,1,0],[180,500,490,1,0],[180,1000,990,1,0],[181,750,680,1,0],[181,375,340,1,0],[181,180,180,1,0],[181,500,400,1,0],[181,1000,780,1,0],[182,750,600,1,0],[182,375,320,1,0],[182,180,180,1,0],[182,500,380,1,0],[182,1000,550,1,0],[183,750,950,1,0],[183,375,390,1,0],[183,180,240,1,0],[183,500,480,1,0],[183,1000,990,1,0],[184,750,1400,0,0],[184,375,700,0,0],[184,1000,1750,0,0],[185,750,990,2,0],[185,375,490,2,0],[185,180,250,2,0],[185,500,650,2,0],[185,1000,1250,2,0],[186,750,930,2,0],[186,375,400,2,0],[186,180,200,2,0],[186,500,550,2,0],[186,1000,1100,2,0],[187,750,950,2,0],[187,375,480,2,0],[187,180,280,2,0],[187,500,650,2,0],[187,1000,1250,2,0],[188,750,600,2,0],[188,375,300,2,0],[188,180,180,2,0],[188,500,380,2,0],[188,1000,550,2,0],[189,750,680,2,0],[189,375,340,2,0],[189,180,180,2,0],[189,500,400,2,0],[189,1000,780,2,0],[190,750,1280,1,0],[190,375,650,1,0],[190,180,300,1,0],[190,500,730,1,0],[190,1000,1400,1,0],[191,750,990,1,0],[191,375,470,1,0],[191,180,250,1,0],[191,500,480,1,0],[191,1000,990,1,0],[192,750,1280,2,0],[192,375,650,2,0],[192,180,300,2,0],[192,500,730,2,0],[192,1000,1400,2,0],[193,750,990,2,0],[193,375,470,2,0],[193,180,250,2,0],[193,500,480,2,0],[193,1000,990,2,0],[194,750,1150,3,0],[194,375,600,3,0],[194,180,280,3,0],[194,500,700,3,0],[194,1000,1300,3,0],[195,750,1150,3,0],[195,375,600,3,0],[195,180,280,3,0],[195,500,700,3,0],[195,1000,1300,3,0],[196,750,1150,3,0],[196,375,600,3,0],[196,180,280,3,0],[196,500,700,3,0],[196,1000,1300,3,0],[197,750,990,3,0],[197,375,470,3,0],[197,180,250,3,0],[197,500,480,3,0],[197,1000,990,3,0],[198,750,7190,0,0],[199,750,3360,2,0],[199,500,2260,2,0],[200,750,880,1,0],[200,375,430,1,0],[200,180,200,1,0],[200,500,480,1,0],[200,1000,980,1,0],[201,750,1260,1,0],[201,500,550,1,0],[202,750,660,1,0],[202,375,330,1,0],[202,180,180,1,0],[202,500,420,1,0],[202,1000,780,1,0],[203,750,1150,1,0],[203,500,550,1,0],[203,1000,1400,1,0],[204,375,330,1,0],[204,180,170,1,0],[204,500,400,1,0],[204,1000,730,1,0],[205,750,980,1,0],[205,375,370,1,0],[205,180,200,1,0],[205,500,530,1,0],[205,1000,1050,1,0],[206,750,1280,1,0],[206,375,650,1,0],[206,180,310,1,0],[206,1000,1690,1,0],[207,750,960,1,0],[207,375,540,1,0],[207,180,280,1,0],[207,500,580,1,0],[207,1000,1160,1,0],[208,750,1100,1,0],[208,375,560,1,0],[208,180,280,1,0],[208,500,600,1,0],[208,1000,1300,1,0],[209,750,1260,0,0],[209,500,490,0,0],[210,375,330,2,0],[210,180,170,2,0],[210,500,400,2,0],[210,1000,800,2,0],[211,750,940,2,0],[211,375,400,2,0],[211,180,200,2,0],[211,500,480,2,0],[211,1000,980,2,0],[212,750,800,2,0],[212,375,400,2,0],[212,180,190,2,0],[212,500,440,2,0],[212,1000,850,2,0],[213,500,730,3,0],[213,1000,1450,3,0],[214,500,730,3,0],[214,1000,1450,3,0],[215,750,1180,3,0],[215,375,630,3,0],[215,500,530,3,0],[215,1000,1400,3,0],[216,375,340,3,0],[216,180,190,3,0],[216,500,430,3,0],[216,1000,830,3,0],[217,750,1180,3,0],[217,375,630,3,0],[217,500,530,3,0],[217,1000,1400,3,0],[218,750,1180,3,0],[218,375,630,3,0],[218,500,530,3,0],[218,1000,1400,3,0],[219,750,640,1,0],[219,375,320,1,0],[219,180,170,1,0],[219,500,400,1,0],[219,1000,800,1,0],[220,750,1330,1,0],[220,375,690,1,0],[220,180,330,1,0],[220,500,750,1,0],[220,1000,1500,1,0],[221,750,740,1,0],[221,375,360,1,0],[221,180,180,1,0],[221,500,410,1,0],[221,1000,800,1,0],[222,750,900,1,0],[222,375,440,1,0],[222,180,220,1,0],[222,500,490,1,0],[222,1000,990,1,0],[223,750,920,1,0],[223,375,440,1,0],[223,180,220,1,0],[223,500,490,1,0],[223,1000,990,1,0],[224,750,640,1,0],[224,375,320,1,0],[224,180,170,1,0],[224,500,400,1,0],[224,1000,800,1,0],[225,750,770,1,0],[225,375,370,1,0],[225,180,180,1,0],[225,500,420,1,0],[225,1000,850,1,0],[226,750,920,2,0],[226,375,440,2,0],[226,180,220,2,0],[226,500,490,2,0],[226,1000,990,2,0],[227,750,640,2,0],[227,375,320,2,0],[227,180,170,2,0],[227,500,400,2,0],[227,1000,800,2,0],[228,750,770,2,0],[228,375,370,2,0],[228,180,180,2,0],[228,500,430,2,0],[228,1000,880,2,0],[229,750,580,2,0],[229,375,290,2,0],[229,180,150,2,0],[229,500,360,2,0],[229,1000,720,2,0],[230,750,1430,3,0],[230,375,730,3,0],[230,180,350,3,0],[230,500,900,3,0],[230,1000,1890,3,0],[231,750,1430,3,0],[231,375,730,3,0],[231,180,350,3,0],[231,500,900,3,0],[231,1000,1890,3,0],[232,750,700,3,0],[232,375,350,3,0],[232,180,170,3,0],[232,500,400,3,0],[232,1000,800,3,0],[233,750,1420,3,0],[233,375,720,3,0],[233,180,350,3,0],[233,500,900,3,0],[233,1000,1870,3,0],[234,750,780,1,0],[234,375,380,1,0],[234,180,190,1,0],[234,500,490,1,0],[234,1000,980,1,0],[235,750,700,1,0],[235,375,340,1,0],[235,180,170,1,0],[235,500,430,1,0],[235,1000,860,1,0],[236,750,950,1,0],[236,375,440,1,0],[236,180,230,1,0],[236,500,470,1,0],[236,1000,960,1,0],[237,750,570,1,0],[237,375,280,1,0],[237,180,140,1,0],[237,500,360,1,0],[237,1000,740,1,0],[238,750,630,1,0],[238,375,310,1,0],[238,180,160,1,0],[238,500,390,1,0],[238,1000,790,1,0],[239,750,1120,1,0],[239,375,570,1,0],[239,180,270,1,0],[239,500,730,1,0],[239,1000,1440,1,0],[240,750,750,1,0],[240,375,340,1,0],[240,180,170,1,0],[240,500,420,1,0],[240,1000,860,1,0],[241,750,940,2,0],[241,375,460,2,0],[241,180,240,2,0],[241,500,600,2,0],[241,1000,1150,2,0],[242,750,630,2,0],[242,375,310,2,0],[242,180,160,2,0],[242,500,390,2,0],[242,1000,790,2,0],[243,750,570,2,0],[243,375,280,2,0],[243,180,140,2,0],[243,500,360,2,0],[243,1000,740,2,0],[244,750,700,2,0],[244,375,340,2,0],[244,180,170,2,0],[244,500,430,2,0],[244,1000,860,2,0],[245,750,740,2,0],[245,375,330,2,0],[245,180,160,2,0],[245,500,390,2,0],[245,1000,820,2,0],[246,750,990,1,0],[246,375,480,1,0],[246,180,250,1,0],[246,500,550,1,0],[246,1000,800,1,0],[247,750,690,1,0],[247,375,360,1,0],[247,180,190,1,0],[247,500,480,1,0],[247,1000,830,1,0],[248,750,830,1,0],[248,375,350,1,0],[248,180,200,1,0],[248,500,490,1,0],[248,1000,850,1,0],[249,750,630,1,0],[249,375,300,1,0],[249,180,160,1,0],[249,500,400,1,0],[249,1000,700,1,0],[250,750,680,1,0],[250,375,320,1,0],[250,180,180,1,0],[250,500,430,1,0],[250,1000,750,1,0],[251,750,690,1,0],[251,375,360,1,0],[251,180,190,1,0],[251,500,480,1,0],[251,1000,830,1,0],[252,750,1240,1,0],[253,750,1120,0,0],[253,375,570,0,0],[253,180,270,0,0],[253,500,750,0,0],[254,750,1320,0,0],[255,750,630,2,0],[255,375,300,2,0],[255,180,160,2,0],[255,500,400,2,0],[255,1000,700,2,0],[256,750,1040,2,0],[256,375,530,2,0],[256,180,250,2,0],[256,500,640,2,0],[257,750,680,2,0],[257,375,320,2,0],[257,180,180,2,0],[257,500,430,2,0],[257,1000,750,2,0],[258,750,1230,2,0],[259,750,1170,2,0],[260,750,1040,3,0],[260,375,530,3,0],[260,180,250,3,0],[260,500,640,3,0],[261,750,1190,3,0],[262,750,1320,1,0],[262,375,670,1,0],[262,180,310,1,0],[263,750,690,1,0],[263,375,360,1,0],[263,180,190,1,0],[263,500,480,1,0],[263,1000,830,1,0],[264,750,1320,0,0],[264,375,670,0,0],[264,180,310,0,0],[265,750,1590,0,0],[266,750,1230,0,0],[267,750,630,2,0],[267,375,300,2,0],[267,180,160,2,0],[267,500,400,2,0],[267,1000,700,2,0],[268,750,1040,2,0],[268,375,530,2,0],[268,180,250,2,0],[268,500,640,2,0],[269,750,970,2,0],[269,375,530,2,0],[269,180,250,2,0],[269,500,490,2,0],[269,1000,1040,2,0],[270,750,710,2,0],[270,375,370,2,0],[270,180,190,2,0],[270,500,490,2,0],[270,1000,800,2,0],[271,750,600,2,0],[271,375,290,2,0],[271,180,160,2,0],[271,500,380,2,0],[271,1000,700,2,0],[272,750,1040,3,0],[272,375,530,3,0],[272,180,250,3,0],[272,500,640,3,0],[273,750,1110,3,0],[273,375,560,3,0],[273,180,270,3,0],[274,750,630,3,0],[274,375,300,3,0],[274,180,160,3,0],[274,500,400,3,0],[274,1000,800,3,0],[275,750,710,3,0],[275,375,350,3,0],[275,180,180,3,0],[275,500,450,3,0],[275,1000,900,3,0],[276,750,710,3,0],[276,375,350,3,0],[276,180,180,3,0],[276,500,450,3,0],[276,1000,900,3,0],[277,750,710,3,0],[277,375,350,3,0],[277,180,180,3,0],[277,500,450,3,0],[277,1000,900,3,0],[278,750,700,1,0],[278,375,330,1,0],[278,180,170,1,0],[278,500,430,1,0],[278,1000,880,1,0],[279,750,780,1,0],[279,375,380,1,0],[279,180,190,1,0],[279,500,480,1,0],[279,1000,990,1,0],[280,750,1050,1,0],[280,375,480,1,0],[280,180,260,1,0],[280,500,580,1,0],[280,1000,1100,1,0],[281,750,1050,0,0],[281,375,480,0,0],[281,180,260,0,0],[281,500,580,0,0],[281,1000,1100,0,0],[282,750,780,0,0],[282,375,380,0,0],[282,180,190,0,0],[282,500,480,0,0],[282,1000,990,0,0],[283,750,630,2,0],[283,375,300,2,0],[283,180,170,2,0],[283,500,400,2,0],[283,1000,830,2,0],[284,750,630,2,0],[284,375,300,2,0],[284,180,170,2,0],[284,500,400,2,0],[284,1000,850,2,0],[285,750,930,2,0],[285,375,450,2,0],[285,180,250,2,0],[285,500,570,2,0],[285,1000,1100,2,0],[286,750,780,2,0],[286,375,380,2,0],[286,180,190,2,0],[286,500,480,2,0],[286,1000,960,2,0],[287,750,1300,3,0],[287,375,660,3,0],[287,180,310,3,0],[287,500,870,3,0],[287,1000,1730,3,0],[288,750,1300,3,0],[288,375,660,3,0],[288,180,310,3,0],[288,500,870,3,0],[288,1000,1730,3,0],[289,750,1300,3,0],[289,375,660,3,0],[289,180,310,3,0],[289,500,870,3,0],[289,1000,1730,3,0],[290,750,780,3,0],[290,375,380,3,0],[290,180,190,3,0],[290,500,480,3,0],[290,1000,1050,3,0],[291,750,780,3,0],[291,375,380,3,0],[291,180,190,3,0],[291,500,480,3,0],[291,1000,1050,3,0],[292,750,760,1,0],[292,375,370,1,0],[292,180,200,1,0],[292,500,270,1,0],[292,1000,570,1,0],[293,750,990,1,0],[293,375,480,1,0],[293,180,250,1,0],[293,500,580,1,0],[293,1000,1100,1,0],[294,750,1140,1,0],[294,375,490,1,0],[294,180,270,1,0],[294,500,650,1,0],[294,1000,1320,1,0],[295,750,1360,1,0],[295,375,690,1,0],[295,180,330,1,0],[295,500,880,1,0],[295,1000,1800,1,0],[296,750,1360,1,0],[296,375,690,1,0],[296,180,330,1,0],[296,500,880,1,0],[296,1000,1810,1,0],[297,750,1640,0,0],[297,375,830,0,0],[297,180,400,0,0],[297,1000,2050,0,0],[298,750,1280,0,0],[298,375,570,0,0],[298,180,260,0,0],[298,500,650,0,0],[299,750,1360,0,0],[299,375,690,0,0],[299,180,330,0,0],[299,500,880,0,0],[299,1000,1810,0,0],[300,750,5000,0,0],[301,750,820,2,0],[301,375,400,2,0],[301,180,210,2,0],[301,500,270,2,0],[301,1000,570,2,0],[302,750,950,2,0],[302,375,570,2,0],[302,180,260,2,0],[302,500,730,2,0],[302,1000,1450,2,0],[303,750,1640,2,0],[303,375,830,2,0],[303,180,400,2,0],[303,1000,2050,2,0],[304,750,1640,2,0],[304,375,830,2,0],[304,180,400,2,0],[304,1000,2050,2,0],[305,750,1640,2,0],[305,375,830,2,0],[305,180,400,2,0],[305,1000,2050,2,0],[306,750,1200,2,0],[306,180,300,2,0],[306,500,650,2,0],[306,1000,1320,2,0],[307,750,1340,4,0],[307,375,690,4,0],[307,180,330,4,0],[308,750,950,3,0],[308,375,430,3,0],[308,180,250,3,0],[308,500,490,3,0],[308,1000,940,3,0],[309,750,1160,3,0],[309,375,590,3,0],[309,180,280,3,0],[309,500,760,3,0],[309,1000,1510,3,0],[310,750,1160,3,0],[310,375,590,3,0],[310,180,280,3,0],[310,500,760,3,0],[310,1000,1510,3,0],[311,750,1050,3,0],[311,375,540,3,0],[311,180,250,3,0],[311,500,580,3,0],[311,1000,1100,3,0],[312,750,900,1,0],[312,375,330,1,0],[312,180,170,1,0],[312,500,450,1,0],[312,1000,850,1,0],[313,750,720,1,0],[313,375,300,1,0],[313,180,170,1,0],[313,500,390,1,0],[313,1000,730,1,0],[314,750,880,1,0],[314,375,350,1,0],[314,180,180,1,0],[314,500,460,1,0],[314,1000,890,1,0],[315,750,630,1,0],[315,375,300,1,0],[315,180,150,1,0],[315,500,380,1,0],[315,1000,640,1,0],[316,750,670,1,0],[316,375,290,1,0],[316,180,160,1,0],[316,500,380,1,0],[316,1000,660,1,0],[317,750,1100,1,0],[317,375,560,1,0],[317,180,290,1,0],[317,500,700,1,0],[317,1000,1300,1,0],[318,750,1100,1,0],[318,375,560,1,0],[318,180,300,1,0],[318,500,700,1,0],[318,1000,1300,1,0],[319,750,650,1,0],[319,375,300,1,0],[319,180,170,1,0],[319,500,400,1,0],[319,1000,800,1,0],[320,750,940,1,0],[320,375,400,1,0],[320,180,200,1,0],[320,500,550,1,0],[320,1000,1250,1,0],[321,750,940,1,0],[321,375,400,1,0],[321,180,200,1,0],[321,500,550,1,0],[321,1000,1250,1,0],[322,750,750,1,0],[322,375,330,1,0],[322,180,170,1,0],[322,500,430,1,0],[322,1000,840,1,0],[323,750,650,1,0],[323,375,300,1,0],[323,180,170,1,0],[323,500,400,1,0],[323,1000,700,1,0],[324,750,1150,1,0],[324,375,560,1,0],[324,180,300,1,0],[324,500,650,1,0],[324,1000,1300,1,0],[325,750,1150,0,0],[325,375,560,0,0],[325,180,300,0,0],[325,500,650,0,0],[325,1000,1300,0,0],[326,750,750,1,0],[326,375,330,1,0],[326,180,170,1,0],[326,500,430,1,0],[326,1000,840,1,0],[327,750,1100,0,0],[327,375,560,0,0],[327,180,290,0,0],[327,500,700,0,0],[327,1000,1300,0,0],[328,750,650,0,0],[328,375,300,0,0],[328,180,170,0,0],[328,500,400,0,0],[328,1000,800,0,0],[329,750,940,0,0],[329,375,400,0,0],[329,180,200,0,0],[329,500,550,0,0],[329,1000,1250,0,0],[330,750,1150,2,0],[330,375,560,2,0],[330,180,300,2,0],[330,500,650,2,0],[330,1000,1300,2,0],[331,750,650,0,0],[331,375,300,0,0],[331,180,170,0,0],[331,500,400,0,0],[331,1000,700,0,0],[332,750,900,2,0],[332,375,330,2,0],[332,180,170,2,0],[332,500,450,2,0],[332,1000,850,2,0],[333,750,720,2,0],[333,375,300,2,0],[333,180,170,2,0],[333,500,390,2,0],[333,1000,730,2,0],[334,750,880,2,0],[334,375,350,2,0],[334,180,180,2,0],[334,500,460,2,0],[334,1000,890,2,0],[335,750,630,2,0],[335,375,300,2,0],[335,180,150,2,0],[335,500,380,2,0],[335,1000,640,2,0],[336,750,670,2,0],[336,375,290,2,0],[336,180,160,2,0],[336,500,380,2,0],[336,1000,660,2,0],[337,750,650,2,0],[337,375,300,2,0],[337,180,170,2,0],[337,500,400,2,0],[337,1000,800,2,0],[338,750,650,2,0],[338,375,300,2,0],[338,180,170,2,0],[338,500,400,2,0],[338,1000,800,2,0],[339,750,750,2,0],[339,375,330,2,0],[339,180,170,2,0],[339,500,430,2,0],[339,1000,840,2,0],[340,750,940,2,0],[340,375,400,2,0],[340,180,200,2,0],[340,500,550,2,0],[340,1000,1250,2,0],[341,750,750,2,0],[341,375,330,2,0],[341,180,170,2,0],[341,500,430,2,0],[341,1000,840,2,0],[342,750,1100,2,0],[342,375,560,2,0],[342,180,300,2,0],[342,500,700,2,0],[342,1000,1300,2,0],[343,750,650,2,0],[343,375,300,2,0],[343,180,170,2,0],[343,500,400,2,0],[343,1000,700,2,0],[344,750,880,3,0],[344,375,350,3,0],[344,180,180,3,0],[344,500,460,3,0],[344,1000,890,3,0],[345,750,650,3,0],[345,375,300,3,0],[345,180,170,3,0],[345,500,400,3,0],[345,1000,800,3,0],[346,750,1200,1,0],[346,375,620,1,0],[346,180,300,1,0],[346,500,800,1,0],[346,1000,1590,1,0],[347,750,1400,1,0],[347,375,710,1,0],[347,180,350,1,0],[347,500,930,1,0],[347,1000,1850,1,0],[348,750,1200,1,0],[348,375,620,1,0],[348,180,300,1,0],[348,500,800,1,0],[348,1000,1590,1,0],[349,750,1300,0,0],[349,375,660,0,0],[349,180,310,0,0],[349,500,790,0,0],[349,1000,1560,0,0],[350,750,1400,0,0],[350,375,710,0,0],[350,180,340,0,0],[350,500,930,0,0],[350,1000,1850,0,0],[351,750,1700,2,0],[351,375,860,2,0],[351,180,410,2,0],[351,500,1150,2,0],[351,1000,2240,2,0],[352,750,1230,2,0],[352,375,620,2,0],[352,180,300,2,0],[352,500,800,2,0],[352,1000,1610,2,0],[353,750,1260,3,0],[353,375,650,3,0],[353,180,330,3,0],[353,500,810,3,0],[353,1000,1610,3,0],[354,750,1260,3,0],[354,375,650,3,0],[354,180,330,3,0],[354,500,810,3,0],[354,1000,1610,3,0],[355,750,1260,3,0],[355,375,650,3,0],[355,180,330,3,0],[355,500,810,3,0],[355,1000,1610,3,0],[356,750,1260,3,0],[356,375,650,3,0],[356,180,330,3,0],[356,500,810,3,0],[356,1000,1610,3,0],[357,750,8240,0,0],[357,375,4150,0,0],[357,180,2100,0,0],[358,750,3700,0,0],[358,375,1880,0,0],[358,180,940,0,0],[359,750,6680,0,0],[360,750,2390,0,0],[360,375,1220,0,0],[360,180,610,0,0],[361,750,5410,0,0],[361,180,1390,0,0],[362,750,2390,2,0],[362,375,1220,2,0],[362,180,610,2,0],[363,750,1400,1,0],[363,375,700,1,0],[363,180,350,1,0],[363,500,870,1,0],[363,1000,1700,1,0],[364,750,1890,0,0],[364,375,980,0,0],[364,180,490,0,0],[364,500,1290,0,0],[364,1000,2420,0,0],[365,750,3720,4,0],[366,750,1280,3,0],[366,375,650,3,0],[366,180,300,3,0],[366,500,730,3,0],[366,1000,1400,3,0],[367,750,1280,3,0],[367,375,650,3,0],[367,180,300,3,0],[367,500,730,3,0],[367,1000,1400,3,0],[368,750,1480,2,0],[368,180,360,2,0],[369,750,1660,2,0],[369,180,400,2,0],[370,750,1480,3,0],[370,180,360,3,0],[371,750,1520,0,0],[372,750,1420,0,0],[373,750,1890,0,0],[374,750,2090,0,0],[375,750,710,1,0],[375,375,340,1,0],[375,180,170,1,0],[375,500,430,1,0],[375,1000,870,1,0],[376,750,780,1,0],[376,375,330,1,0],[376,180,170,1,0],[376,500,460,1,0],[376,1000,840,1,0],[377,750,770,1,0],[377,180,180,1,0],[377,500,420,1,0],[377,1000,880,1,0],[378,750,1050,1,0],[378,375,540,1,0],[378,180,260,1,0],[378,500,570,1,0],[378,1000,1100,1,0],[379,750,660,2,0],[379,375,320,2,0],[379,180,170,2,0],[379,500,400,2,0],[379,1000,800,2,0],[380,750,1020,2,0],[380,375,530,2,0],[380,180,250,2,0],[380,500,640,2,0],[380,1000,1240,2,0],[381,750,700,3,0],[381,375,350,3,0],[381,180,180,3,0],[381,500,430,3,0],[381,1000,840,3,0],[382,750,1200,3,0],[382,375,600,3,0],[382,180,300,3,0],[382,500,780,3,0],[382,1000,1550,3,0],[383,750,1500,1,0],[383,375,750,1,0],[383,180,360,1,0],[383,500,1020,1,0],[383,1000,2000,1,0],[384,750,1260,1,0],[384,375,640,1,0],[384,180,320,1,0],[384,500,760,1,0],[384,1000,1660,1,0],[385,750,1600,1,0],[385,375,800,1,0],[385,180,400,1,0],[385,500,1100,1,0],[385,1000,2150,1,0],[386,750,1100,1,0],[386,375,550,1,0],[386,180,270,1,0],[386,500,720,1,0],[386,1000,1450,1,0],[387,750,1500,1,0],[387,375,750,1,0],[387,180,360,1,0],[387,500,1020,1,0],[387,1000,2000,1,0],[388,750,1260,1,0],[388,375,630,1,0],[388,180,320,1,0],[388,500,750,1,0],[388,1000,1650,1,0],[389,750,1600,0,0],[389,375,800,0,0],[389,180,400,0,0],[389,500,1100,0,0],[389,1000,2150,0,0],[390,750,1400,0,0],[390,375,700,0,0],[390,180,350,0,0],[390,500,940,0,0],[390,1000,1870,0,0],[391,750,1260,0,0],[391,375,630,0,0],[391,180,320,0,0],[391,500,750,0,0],[391,1000,1650,0,0],[392,750,1100,0,0],[392,375,550,0,0],[392,180,270,0,0],[392,500,720,0,0],[392,1000,1450,0,0],[393,750,1400,0,0],[393,375,700,0,0],[393,180,350,0,0],[393,500,940,0,0],[393,1000,1870,0,0],[394,750,1500,0,0],[394,375,750,0,0],[394,180,360,0,0],[394,500,1020,0,0],[394,1000,2000,0,0],[395,750,1500,2,0],[395,375,750,2,0],[395,180,360,2,0],[395,500,1020,2,0],[395,1000,2000,2,0],[396,750,1260,2,0],[396,375,640,2,0],[396,180,320,2,0],[396,500,760,2,0],[396,1000,1660,2,0],[397,750,1600,2,0],[397,375,800,2,0],[397,180,400,2,0],[397,500,1100,2,0],[397,1000,2150,2,0],[398,750,1260,2,0],[398,375,630,2,0],[398,180,320,2,0],[398,500,750,2,0],[398,1000,1650,2,0],[399,750,1100,2,0],[399,375,550,2,0],[399,180,270,2,0],[399,500,720,2,0],[399,1000,1450,2,0],[400,750,1500,2,0],[400,375,750,2,0],[400,180,360,2,0],[400,500,1020,2,0],[400,1000,2000,2,0],[401,750,1520,4,0],[401,375,760,4,0],[401,180,380,4,0],[401,500,1050,4,0],[401,1000,2040,4,0],[402,750,1400,3,0],[402,375,700,3,0],[402,180,350,3,0],[402,500,940,3,0],[402,1000,1870,3,0],[403,750,1600,3,0],[403,375,800,3,0],[403,180,400,3,0],[403,500,1100,3,0],[403,1000,2150,3,0],[404,750,700,1,0],[404,375,350,1,0],[404,180,180,1,0],[404,500,450,1,0],[404,1000,900,1,0],[405,750,1920,1,0],[405,375,980,1,0],[405,180,490,1,0],[406,750,890,1,0],[406,375,450,1,0],[406,180,230,1,0],[406,500,490,1,0],[406,1000,1090,1,0],[407,750,3730,0,0],[407,375,1890,0,0],[407,180,950,0,0],[407,1000,4900,0,0],[408,750,2100,0,0],[408,375,1100,0,0],[408,180,550,0,0],[409,750,700,3,0],[409,375,350,3,0],[409,180,180,3,0],[409,500,430,3,0],[409,1000,840,3,0],[410,750,15300,1,0],[411,750,2600,1,0],[412,750,1680,1,0],[412,375,850,1,0],[413,750,7170,0,0],[414,750,3740,0,0],[415,750,1590,0,0],[415,375,800,0,0],[416,750,1590,0,0],[416,375,800,0,0],[417,750,6410,0,0],[418,750,7170,0,0],[419,750,1590,0,0],[419,375,800,0,0],[420,750,5270,0,0],[421,750,6410,0,0],[422,750,1450,2,0],[422,375,730,2,0],[423,750,1370,4,0],[423,375,690,4,0],[424,750,4050,4,0],[425,750,1450,3,0],[425,375,730,3,0],[426,500,450,1,0],[426,1000,800,1,0],[427,500,480,1,0],[427,1000,900,1,0],[428,500,540,1,0],[428,1000,1020,1,0],[429,500,450,2,0],[429,1000,800,2,0],[430,500,480,2,0],[430,1000,900,2,0],[431,750,580,1,0],[431,375,290,1,0],[431,180,150,1,0],[431,500,360,1,0],[431,1000,660,1,0],[432,750,630,1,0],[432,375,300,1,0],[432,180,170,1,0],[432,500,400,1,0],[432,1000,750,1,0],[433,750,900,1,0],[433,375,450,1,0],[433,180,230,1,0],[433,500,530,1,0],[433,1000,1040,1,0],[434,750,560,1,0],[434,375,280,1,0],[434,180,140,1,0],[434,500,350,1,0],[434,1000,720,1,0],[435,750,740,1,0],[435,375,360,1,0],[435,180,180,1,0],[435,500,430,1,0],[435,1000,840,1,0],[436,750,600,1,0],[436,375,300,1,0],[436,180,160,1,0],[436,500,390,1,0],[436,1000,800,1,0],[437,750,580,2,0],[437,375,290,2,0],[437,180,150,2,0],[437,500,360,2,0],[437,1000,660,2,0],[438,750,740,2,0],[438,375,360,2,0],[438,180,180,2,0],[438,500,400,2,0],[438,1000,800,2,0],[439,750,630,2,0],[439,375,300,2,0],[439,180,170,2,0],[439,500,400,2,0],[439,1000,750,2,0],[440,750,900,2,0],[440,375,450,2,0],[440,180,230,2,0],[440,500,530,2,0],[440,1000,1040,2,0],[441,750,560,2,0],[441,375,280,2,0],[441,180,140,2,0],[441,500,350,2,0],[441,1000,720,2,0],[442,750,600,2,0],[442,375,300,2,0],[442,180,160,2,0],[442,500,390,2,0],[442,1000,800,2,0],[443,750,900,3,0],[443,375,450,3,0],[443,180,230,3,0],[443,500,530,3,0],[443,1000,1040,3,0],[444,750,600,3,0],[444,375,300,3,0],[444,180,160,3,0],[444,500,390,3,0],[444,1000,800,3,0],[445,750,750,1,0],[445,375,370,1,0],[445,180,200,1,0],[445,500,450,1,0],[445,1000,900,1,0],[446,750,950,1,0],[446,375,460,1,0],[446,180,240,1,0],[446,500,580,1,0],[446,1000,1130,1,0],[447,750,750,1,0],[447,375,360,1,0],[447,180,190,1,0],[447,500,450,1,0],[447,1000,900,1,0],[448,750,830,1,0],[448,375,410,1,0],[448,180,210,1,0],[448,500,490,1,0],[448,1000,970,1,0],[449,750,660,1,0],[449,375,310,1,0],[449,180,170,1,0],[449,500,420,1,0],[449,1000,830,1,0],[450,750,880,1,0],[450,375,430,1,0],[450,180,220,1,0],[450,500,530,1,0],[450,1000,1020,1,0],[451,750,720,1,0],[451,375,350,1,0],[451,180,180,1,0],[451,500,440,1,0],[451,1000,880,1,0],[452,750,690,1,0],[452,375,330,1,0],[452,180,180,1,0],[452,500,430,1,0],[452,1000,860,1,0],[453,750,780,0,0],[453,375,380,0,0],[453,180,210,0,0],[453,500,480,0,0],[453,1000,980,0,0],[454,750,660,2,0],[454,375,300,2,0],[454,180,170,2,0],[454,500,400,2,0],[454,1000,800,2,0],[455,750,730,2,0],[455,375,350,2,0],[455,180,180,2,0],[455,500,440,2,0],[455,1000,870,2,0],[456,750,660,2,0],[456,375,310,2,0],[456,180,180,2,0],[456,500,400,2,0],[456,1000,800,2,0],[457,750,630,2,0],[457,375,300,2,0],[457,180,160,2,0],[457,500,380,2,0],[457,1000,780,2,0],[458,750,830,2,0],[458,375,410,2,0],[458,180,210,2,0],[458,500,480,2,0],[458,1000,970,2,0],[459,750,680,2,0],[459,375,330,2,0],[459,180,180,2,0],[459,500,420,2,0],[459,1000,830,2,0],[460,750,680,3,0],[460,375,330,3,0],[460,180,180,3,0],[460,500,420,3,0],[460,1000,830,3,0],[461,750,730,3,0],[461,375,360,3,0],[461,180,190,3,0],[461,500,430,3,0],[461,1000,860,3,0],[462,750,800,1,0],[462,375,360,1,0],[462,180,200,1,0],[462,500,460,1,0],[462,1000,900,1,0],[463,750,750,1,0],[463,375,350,1,0],[463,180,180,1,0],[463,500,420,1,0],[463,1000,820,1,0],[464,750,950,1,0],[464,375,490,1,0],[464,180,240,1,0],[464,500,540,1,0],[464,1000,1070,1,0],[465,750,1180,1,0],[465,375,600,1,0],[465,180,300,1,0],[465,500,650,1,0],[465,1000,1280,1,0],[466,750,1330,1,0],[466,375,680,1,0],[466,180,340,1,0],[466,500,870,1,0],[466,1000,1770,1,0],[467,750,980,1,0],[467,375,410,1,0],[467,180,200,1,0],[467,500,530,1,0],[467,1000,1050,1,0],[468,750,680,1,0],[468,375,300,1,0],[468,180,170,1,0],[468,500,400,1,0],[468,1000,800,1,0],[469,750,750,1,0],[469,375,350,1,0],[469,180,200,1,0],[469,500,430,1,0],[469,1000,850,1,0],[470,750,750,1,0],[470,375,350,1,0],[470,180,180,1,0],[470,500,430,1,0],[470,1000,860,1,0],[471,750,990,1,0],[471,375,490,1,0],[471,180,250,1,0],[471,500,540,1,0],[471,1000,1070,1,0],[472,750,800,0,0],[472,375,400,0,0],[472,180,200,0,0],[472,500,450,0,0],[472,1000,930,0,0],[473,750,1080,0,0],[473,375,560,0,0],[473,180,300,0,0],[473,500,670,0,0],[473,1000,1330,0,0],[474,750,670,2,0],[474,375,330,2,0],[474,180,180,2,0],[474,500,410,2,0],[474,1000,830,2,0],[475,750,800,2,0],[475,375,360,2,0],[475,180,200,2,0],[475,500,460,2,0],[475,1000,900,2,0],[476,750,980,2,0],[476,375,400,2,0],[476,180,200,2,0],[476,500,560,2,0],[476,1000,1020,2,0],[477,750,670,2,0],[477,375,330,2,0],[477,180,170,2,0],[477,500,440,2,0],[477,1000,830,2,0],[478,750,680,2,0],[478,375,300,2,0],[478,180,170,2,0],[478,500,390,2,0],[478,1000,800,2,0],[479,750,940,2,0],[479,375,410,2,0],[479,180,220,2,0],[479,500,540,2,0],[479,1000,980,2,0],[480,750,700,3,0],[480,375,350,3,0],[480,180,170,3,0],[480,500,430,3,0],[480,1000,840,3,0],[481,750,1430,1,0],[481,375,730,1,0],[481,180,350,1,0],[481,500,970,1,0],[482,750,1330,1,0],[482,375,680,1,0],[482,180,330,1,0],[482,500,850,1,0],[483,750,1050,1,0],[483,375,530,1,0],[483,180,250,1,0],[483,500,600,1,0],[483,1000,1200,1,0],[484,750,1330,0,0],[484,375,680,0,0],[484,180,330,0,0],[484,500,850,0,0],[485,750,1200,2,0],[485,375,600,2,0],[485,180,300,2,0],[485,500,750,2,0],[486,750,990,1,0],[486,180,240,1,0],[486,500,670,1,0],[486,1000,1100,1,0],[487,750,1250,1,0],[487,500,840,1,0],[487,1000,1620,1,0],[488,500,440,1,0],[488,1000,890,1,0],[489,750,1140,1,0],[489,180,290,1,0],[489,500,770,1,0],[489,1000,1460,1,0],[490,500,490,1,0],[490,1000,1030,1,0],[491,750,1580,1,0],[491,375,800,1,0],[492,375,410,1,0],[492,500,540,1,0],[492,1000,1070,1,0],[493,500,640,1,0],[493,1000,1200,1,0],[494,750,1390,2,0],[494,500,940,2,0],[495,500,440,2,0],[495,1000,890,2,0],[496,750,1350,2,0],[496,375,680,2,0],[496,180,330,2,0],[497,750,1420,2,0],[497,375,720,2,0],[497,500,940,2,0],[498,500,490,2,0],[498,1000,1030,2,0],[499,375,410,2,0],[499,500,540,2,0],[499,1000,1070,2,0],[500,750,1500,2,0],[500,375,710,2,0],[500,180,350,2,0],[500,500,1050,2,0],[501,750,1300,1,0],[501,375,650,1,0],[501,180,320,1,0],[501,500,870,1,0],[501,1000,1700,1,0],[502,750,950,1,0],[502,375,470,1,0],[502,180,240,1,0],[502,500,490,1,0],[502,1000,990,1,0],[503,750,750,1,0],[503,375,350,1,0],[503,180,180,1,0],[503,500,450,1,0],[503,1000,900,1,0],[504,750,980,1,0],[504,375,480,1,0],[504,180,200,1,0],[504,500,530,1,0],[504,1000,1050,1,0],[505,750,1100,1,0],[505,375,550,1,0],[505,180,260,1,0],[505,500,730,1,0],[505,1000,1200,1,0],[506,750,1100,1,0],[506,375,550,1,0],[506,180,260,1,0],[506,500,730,1,0],[506,1000,1200,1,0],[507,750,800,1,0],[507,375,400,1,0],[507,180,190,1,0],[507,500,480,1,0],[507,1000,960,1,0],[508,750,980,1,0],[508,375,450,1,0],[508,180,200,1,0],[508,500,550,1,0],[508,1000,1080,1,0],[509,750,1050,1,0],[509,375,530,1,0],[509,180,250,1,0],[509,500,580,1,0],[509,1000,1300,1,0],[510,750,950,1,0],[510,375,470,1,0],[510,180,240,1,0],[510,500,490,1,0],[510,1000,990,1,0],[511,750,1350,0,0],[511,375,680,0,0],[511,180,350,0,0],[511,500,900,0,0],[511,1000,1800,0,0],[512,750,950,0,0],[512,375,470,0,0],[512,180,240,0,0],[512,500,490,0,0],[512,1000,990,0,0],[513,750,1100,0,0],[513,375,550,0,0],[513,180,260,0,0],[513,500,750,0,0],[513,1000,1250,0,0],[514,750,980,0,0],[514,375,450,0,0],[514,180,200,0,0],[514,500,550,0,0],[514,1000,1080,0,0],[515,750,980,0,0],[515,375,480,0,0],[515,180,200,0,0],[515,500,530,0,0],[515,1000,1050,0,0],[516,750,1050,0,0],[516,375,530,0,0],[516,180,250,0,0],[516,500,580,0,0],[516,1000,1300,0,0],[517,750,1100,2,0],[517,375,580,2,0],[517,180,280,2,0],[517,500,750,2,0],[517,1000,1500,2,0],[518,750,950,2,0],[518,375,470,2,0],[518,180,240,2,0],[518,500,490,2,0],[518,1000,990,2,0],[519,750,950,2,0],[519,375,470,2,0],[519,180,240,2,0],[519,500,490,2,0],[519,1000,990,2,0],[520,750,750,2,0],[520,375,350,2,0],[520,180,180,2,0],[520,500,450,2,0],[520,1000,900,2,0],[521,750,980,2,0],[521,375,480,2,0],[521,180,200,2,0],[521,500,530,2,0],[521,1000,1050,2,0],[522,750,1100,2,0],[522,375,550,2,0],[522,180,260,2,0],[522,500,730,2,0],[522,1000,1200,2,0],[523,750,1200,2,0],[523,375,600,2,0],[523,180,300,2,0],[523,500,750,2,0],[523,1000,1500,2,0],[524,750,800,2,0],[524,375,400,2,0],[524,180,190,2,0],[524,500,480,2,0],[524,1000,960,2,0],[525,750,1050,2,0],[525,375,530,2,0],[525,180,250,2,0],[525,500,580,2,0],[525,1000,1300,2,0],[526,750,1050,2,0],[526,375,530,2,0],[526,180,250,2,0],[526,500,580,2,0],[526,1000,1300,2,0],[527,750,1120,4,0],[527,375,560,4,0],[527,180,280,4,0],[527,500,700,4,0],[527,1000,1390,4,0],[528,750,1100,3,0],[528,375,550,3,0],[528,180,260,3,0],[528,500,730,3,0],[528,1000,1200,3,0],[529,750,1200,3,0],[529,375,600,3,0],[529,180,300,3,0],[529,500,750,3,0],[529,1000,1500,3,0],[530,750,800,3,0],[530,375,400,3,0],[530,180,190,3,0],[530,500,480,3,0],[530,1000,960,3,0],[531,750,980,3,0],[531,375,450,3,0],[531,180,200,3,0],[531,500,550,3,0],[531,1000,1080,3,0],[532,750,950,3,0],[532,375,470,3,0],[532,180,240,3,0],[532,500,490,3,0],[532,1000,990,3,0],[533,750,640,1,0],[533,375,310,1,0],[533,500,380,1,0],[533,1000,790,1,0],[534,750,710,1,0],[534,375,340,1,0],[534,180,180,1,0],[534,500,430,1,0],[534,1000,870,1,0],[535,750,750,1,0],[535,375,360,1,0],[535,180,170,1,0],[535,500,450,1,0],[535,1000,870,1,0],[536,750,760,1,0],[536,375,370,1,0],[536,180,200,1,0],[536,500,460,1,0],[536,1000,930,1,0],[537,750,880,1,0],[537,375,410,1,0],[537,180,220,1,0],[537,500,490,1,0],[537,1000,990,1,0],[538,750,780,1,0],[538,375,350,1,0],[538,180,180,1,0],[538,500,420,1,0],[538,1000,870,1,0],[539,750,690,2,0],[539,375,330,2,0],[539,180,170,2,0],[539,500,420,2,0],[539,1000,860,2,0],[540,750,780,2,0],[540,375,350,2,0],[540,180,180,2,0],[540,500,420,2,0],[540,1000,870,2,0],[541,750,980,4,0],[541,375,470,4,0],[541,180,220,4,0],[541,500,660,4,0],[541,1000,1310,4,0],[542,750,980,4,0],[542,375,470,4,0],[542,180,220,4,0],[542,500,660,4,0],[542,1000,1310,4,0],[543,750,800,3,0],[543,375,370,3,0],[543,180,190,3,0],[543,500,460,3,0],[543,1000,960,3,0],[544,750,710,3,0],[544,375,340,3,0],[544,180,180,3,0],[544,500,430,3,0],[544,1000,900,3,0],[545,750,1080,3,0],[545,375,540,3,0],[545,180,240,3,0],[545,500,710,3,0],[545,1000,1410,3,0],[546,750,930,3,0],[546,375,450,3,0],[546,180,230,3,0],[546,500,600,3,0],[546,1000,1160,3,0],[547,750,780,1,0],[547,375,330,1,0],[547,180,170,1,0],[547,500,460,1,0],[547,1000,840,1,0],[548,750,1050,1,0],[548,375,340,1,0],[548,180,190,1,0],[548,500,480,1,0],[548,1000,960,1,0],[549,750,980,1,0],[549,375,370,1,0],[549,180,200,1,0],[549,500,560,1,0],[549,1000,1050,1,0],[550,750,980,1,0],[550,375,370,1,0],[550,180,190,1,0],[550,500,560,1,0],[550,1000,980,1,0],[551,750,630,1,0],[551,375,300,1,0],[551,180,170,1,0],[551,500,400,1,0],[551,1000,660,1,0],[552,375,300,1,0],[552,500,400,1,0],[552,1000,800,1,0],[553,375,300,1,0],[553,500,400,1,0],[553,1000,700,1,0],[554,750,980,1,0],[554,180,180,1,0],[554,500,530,1,0],[554,1000,1050,1,0],[555,750,1200,1,0],[555,375,550,1,0],[555,180,260,1,0],[555,500,650,1,0],[555,1000,1300,1,0],[556,750,630,1,0],[556,375,290,1,0],[556,180,170,1,0],[556,500,390,1,0],[556,1000,790,1,0],[557,750,1050,0,0],[557,180,200,0,0],[557,500,560,0,0],[557,1000,1100,0,0],[558,750,1200,0,0],[558,375,550,0,0],[558,180,260,0,0],[558,500,650,0,0],[558,1000,1300,0,0],[559,750,710,2,0],[559,375,330,2,0],[559,180,170,2,0],[559,500,440,2,0],[559,1000,840,2,0],[560,750,960,2,0],[560,375,330,2,0],[560,180,190,2,0],[560,500,480,2,0],[560,1000,960,2,0],[561,750,980,2,0],[561,375,370,2,0],[561,180,190,2,0],[561,500,560,2,0],[561,1000,980,2,0],[562,375,300,2,0],[562,500,400,2,0],[562,1000,800,2,0],[563,375,300,2,0],[563,180,170,2,0],[563,500,400,2,0],[563,1000,700,2,0],[564,750,980,2,0],[564,180,180,2,0],[564,500,530,2,0],[564,1000,1050,2,0],[565,750,1200,2,0],[565,375,550,2,0],[565,180,260,2,0],[565,500,650,2,0],[565,1000,1300,2,0],[566,750,1050,2,0],[566,375,340,2,0],[566,180,190,2,0],[566,500,480,2,0],[566,1000,960,2,0],[567,750,630,2,0],[567,375,290,2,0],[567,180,170,2,0],[567,500,390,2,0],[567,1000,790,2,0],[568,750,630,2,0],[568,375,290,2,0],[568,180,160,2,0],[568,500,380,2,0],[568,1000,700,2,0],[569,750,950,4,0],[569,375,340,4,0],[569,180,190,4,0],[569,500,480,4,0],[569,1000,980,4,0],[570,750,1200,4,0],[570,500,680,4,0],[570,1000,1300,4,0],[571,750,980,3,0],[571,375,360,3,0],[571,180,190,3,0],[571,500,480,3,0],[571,1000,960,3,0],[572,750,1080,3,0],[572,375,550,3,0],[572,180,260,3,0],[572,500,560,3,0],[572,1000,1300,3,0],[573,750,1050,3,0],[573,180,190,3,0],[573,500,550,3,0],[573,1000,1100,3,0],[574,375,300,3,0],[574,180,170,3,0],[574,500,400,3,0],[574,1000,700,3,0],[575,750,1200,3,0],[575,500,650,3,0],[575,1000,1300,3,0],[576,750,1050,3,0],[576,375,360,3,0],[576,180,190,3,0],[576,500,480,3,0],[576,1000,960,3,0],[577,750,1200,3,0],[577,500,650,3,0],[577,1000,1300,3,0],[578,750,1050,3,0],[578,180,200,3,0],[578,500,560,3,0],[578,1000,1100,3,0],[579,750,630,3,0],[579,375,290,3,0],[579,180,160,3,0],[579,500,380,3,0],[579,1000,700,3,0],[580,750,1700,1,0],[581,750,1480,1,0],[581,375,750,1,0],[581,180,370,1,0],[582,750,1700,0,0],[583,750,1240,2,0],[584,750,1700,2,0],[585,750,1330,2,0],[586,750,630,1,0],[586,375,300,1,0],[586,180,140,1,0],[586,500,390,1,0],[586,1000,770,1,0],[587,750,880,1,0],[587,375,410,1,0],[587,180,220,1,0],[587,500,480,1,0],[587,1000,1020,1,0],[588,750,680,1,0],[588,375,300,1,0],[588,180,180,1,0],[588,500,400,1,0],[588,1000,660,1,0],[589,750,1050,1,0],[589,375,540,1,0],[589,180,260,1,0],[589,500,630,1,0],[589,1000,1150,1,0],[590,750,490,1,0],[590,375,270,1,0],[590,180,140,1,0],[590,500,350,1,0],[590,1000,680,1,0],[591,750,490,1,0],[591,375,270,1,0],[591,180,140,1,0],[591,500,350,1,0],[591,1000,680,1,0],[592,750,950,1,0],[592,375,450,1,0],[592,180,220,1,0],[592,500,530,1,0],[592,1000,1020,1,0],[593,750,680,1,0],[593,375,300,1,0],[593,180,180,1,0],[593,500,400,1,0],[593,1000,720,1,0],[594,750,600,0,0],[594,375,300,0,0],[594,180,140,0,0],[594,500,400,0,0],[594,1000,780,0,0],[595,750,950,0,0],[595,375,450,0,0],[595,180,220,0,0],[595,500,530,0,0],[595,1000,1020,0,0],[596,750,490,2,0],[596,375,270,2,0],[596,180,140,2,0],[596,500,350,2,0],[596,1000,680,2,0],[597,750,630,2,0],[597,375,300,2,0],[597,180,140,2,0],[597,500,390,2,0],[597,1000,770,2,0],[598,750,680,2,0],[598,375,300,2,0],[598,180,180,2,0],[598,500,400,2,0],[598,1000,660,2,0],[599,750,910,2,0],[599,375,440,2,0],[599,180,220,2,0],[599,500,480,2,0],[599,1000,980,2,0],[600,750,630,2,0],[600,375,300,2,0],[600,180,140,2,0],[600,500,390,2,0],[600,1000,770,2,0],[601,750,490,2,0],[601,375,270,2,0],[601,180,140,2,0],[601,500,350,2,0],[601,1000,680,2,0],[602,750,680,2,0],[602,375,300,2,0],[602,180,180,2,0],[602,500,400,2,0],[602,1000,720,2,0],[603,750,630,3,0],[603,375,300,3,0],[603,180,140,3,0],[603,500,390,3,0],[603,1000,770,3,0],[604,750,490,3,0],[604,375,270,3,0],[604,180,140,3,0],[604,500,350,3,0],[604,1000,680,3,0],[605,750,950,3,0],[605,375,450,3,0],[605,180,220,3,0],[605,500,530,3,0],[605,1000,1020,3,0],[606,500,480,1,0],[606,1000,870,1,0],[607,500,550,0,0],[607,1000,990,0,0],[608,500,440,2,0],[608,1000,840,2,0],[609,750,960,1,0],[609,375,350,1,0],[609,180,180,1,0],[609,500,490,1,0],[609,1000,1170,1,0],[610,750,1050,1,0],[610,375,350,1,0],[610,180,180,1,0],[610,500,490,1,0],[610,1000,1100,1,0],[611,750,760,1,0],[611,375,350,1,0],[611,180,180,1,0],[611,500,470,1,0],[611,1000,910,1,0],[612,750,980,1,0],[612,375,350,1,0],[612,180,180,1,0],[612,500,490,1,0],[612,1000,1200,1,0],[613,750,700,2,0],[613,375,350,2,0],[613,180,180,2,0],[613,500,430,2,0],[613,1000,860,2,0],[614,750,700,2,0],[614,375,350,2,0],[614,180,180,2,0],[614,500,430,2,0],[614,1000,860,2,0],[615,750,900,2,0],[615,375,350,2,0],[615,180,180,2,0],[615,500,490,2,0],[615,1000,960,2,0],[616,750,900,2,0],[616,375,350,2,0],[616,180,180,2,0],[616,500,490,2,0],[616,1000,960,2,0],[617,750,600,2,0],[617,375,300,2,0],[617,180,170,2,0],[617,500,400,2,0],[617,1000,780,2,0],[618,750,1210,2,0],[618,375,610,2,0],[618,500,800,2,0],[618,1000,1580,2,0],[619,750,1600,2,0],[619,375,810,2,0],[619,500,1030,2,0],[619,1000,2010,2,0],[620,750,680,2,0],[620,375,340,2,0],[620,180,170,2,0],[620,500,440,2,0],[620,1000,880,2,0],[621,750,1300,3,0],[621,375,660,3,0],[621,180,330,3,0],[621,500,860,3,0],[621,1000,1690,3,0],[622,750,1300,3,0],[622,375,660,3,0],[622,180,330,3,0],[622,500,860,3,0],[622,1000,1690,3,0],[623,750,1400,1,0],[623,375,700,1,0],[623,180,350,1,0],[623,500,870,1,0],[623,1000,1750,1,0],[624,750,680,1,0],[624,375,340,1,0],[624,180,180,1,0],[624,500,380,1,0],[624,1000,750,1,0],[625,750,700,1,0],[625,375,350,1,0],[625,180,170,1,0],[625,500,410,1,0],[625,1000,800,1,0],[626,750,1420,0,0],[626,375,710,0,0],[626,180,360,0,0],[626,500,860,0,0],[626,1000,1700,0,0],[627,750,1350,0,0],[627,375,680,0,0],[627,180,340,0,0],[627,500,900,0,0],[627,1000,1790,0,0],[628,750,620,2,0],[628,375,340,2,0],[628,180,160,2,0],[628,500,440,2,0],[628,1000,880,2,0],[629,750,640,2,0],[629,375,310,2,0],[629,180,160,2,0],[629,500,450,2,0],[629,1000,900,2,0],[630,750,1300,3,0],[630,375,660,3,0],[630,180,330,3,0],[630,500,860,3,0],[630,1000,1690,3,0],[631,750,1300,3,0],[631,375,660,3,0],[631,180,330,3,0],[631,500,860,3,0],[631,1000,1690,3,0],[632,750,1460,3,0],[632,375,740,3,0],[632,180,370,3,0],[632,500,920,3,0],[632,1000,1800,3,0],[633,750,1460,3,0],[633,375,740,3,0],[633,180,370,3,0],[633,500,920,3,0],[633,1000,1800,3,0],[634,750,1420,3,0],[634,375,720,3,0],[634,180,370,3,0],[634,500,920,3,0],[634,1000,1800,3,0],[635,750,1300,3,0],[635,375,660,3,0],[635,180,330,3,0],[635,500,860,3,0],[635,1000,1690,3,0],[636,750,1300,3,0],[636,375,660,3,0],[636,180,330,3,0],[636,500,860,3,0],[636,1000,1690,3,0],[637,750,1550,1,0],[637,375,760,1,0],[637,180,330,1,0],[637,1000,2000,1,0],[638,750,2000,1,0],[639,750,1550,0,0],[639,375,760,0,0],[639,180,330,0,0],[639,1000,2000,0,0],[640,750,1550,2,0],[640,375,760,2,0],[640,180,330,2,0],[640,1000,2000,2,0],[641,750,1550,2,0],[641,375,760,2,0],[641,180,330,2,0],[641,1000,2000,2,0],[642,750,1550,2,0],[642,375,760,2,0],[642,180,380,2,0],[642,1000,2000,2,0],[643,750,1550,2,0],[643,375,760,2,0],[643,180,380,2,0],[643,1000,2000,2,0],[644,750,1550,2,0],[644,375,760,2,0],[644,180,380,2,0],[644,1000,2000,2,0],[645,750,1700,2,0],[646,750,1700,2,0],[647,750,710,1,0],[647,375,340,1,0],[647,180,180,1,0],[647,500,430,1,0],[647,1000,870,1,0],[648,750,1030,1,0],[648,375,490,1,0],[648,180,210,1,0],[648,500,570,1,0],[648,1000,1090,1,0],[649,750,1320,1,0],[649,375,660,1,0],[649,180,300,1,0],[649,500,850,1,0],[650,750,960,1,0],[650,375,440,1,0],[650,500,530,1,0],[650,1000,1050,1,0],[651,750,1030,1,0],[651,375,490,1,0],[651,500,570,1,0],[651,1000,1090,1,0],[652,750,1060,1,0],[652,375,530,1,0],[652,180,260,1,0],[652,500,560,1,0],[652,1000,1250,1,0],[653,750,760,1,0],[653,375,370,1,0],[653,180,200,1,0],[653,500,460,1,0],[653,1000,930,1,0],[654,750,880,1,0],[654,375,410,1,0],[654,180,220,1,0],[654,500,490,1,0],[654,1000,990,1,0],[655,750,650,1,0],[655,375,330,1,0],[655,180,160,1,0],[655,500,400,1,0],[655,1000,790,1,0],[656,750,1320,1,0],[656,375,660,1,0],[656,180,300,1,0],[656,500,850,1,0],[656,1000,1680,1,0],[657,750,1150,1,0],[657,375,560,1,0],[657,180,290,1,0],[657,500,580,1,0],[657,1000,1310,1,0],[658,750,1060,1,0],[658,375,530,1,0],[658,180,260,1,0],[658,500,560,1,0],[658,1000,1250,1,0],[659,750,1440,1,0],[659,375,730,1,0],[659,500,910,1,0],[659,1000,1820,1,0],[660,750,1710,1,0],[660,375,860,1,0],[661,750,710,1,0],[661,375,340,1,0],[661,180,180,1,0],[661,500,430,1,0],[661,1000,870,1,0],[662,750,880,1,0],[662,375,410,1,0],[662,180,220,1,0],[662,500,490,1,0],[662,1000,990,1,0],[663,750,1330,0,0],[663,375,680,0,0],[663,180,330,0,0],[663,500,800,0,0],[663,1000,1600,0,0],[664,750,830,0,0],[664,375,410,0,0],[664,180,200,0,0],[664,500,490,0,0],[664,1000,1020,0,0],[665,750,1100,0,0],[665,375,560,0,0],[665,180,270,0,0],[665,500,670,0,0],[665,1000,1330,0,0],[666,750,1540,0,0],[666,375,790,0,0],[666,1000,1970,0,0],[667,750,1080,0,0],[667,375,560,0,0],[667,500,580,0,0],[667,1000,1330,0,0],[668,750,1540,0,0],[668,375,780,0,0],[668,180,350,0,0],[668,500,980,0,0],[668,1000,1920,0,0],[669,750,1920,0,0],[669,375,970,0,0],[670,750,1080,0,0],[670,375,560,0,0],[670,500,580,0,0],[671,750,830,0,0],[671,375,410,0,0],[671,180,200,0,0],[671,500,490,0,0],[671,1000,1030,0,0],[672,750,650,2,0],[672,375,330,2,0],[672,180,160,2,0],[672,500,400,2,0],[672,1000,790,2,0],[673,750,880,2,0],[673,375,410,2,0],[673,180,220,2,0],[673,500,490,2,0],[673,1000,990,2,0],[674,750,850,2,0],[674,375,420,2,0],[674,180,200,2,0],[674,500,490,2,0],[674,1000,1030,2,0],[675,750,730,2,0],[675,375,350,2,0],[675,180,190,2,0],[675,500,440,2,0],[675,1000,950,2,0],[676,750,660,2,0],[676,375,320,2,0],[676,500,400,2,0],[676,1000,800,2,0],[677,750,880,2,0],[677,375,440,2,0],[677,180,220,2,0],[677,500,570,2,0],[677,1000,1070,2,0],[678,750,730,2,0],[678,375,360,2,0],[678,180,200,2,0],[678,500,430,2,0],[678,1000,860,2,0],[679,750,930,3,0],[679,375,450,3,0],[679,180,230,3,0],[679,500,600,3,0],[679,1000,1160,3,0],[680,750,710,3,0],[680,375,340,3,0],[680,180,180,3,0],[680,500,430,3,0],[680,1000,900,3,0],[681,750,650,3,0],[681,375,330,3,0],[681,180,170,3,0],[681,500,400,3,0],[681,1000,800,3,0],[682,750,800,3,0],[682,375,370,3,0],[682,180,190,3,0],[682,500,460,3,0],[682,1000,960,3,0],[683,750,960,1,0],[683,375,420,1,0],[683,180,200,1,0],[683,500,540,1,0],[683,1000,1060,1,0],[684,750,1070,1,0],[684,375,420,1,0],[684,180,220,1,0],[684,500,580,1,0],[684,1000,1230,1,0],[685,750,1090,1,0],[685,375,470,1,0],[685,180,240,1,0],[685,500,650,1,0],[685,1000,1230,1,0],[686,750,1180,1,0],[686,375,540,1,0],[686,180,260,1,0],[686,500,700,1,0],[686,1000,1290,1,0],[687,750,1330,1,0],[687,375,690,1,0],[687,180,320,1,0],[688,750,1390,1,0],[688,375,690,1,0],[688,180,320,1,0],[689,750,1420,2,0],[689,375,740,2,0],[689,180,350,2,0],[690,750,1070,2,0],[690,375,440,2,0],[690,180,220,2,0],[690,500,570,2,0],[690,1000,1150,2,0],[691,750,1090,2,0],[691,375,470,2,0],[691,180,240,2,0],[691,500,650,2,0],[691,1000,1230,2,0],[692,750,1090,2,0],[692,375,470,2,0],[692,180,240,2,0],[692,500,650,2,0],[692,1000,1230,2,0],[693,750,1090,2,0],[693,375,540,2,0],[693,180,260,2,0],[693,500,660,2,0],[693,1000,1290,2,0],[694,750,1180,2,0],[694,375,560,2,0],[694,180,260,2,0],[694,500,740,2,0],[694,1000,1410,2,0],[695,750,1680,2,0],[695,375,860,2,0],[695,180,410,2,0],[696,750,1550,4,0],[696,180,370,4,0],[697,750,1580,3,0],[697,180,390,3,0],[698,750,1090,3,0],[698,375,470,3,0],[698,180,240,3,0],[698,500,610,3,0],[698,1000,1230,3,0],[699,750,1180,3,0],[699,375,540,3,0],[699,180,260,3,0],[699,500,700,3,0],[699,1000,1290,3,0],[700,750,1090,3,0],[700,375,470,3,0],[700,180,240,3,0],[700,500,610,3,0],[700,1000,1230,3,0],[701,750,1180,3,0],[701,375,540,3,0],[701,180,260,3,0],[701,500,700,3,0],[701,1000,1290,3,0],[702,750,1480,3,0],[702,375,760,3,0],[702,180,370,3,0],[703,750,1460,1,0],[703,375,730,1,0],[703,180,360,1,0],[703,500,900,1,0],[703,1000,1810,1,0],[704,750,860,1,0],[704,375,400,1,0],[704,180,220,1,0],[704,500,490,1,0],[704,1000,970,1,0],[705,750,1450,1,0],[705,375,730,1,0],[705,180,360,1,0],[705,500,970,1,0],[705,1000,1920,1,0],[706,750,1270,1,0],[706,375,650,1,0],[706,180,310,1,0],[706,500,700,1,0],[706,1000,1400,1,0],[707,750,940,1,0],[707,375,480,1,0],[707,180,240,1,0],[707,500,570,1,0],[707,1000,1090,1,0],[708,750,1400,1,0],[708,375,700,1,0],[708,180,350,1,0],[708,500,900,1,0],[708,1000,1800,1,0],[709,750,10650,1,0],[710,750,1050,1,0],[710,375,540,1,0],[710,180,260,1,0],[710,500,580,1,0],[710,1000,1100,1,0],[711,750,700,1,0],[711,375,350,1,0],[711,180,170,1,0],[711,500,430,1,0],[711,1000,860,1,0],[712,750,10000,0,0],[713,750,1400,0,0],[713,375,700,0,0],[713,180,350,0,0],[713,500,900,0,0],[713,1000,1800,0,0],[714,750,1250,0,0],[714,375,630,0,0],[714,180,310,0,0],[714,500,780,0,0],[714,1000,1550,0,0],[715,750,3500,2,0],[716,750,1250,2,0],[716,375,630,2,0],[716,180,310,2,0],[716,500,780,2,0],[716,1000,1550,2,0],[717,750,710,2,0],[717,375,340,2,0],[717,180,170,2,0],[717,500,450,2,0],[717,1000,840,2,0],[718,750,840,2,0],[718,375,400,2,0],[718,180,210,2,0],[718,500,570,2,0],[718,1000,990,2,0],[719,750,1350,2,0],[719,375,670,2,0],[719,180,330,2,0],[719,500,750,2,0],[719,1000,1500,2,0],[720,750,1350,2,0],[720,375,670,2,0],[720,180,330,2,0],[720,500,750,2,0],[720,1000,1500,2,0],[721,750,3500,2,0],[722,750,4800,4,0],[723,750,4800,3,0],[724,750,530,1,0],[724,1000,700,1,0],[725,750,450,2,0],[725,1000,630,2,0],[726,750,490,2,0],[726,1000,650,2,0],[727,750,530,2,0],[727,1000,700,2,0],[728,750,550,2,0],[728,1000,720,2,0],[729,750,650,1,0],[729,375,320,1,0],[729,180,160,1,0],[729,500,400,1,0],[729,1000,800,1,0],[730,750,930,1,0],[730,375,470,1,0],[730,180,200,1,0],[730,500,480,1,0],[730,1000,980,1,0],[731,750,730,1,0],[731,375,350,1,0],[731,180,180,1,0],[731,500,440,1,0],[731,1000,890,1,0],[732,750,730,1,0],[732,375,350,1,0],[732,180,180,1,0],[732,500,440,1,0],[732,1000,870,1,0],[733,750,1070,1,0],[733,375,540,1,0],[733,180,260,1,0],[733,500,610,1,0],[733,1000,1310,1,0],[734,750,1300,1,0],[734,375,650,1,0],[734,1000,1700,1,0],[735,750,1100,1,0],[735,375,560,1,0],[735,180,280,1,0],[735,500,650,1,0],[735,1000,1400,1,0],[736,750,930,1,0],[736,375,390,1,0],[736,180,200,1,0],[736,500,490,1,0],[736,1000,990,1,0],[737,750,1350,0,0],[737,375,700,0,0],[737,1000,1800,0,0],[738,750,900,2,0],[738,375,390,2,0],[738,180,200,2,0],[738,500,490,2,0],[738,1000,980,2,0],[739,750,690,2,0],[739,375,340,2,0],[739,180,180,2,0],[739,500,430,2,0],[739,1000,820,2,0],[740,750,640,2,0],[740,375,310,2,0],[740,180,160,2,0],[740,500,390,2,0],[740,1000,790,2,0],[741,750,990,3,0],[741,375,400,3,0],[741,180,200,3,0],[741,500,490,3,0],[741,1000,1030,3,0],[742,750,700,3,0],[742,375,350,3,0],[742,180,180,3,0],[742,500,430,3,0],[742,1000,840,3,0],[743,750,940,3,0],[743,375,390,3,0],[743,180,200,3,0],[743,500,480,3,0],[743,1000,990,3,0],[744,750,940,3,0],[744,375,390,3,0],[744,180,200,3,0],[744,500,480,3,0],[744,1000,990,3,0],[745,750,940,3,0],[745,375,390,3,0],[745,180,200,3,0],[745,500,480,3,0],[745,1000,990,3,0],[746,750,940,3,0],[746,375,390,3,0],[746,180,200,3,0],[746,500,480,3,0],[746,1000,990,3,0],[747,750,930,3,0],[747,375,390,3,0],[747,180,200,3,0],[747,500,470,3,0],[747,1000,950,3,0],[748,750,990,3,0],[748,375,400,3,0],[748,180,200,3,0],[748,500,490,3,0],[748,1000,1030,3,0],[749,750,990,3,0],[749,375,400,3,0],[749,180,200,3,0],[749,500,490,3,0],[749,1000,1030,3,0],[750,750,890,1,0],[750,375,410,1,0],[750,180,180,1,0],[750,500,480,1,0],[750,1000,920,1,0],[751,750,890,1,0],[751,375,410,1,0],[751,180,180,1,0],[751,500,480,1,0],[751,1000,920,1,0],[752,750,1020,1,0],[752,500,570,1,0],[752,1000,1100,1,0],[753,750,1400,1,0],[753,500,850,1,0],[753,1000,1680,1,0],[754,750,1380,0,0],[754,500,850,0,0],[754,1000,1700,0,0],[755,750,1380,1,0],[755,500,850,1,0],[755,1000,1700,1,0],[756,750,890,2,0],[756,375,410,2,0],[756,180,180,2,0],[756,500,480,2,0],[756,1000,920,2,0],[757,750,1020,2,0],[757,500,570,2,0],[757,1000,1100,2,0],[758,750,1400,3,0],[758,500,850,3,0],[758,1000,1680,3,0],[759,750,960,1,0],[759,500,490,1,0],[759,1000,990,1,0],[760,750,1100,1,0],[760,375,560,1,0],[760,500,600,1,0],[760,1000,1300,1,0],[761,750,1330,1,0],[761,375,680,1,0],[761,500,800,1,0],[761,1000,1600,1,0],[762,750,800,1,0],[762,375,400,1,0],[762,180,200,1,0],[762,500,450,1,0],[762,1000,1250,1,0],[763,750,1030,0,0],[763,375,490,0,0],[763,500,530,0,0],[763,1000,1050,0,0],[764,750,1450,0,0],[764,375,720,0,0],[764,1000,1670,0,0],[765,750,960,2,0],[765,500,490,2,0],[765,1000,990,2,0],[766,750,1540,2,0],[766,375,780,2,0],[766,500,1030,2,0],[767,750,800,2,0],[767,375,400,2,0],[767,180,200,2,0],[767,500,450,2,0],[767,1000,1250,2,0],[768,750,1300,3,0],[768,375,660,3,0],[768,180,330,3,0],[768,500,860,3,0],[768,1000,1690,3,0],[769,750,1300,3,0],[769,375,660,3,0],[769,180,330,3,0],[769,500,860,3,0],[769,1000,1690,3,0],[770,750,700,1,0],[770,375,330,1,0],[770,180,180,1,0],[770,500,430,1,0],[770,1000,850,1,0],[771,750,700,1,0],[771,375,330,1,0],[771,180,170,1,0],[771,500,430,1,0],[771,1000,850,1,0],[772,750,900,1,0],[772,375,400,1,0],[772,180,200,1,0],[772,500,480,1,0],[772,1000,960,1,0],[773,750,600,1,0],[773,375,300,1,0],[773,180,160,1,0],[773,500,400,1,0],[773,1000,800,1,0],[774,750,930,1,0],[774,375,450,1,0],[774,180,230,1,0],[774,500,580,1,0],[774,1000,1250,1,0],[775,750,900,2,0],[775,375,400,2,0],[775,180,200,2,0],[775,500,480,2,0],[775,1000,960,2,0],[776,750,600,2,0],[776,375,300,2,0],[776,180,160,2,0],[776,500,400,2,0],[776,1000,800,2,0],[777,750,900,2,0],[777,375,400,2,0],[777,180,180,2,0],[777,500,480,2,0],[777,1000,960,2,0],[778,750,700,2,0],[778,375,330,2,0],[778,180,180,2,0],[778,500,430,2,0],[778,1000,850,2,0],[779,750,700,2,0],[779,375,330,2,0],[779,180,170,2,0],[779,500,430,2,0],[779,1000,850,2,0],[780,750,900,3,0],[780,375,400,3,0],[780,180,200,3,0],[780,500,480,3,0],[780,1000,960,3,0],[781,750,3660,0,0],[782,750,1730,0,0],[782,375,870,0,0],[782,180,420,0,0],[783,750,1650,3,0],[783,375,930,3,0],[783,180,450,3,0],[784,750,1650,3,0],[784,375,930,3,0],[784,180,450,3,0],[785,750,1580,3,0],[785,375,810,3,0],[785,180,390,3,0],[786,750,1700,3,0],[786,180,450,3,0],[787,750,1700,3,0],[787,180,450,3,0],[788,750,1700,3,0],[788,180,450,3,0],[789,750,1460,1,0],[789,375,790,1,0],[789,500,860,1,0],[789,1000,1700,1,0],[790,750,1410,1,0],[790,375,700,1,0],[790,180,350,1,0],[790,500,820,1,0],[790,1000,1630,1,0],[791,750,1450,1,0],[791,375,710,1,0],[791,180,350,1,0],[791,500,830,1,0],[791,1000,1650,1,0],[792,750,1490,1,0],[792,375,740,1,0],[792,180,360,1,0],[792,500,860,1,0],[792,1000,1730,1,0],[793,750,1560,1,0],[793,375,750,1,0],[793,180,360,1,0],[793,500,860,1,0],[793,1000,1810,1,0],[794,750,1490,1,0],[794,375,760,1,0],[794,180,370,1,0],[794,500,860,1,0],[794,1000,1710,1,0],[795,750,1310,2,0],[795,375,670,2,0],[795,180,330,2,0],[795,500,830,2,0],[795,1000,1640,2,0],[796,750,1280,2,0],[796,375,670,2,0],[796,180,330,2,0],[796,500,770,2,0],[796,1000,1550,2,0],[797,750,1370,3,0],[797,375,670,3,0],[797,180,320,3,0],[797,500,830,3,0],[797,1000,1640,3,0],[798,750,1370,3,0],[798,375,670,3,0],[798,180,320,3,0],[798,500,830,3,0],[798,1000,1640,3,0],[799,750,1370,3,0],[799,375,670,3,0],[799,180,320,3,0],[799,500,830,3,0],[799,1000,1640,3,0],[800,750,950,1,0],[800,375,360,1,0],[800,180,200,1,0],[800,500,480,1,0],[800,1000,990,1,0],[801,750,1270,1,0],[801,375,640,1,0],[801,180,300,1,0],[801,500,650,1,0],[801,1000,1420,1,0],[802,750,1450,0,0],[802,375,680,0,0],[802,180,350,0,0],[802,500,880,0,0],[802,1000,1790,0,0],[803,750,950,2,0],[803,375,470,2,0],[803,180,250,2,0],[803,500,540,2,0],[803,1000,1080,2,0],[804,750,950,2,0],[804,375,360,2,0],[804,180,200,2,0],[804,500,480,2,0],[804,1000,990,2,0],[805,500,270,5,0],[806,500,270,5,0],[807,500,220,5,0],[808,500,200,5,0],[809,650,170,5,0],[809,500,150,5,0],[810,650,180,5,0],[810,500,160,5,0],[811,650,150,5,0],[811,500,130,5,0],[811,330,110,5,0],[812,650,160,5,0],[812,500,140,5,0],[812,330,120,5,0],[813,650,170,5,0],[813,500,150,5,0],[813,330,130,5,0],[814,650,130,5,0],[814,500,110,5,0],[814,330,90,5,0],[815,650,150,5,0],[815,500,120,5,0],[815,330,110,5,0],[816,650,160,5,0],[816,500,130,5,0],[816,330,120,5,0],[817,650,160,5,0],[817,500,140,5,0],[817,330,130,5,0],[818,650,170,5,0],[818,500,150,5,0],[818,330,140,5,0],[819,650,130,5,0],[819,500,110,5,0],[819,330,100,5,0],[820,650,140,5,0],[820,500,120,5,0],[820,330,100,5,0],[821,650,170,5,0],[821,500,130,5,0],[821,330,120,5,0],[822,650,130,5,0],[822,500,90,5,0],[822,330,80,5,0],[823,650,200,5,0],[823,500,160,5,0],[823,330,150,5,0],[824,650,140,5,0],[824,500,100,5,0],[824,330,90,5,0],[825,650,150,5,0],[825,500,110,5,0],[825,330,100,5,0],[826,650,160,5,0],[826,500,120,5,0],[826,330,110,5,0],[827,650,180,5,0],[827,500,140,5,0],[827,330,130,5,0],[828,650,190,5,0],[828,500,150,5,0],[828,330,140,5,0],[829,650,160,5,0],[829,500,130,5,0],[829,330,90,5,0],[830,650,180,5,0],[830,500,140,5,0],[830,330,90,5,0],[831,650,180,5,0],[831,500,150,5,0],[831,330,100,5,0],[832,650,170,5,0],[832,500,120,5,0],[832,330,110,5,0],[833,650,190,5,0],[833,500,170,5,0],[833,330,120,5,0],[834,650,170,5,0],[834,500,140,5,0],[834,330,100,5,0],[835,650,180,5,0],[835,500,150,5,0],[835,330,120,5,0],[836,650,190,5,0],[836,500,160,5,0],[836,330,130,5,0],[837,650,160,5,0],[837,500,150,5,0],[837,330,120,5,0],[838,650,200,5,0],[838,500,170,5,0],[838,330,140,5,0],[839,650,270,5,0],[839,500,200,5,0],[840,650,330,5,0],[840,500,250,5,0],[841,650,170,5,0],[841,500,140,5,0],[841,330,110,5,0],[842,650,180,5,0],[842,500,150,5,0],[842,330,120,5,0],[843,650,160,5,0],[843,500,120,5,0],[843,330,90,5,0],[844,650,160,5,0],[844,500,130,5,0],[844,330,100,5,0],[845,650,180,5,0],[845,500,140,5,0],[845,330,100,5,0],[846,650,180,5,0],[846,500,150,5,0],[846,330,110,5,0],[847,650,190,5,0],[847,500,160,5,0],[847,330,120,5,0],[848,650,150,5,0],[848,500,130,5,0],[848,330,120,5,0],[849,650,160,5,0],[849,500,140,5,0],[849,330,100,5,0],[850,650,140,5,0],[850,500,110,5,0],[850,330,110,5,0],[851,650,130,5,0],[851,500,100,5,0],[851,330,100,5,0],[852,650,120,5,0],[852,500,100,5,0],[852,330,100,5,0],[853,650,150,5,0],[853,500,120,5,0],[853,330,120,5,0],[854,650,160,5,0],[854,500,120,5,0],[854,330,120,5,0],[855,650,180,5,0],[855,500,130,5,0],[855,330,130,5,0],[856,650,80,5,0],[857,650,160,5,0],[857,500,120,5,0],[858,650,180,5,0],[858,500,150,5,0],[859,650,170,5,0],[859,500,130,5,0],[860,650,160,5,0],[860,500,120,5,0],[861,650,170,5,0],[861,500,130,5,0],[862,650,180,5,0],[862,500,150,5,0],[863,650,140,5,0],[864,650,160,5,0],[865,650,140,5,0],[865,500,110,5,0],[866,650,130,5,0],[867,650,150,5,0],[868,650,120,5,0],[869,650,130,5,0],[870,650,150,5,0],[870,500,110,5,0],[871,650,160,5,0],[872,650,130,5,0],[873,650,160,5,0],[874,650,120,5,0],[875,650,150,5,0],[876,650,110,5,0],[877,650,120,5,0],[878,650,140,5,0],[879,650,170,5,0],[880,650,150,5,0],[881,650,200,5,0],[881,500,140,5,0],[882,650,210,5,0],[882,500,150,5,0],[883,650,130,5,0],[884,650,140,5,0],[885,650,150,5,0],[885,500,120,5,0],[886,650,170,5,0],[886,500,150,5,0],[886,330,120,5,0],[887,650,140,5,0],[887,500,120,5,0],[887,330,90,5,0],[888,650,150,5,0],[888,500,130,5,0],[888,330,90,5,0],[889,650,160,5,0],[889,500,140,5,0],[889,330,100,5,0],[890,650,160,5,0],[890,500,140,5,0],[890,330,100,5,0],[891,650,150,5,0],[891,500,130,5,0],[891,330,90,5,0],[892,650,150,5,0],[892,500,130,5,0],[892,330,90,5,0],[893,650,160,5,0],[893,500,140,5,0],[893,330,100,5,0],[894,650,160,5,0],[894,500,140,5,0],[894,330,100,5,0],[895,650,170,5,0],[895,500,150,5,0],[895,330,110,5,0],[896,650,140,5,0],[896,500,120,5,0],[896,330,90,5,0],[897,650,150,5,0],[897,500,130,5,0],[897,330,90,5,0],[898,650,160,5,0],[898,500,140,5,0],[898,330,100,5,0],[899,650,160,5,0],[899,500,140,5,0],[899,330,100,5,0],[900,650,140,5,0],[900,500,110,5,0],[900,330,80,5,0],[901,650,170,5,0],[901,500,150,5,0],[901,330,110,5,0],[902,650,160,5,0],[902,500,130,5,0],[902,330,110,5,0],[903,650,140,5,0],[903,500,120,5,0],[904,650,140,5,0],[904,500,120,5,0],[905,650,140,5,0],[905,500,120,5,0],[905,330,90,5,0],[906,650,150,5,0],[906,500,120,5,0],[906,330,100,5,0],[907,650,100,5,0],[908,650,100,5,0],[909,650,130,5,0],[909,500,110,5,0],[910,650,120,5,0],[910,500,100,5,0],[911,650,130,5,0],[911,500,100,5,0],[911,330,80,5,0],[912,650,140,5,0],[912,500,120,5,0],[912,330,100,5,0],[913,650,140,5,0],[913,500,110,5,0],[913,330,90,5,0],[914,650,150,5,0],[914,500,120,5,0],[914,330,90,5,0],[915,650,150,5,0],[915,500,120,5,0],[916,650,170,5,0],[916,500,140,5,0],[916,330,120,5,0],[917,650,170,5,0],[917,500,140,5,0],[917,330,100,5,0],[918,650,120,5,0],[918,500,100,5,0],[918,330,80,5,0],[919,650,140,5,0],[919,500,120,5,0],[919,330,90,5,0],[920,650,200,5,0],[920,500,150,5,0],[920,330,120,5,0],[921,650,200,5,0],[921,500,150,5,0],[921,330,120,5,0],[922,650,160,5,0],[922,330,100,5,0],[923,650,140,5,0],[923,330,100,5,0],[924,650,170,5,0],[924,500,140,5,0],[924,330,110,5,0],[925,650,130,5,0],[925,500,110,5,0],[925,330,80,5,0],[926,650,150,5,0],[926,500,130,5,0],[926,330,100,5,0],[927,650,140,5,0],[927,500,120,5,0],[927,330,80,5,0],[928,650,160,5,0],[928,500,140,5,0],[928,330,110,5,0],[929,650,160,5,0],[929,500,140,5,0],[929,330,110,5,0],[930,650,140,5,0],[930,500,120,5,0],[930,330,80,5,0],[931,650,170,5,0],[931,330,110,5,0],[932,650,160,5,0],[932,500,130,5,0],[932,330,100,5,0],[933,650,150,5,0],[933,500,120,5,0],[934,650,140,5,0],[934,500,120,5,0],[935,650,180,5,0],[935,500,150,5,0],[935,330,120,5,0],[936,650,200,5,0],[936,500,170,5,0],[936,330,130,5,0],[937,650,110,5,0],[937,500,90,5,0],[938,650,120,5,0],[939,650,160,5,0],[939,500,130,5,0],[940,650,150,5,0],[940,500,120,5,0],[941,650,140,5,0],[941,500,110,5,0],[942,650,130,5,0],[942,500,100,5,0],[943,650,130,5,0],[943,500,100,5,0],[944,650,120,5,0],[944,500,90,5,0],[945,500,240,5,0],[945,330,190,5,0],[946,650,150,5,0],[946,500,130,5,0],[946,330,110,5,0],[947,500,210,5,0],[947,330,180,5,0],[948,500,220,5,0],[948,330,170,5,0],[949,650,170,5,0],[949,500,130,5,0],[949,330,100,5,0],[950,500,220,5,0],[950,330,180,5,0],[951,500,230,5,0],[951,330,190,5,0],[952,500,220,5,0],[952,330,180,5,0],[953,500,230,5,0],[953,330,190,5,0],[954,500,400,5,0],[954,330,230,5,0],[955,330,180,5,0],[956,500,230,5,0],[956,330,160,5,0],[957,650,170,5,0],[957,500,160,5,0],[957,330,150,5,0],[958,650,130,5,0],[958,500,110,5,0],[959,650,160,5,0],[959,500,130,5,0],[960,650,130,5,0],[960,500,120,5,0],[961,650,150,5,0],[961,500,130,5,0],[962,650,210,5,0],[962,500,180,5,0],[963,650,190,5,0],[963,500,160,5,0],[964,650,160,5,0],[964,500,140,5,0],[965,650,130,5,0],[965,500,110,5,0],[966,650,140,5,0],[966,500,130,5,0],[967,650,270,5,0],[967,500,200,5,0],[967,330,190,5,0],[968,650,330,5,0],[968,500,250,5,0],[968,330,190,5,0],[969,500,230,5,0],[969,330,370,5,0],[970,650,140,5,0],[970,500,130,5,0],[970,330,90,5,0],[971,500,220,5,0],[971,330,160,5,0],[972,650,150,5,0],[972,500,140,5,0],[972,330,90,5,0],[973,500,230,5,0],[973,330,180,5,0],[974,500,210,5,0],[974,330,180,5,0],[975,500,220,5,0],[975,330,170,5,0],[976,650,140,5,0],[976,500,130,5,0],[977,650,180,5,0],[977,500,140,5,0],[978,650,160,5,0],[978,500,130,5,0],[979,650,210,5,0],[979,500,180,5,0],[980,650,210,5,0],[980,500,180,5,0],[981,650,210,5,0],[981,500,180,5,0],[982,650,150,5,0],[982,500,100,5,0],[983,650,170,5,0],[983,500,160,5,0],[984,650,160,5,0],[984,500,150,5,0],[985,650,150,5,0],[985,500,140,5,0],[986,650,140,5,0],[986,500,130,5,0],[987,650,130,5,0],[987,500,120,5,0],[988,650,130,5,0],[988,500,100,5,0],[988,330,80,5,0],[989,650,170,5,0],[989,500,140,5,0],[989,330,110,5,0],[990,650,190,5,0],[990,500,160,5,0],[990,330,130,5,0],[991,650,170,5,0],[991,500,140,5,0],[991,330,120,5,0],[992,650,140,5,0],[993,650,160,5,0],[993,500,140,5,0],[994,650,180,5,0],[994,500,150,5,0],[994,330,120,5,0],[995,650,180,5,0],[995,500,150,5,0],[995,330,120,5,0],[996,650,120,5,0],[996,500,90,5,0],[997,375,180,6,0],[997,330,160,6,0],[998,750,260,6,0],[999,375,180,6,0],[999,330,160,6,0],[1000,375,180,6,0],[1000,330,160,6,0],[1001,375,180,6,0],[1001,330,170,6,0],[1002,375,180,6,0],[1002,330,170,6,0],[1003,375,180,6,0],[1003,330,170,6,0],[1004,375,180,6,0],[1004,330,170,6,0],[1005,375,180,6,0],[1005,330,170,6,0],[1006,750,560,6,0],[1006,375,260,6,0],[1007,750,560,6,0],[1007,375,260,6,0],[1008,750,560,6,0],[1008,375,260,6,0],[1009,750,560,6,0],[1009,375,260,6,0],[1010,750,560,6,0],[1010,375,260,6,0],[1011,750,260,6,0],[1012,180,90,6,0],[1012,650,270,6,0],[1012,500,200,6,0],[1012,330,160,6,0],[1012,250,140,6,0],[1013,180,110,6,0],[1013,500,220,6,0],[1013,330,170,6,0],[1013,250,160,6,0],[1014,180,90,6,0],[1014,650,270,6,0],[1014,500,200,6,0],[1014,330,160,6,0],[1014,250,140,6,0],[1015,750,1080,6,0],[1016,750,850,6,0],[1017,750,740,6,0],[1017,375,370,6,0],[1018,750,740,6,0],[1018,375,370,6,0],[1019,750,370,6,0],[1019,375,190,6,0],[1020,750,930,6,0],[1021,750,1030,6,0],[1021,375,630,6,0],[1022,750,980,6,0],[1022,375,600,6,0],[1023,750,620,6,0],[1024,750,2970,6,0],[1025,750,1400,6,0],[1025,375,750,6,0],[1026,750,1420,6,0],[1027,750,990,6,0],[1027,375,490,6,0],[1028,750,760,6,0],[1029,750,1580,6,0],[1030,750,770,6,0],[1031,330,170,6,0],[1032,330,170,6,0],[1033,330,170,6,0],[1034,330,160,6,0],[1035,750,550,6,0],[1035,375,290,6,0],[1036,750,2090,6,0],[1037,375,160,6,0],[1037,330,150,6,0],[1038,750,750,6,0],[1038,375,370,6,0],[1038,180,190,6,0],[1039,750,300,6,0],[1039,375,150,6,0],[1039,180,80,6,0],[1040,750,800,6,0],[1040,375,400,6,0],[1040,180,200,6,0],[1041,750,990,6,0],[1041,375,480,6,0],[1041,180,250,6,0],[1042,330,180,6,0],[1043,750,1590,6,0],[1044,750,280,6,0],[1044,375,140,6,0],[1044,180,80,6,0],[1045,750,550,6,0],[1046,750,550,6,0],[1047,750,2550,6,0],[1048,750,2550,6,0],[1049,750,950,6,0],[1049,375,540,6,0],[1050,750,1050,6,0],[1051,750,1030,6,0],[1052,750,1120,6,0],[1052,375,590,6,0],[1053,750,1120,6,0],[1053,375,590,6,0],[1054,750,1120,6,0],[1054,375,590,6,0],[1055,750,1120,6,0],[1055,375,590,6,0],[1056,750,1170,6,0],[1056,375,620,6,0],[1057,750,1250,6,0],[1057,375,650,6,0],[1058,750,1250,6,0],[1059,375,170,6,0],[1059,330,170,6,0],[1059,250,150,6,0],[1060,330,170,6,0],[1061,375,230,6,0],[1061,330,200,6,0],[1062,375,260,6,0],[1063,500,230,6,0],[1064,500,200,6,0],[1065,250,150,6,0],[1066,250,160,6,0],[1067,250,170,6,0],[1068,250,170,6,0],[1069,250,150,6,0],[1070,250,160,6,0],[1071,250,170,6,0],[1072,250,170,6,0],[1073,250,150,6,0],[1074,250,160,6,0],[1075,250,170,6,0],[1076,250,170,6,0],[1077,250,150,6,0],[1078,250,160,6,0],[1079,250,170,6,0],[1080,250,170,6,0],[1081,250,150,6,0],[1082,250,160,6,0],[1083,250,170,6,0],[1084,250,170,6,0],[1085,180,100,6,0],[1086,180,120,6,0],[1087,180,100,6,0],[1088,180,120,6,0],[1089,330,180,6,0],[1090,330,180,6,0],[1091,330,200,6,0],[1092,330,180,6,0],[1093,330,200,6,0],[1094,330,180,6,0],[1095,330,170,6,0],[1096,330,170,6,0],[1097,330,150,6,0],[1098,330,150,6,0],[1099,330,150,6,0],[1100,330,150,6,0],[1101,330,150,6,0],[1102,330,150,6,0],[1103,330,150,6,0],[1104,330,150,6,0],[1105,330,150,6,0],[1106,330,150,6,0],[1107,330,150,6,0],[1108,750,730,6,0],[1109,750,450,6,0],[1110,750,350,6,0],[1110,375,180,6,0],[1111,750,350,6,0],[1111,375,180,6,0],[1112,750,350,6,0],[1112,375,180,6,0],[1113,750,600,6,0],[1113,375,300,6,0],[1114,750,600,6,0],[1114,375,300,6,0],[1115,750,600,6,0],[1115,375,300,6,0],[1116,750,600,6,0],[1116,375,300,6,0],[1117,750,700,6,0],[1117,375,350,6,0],[1118,750,700,6,0],[1118,375,350,6,0],[1119,750,700,6,0],[1119,375,350,6,0],[1120,750,800,6,0],[1120,375,400,6,0],[1121,750,800,6,0],[1121,375,400,6,0],[1122,750,550,6,0],[1122,375,280,6,0],[1123,750,600,6,0],[1123,375,300,6,0],[1124,750,1120,6,0],[1124,375,560,6,0],[1125,750,950,6,0],[1125,375,480,6,0],[1126,750,350,6,0],[1126,375,180,6,0],[1127,750,700,6,0],[1127,375,350,6,0],[1128,750,800,6,0],[1128,375,400,6,0],[1129,750,950,6,0],[1129,375,550,6,0],[1130,750,950,6,0],[1130,375,550,6,0],[1131,750,1100,6,0],[1131,375,630,6,0],[1132,750,1100,6,0],[1132,375,630,6,0],[1133,750,1040,6,0],[1134,375,680,6,0],[1135,750,1080,6,0],[1135,375,550,6,0],[1136,750,610,6,0],[1137,750,600,6,0],[1138,750,1800,6,0],[1139,330,170,6,0],[1140,330,240,6,0],[1141,750,600,6,0],[1141,375,300,6,0],[1141,180,150,6,0],[1141,500,400,6,0],[1141,1000,800,6,0],[1142,750,300,6,0],[1142,375,150,6,0],[1142,180,80,6,0],[1142,500,200,6,0],[1142,1000,400,6,0],[1143,750,600,6,0],[1143,375,300,6,0],[1143,180,150,6,0],[1143,500,400,6,0],[1143,1000,800,6,0],[1144,750,800,6,0],[1144,375,400,6,0],[1144,180,200,6,0],[1144,500,490,6,0],[1144,1000,990,6,0],[1145,750,800,6,0],[1145,375,400,6,0],[1145,180,200,6,0],[1145,500,490,6,0],[1145,1000,990,6,0],[1146,330,160,6,0],[1147,330,170,6,0],[1148,750,250,6,0],[1148,375,140,6,0],[1148,180,80,6,0],[1148,500,180,6,0],[1148,1000,350,6,0],[1149,330,180,6,0],[1150,330,180,6,0],[1151,375,370,6,0],[1152,375,370,6,0],[1153,375,370,6,0],[1154,375,400,6,0],[1155,375,400,6,0],[1156,330,230,6,0],[1157,330,230,6,0],[1158,330,230,6,0],[1159,330,180,6,0],[1160,330,180,6,0],[1161,375,370,6,0],[1162,375,370,6,0],[1163,750,260,6,0],[1163,375,140,6,0],[1163,180,70,6,0],[1163,500,160,6,0],[1164,750,560,6,0],[1164,375,260,6,0],[1165,750,950,6,0],[1165,375,490,6,0],[1166,750,590,6,0],[1166,375,270,6,0],[1167,750,950,6,0],[1167,375,490,6,0],[1168,750,820,6,0],[1168,375,430,6,0],[1169,750,460,6,0],[1169,375,250,6,0],[1170,750,1800,6,0],[1171,750,1800,6,0],[1172,750,590,6,0],[1172,375,270,6,0],[1173,750,590,6,0],[1173,375,270,6,0],[1174,750,490,6,0],[1175,750,400,6,0],[1176,750,830,6,0],[1177,750,1050,6,0],[1178,750,1250,6,0],[1179,750,1450,6,0],[1180,750,1050,6,0],[1181,375,160,6,0],[1181,330,150,6,0],[1182,375,180,6,0],[1182,500,230,6,0],[1182,330,170,6,0],[1182,250,150,6,0],[1183,375,180,6,0],[1183,500,230,6,0],[1183,330,170,6,0],[1183,250,150,6,0],[1184,375,180,6,0],[1184,500,230,6,0],[1184,330,170,6,0],[1184,250,150,6,0],[1185,375,180,6,0],[1185,500,230,6,0],[1185,330,170,6,0],[1185,250,150,6,0],[1186,375,180,6,0],[1186,500,230,6,0],[1186,330,170,6,0],[1186,250,150,6,0],[1187,375,180,6,0],[1187,500,230,6,0],[1187,330,170,6,0],[1187,250,150,6,0],[1188,375,180,6,0],[1188,500,230,6,0],[1188,330,170,6,0],[1188,250,150,6,0],[1189,375,180,6,0],[1189,500,230,6,0],[1189,330,170,6,0],[1189,250,150,6,0],[1190,375,180,6,0],[1190,500,230,6,0],[1190,330,170,6,0],[1190,250,150,6,0],[1191,750,1190,6,0],[1192,750,1350,6,0],[1193,750,1670,6,0],[1194,750,970,6,0],[1194,375,560,6,0],[1195,750,1170,6,0],[1195,375,660,6,0],[1196,750,770,6,0],[1197,750,1110,6,0],[1198,750,900,6,0],[1199,750,1100,6,0],[1200,750,1600,6,0],[1201,750,1930,6,0],[1202,750,2030,6,0],[1203,750,1970,6,0],[1204,750,2390,6,0],[1205,750,1980,6,0],[1206,750,1100,6,0],[1206,375,620,6,0],[1207,750,1690,6,0],[1208,750,810,6,0],[1209,750,660,6,0],[1210,330,330,6,0],[1211,750,780,6,0],[1212,750,580,6,0],[1212,375,290,6,0],[1212,500,330,6,0],[1213,750,690,6,0],[1213,375,340,6,0],[1214,750,580,6,0],[1214,375,290,6,0],[1215,750,250,6,0],[1216,375,150,6,0],[1217,750,650,6,0],[1217,375,300,6,0],[1217,180,180,6,0],[1218,750,800,6,0],[1218,375,400,6,0],[1218,180,180,6,0],[1219,750,970,6,0],[1219,375,480,6,0],[1219,180,180,6,0],[1220,375,180,6,0],[1220,330,180,6,0],[1221,750,1970,6,0],[1222,750,1970,6,0],[1223,750,1770,6,0],[1224,750,1770,6,0],[1225,750,610,6,0],[1226,750,610,6,0],[1227,375,180,6,0],[1227,330,170,6,0],[1228,375,180,6,0],[1228,330,170,6,0],[1229,375,180,6,0],[1229,330,170,6,0],[1230,375,180,6,0],[1230,330,170,6,0],[1231,375,180,6,0],[1231,330,170,6,0],[1232,375,180,6,0],[1232,330,170,6,0],[1233,375,140,6,0],[1233,500,180,6,0],[1233,330,130,6,0],[1234,375,140,6,0],[1234,500,180,6,0],[1234,330,130,6,0],[1235,750,690,6,0],[1236,750,690,6,0],[1237,750,690,6,0],[1238,750,690,6,0],[1239,750,690,6,0],[1240,750,690,6,0],[1241,750,1240,6,0],[1242,750,920,6,0],[1243,750,920,6,0],[1244,750,920,6,0],[1245,750,1370,6,0],[1246,750,1150,6,0],[1247,375,180,6,0],[1247,650,320,6,0],[1247,330,180,6,0],[1248,375,180,6,0],[1248,650,320,6,0],[1248,330,180,6,0],[1249,700,3770,1,1],[1250,1000,4890,1,1],[1251,750,2940,0,1],[1251,1000,3770,0,1],[1252,750,4720,0,1],[1253,700,17850,0,1],[1254,700,7840,0,1],[1255,750,3080,0,1],[1256,700,25480,0,1],[1257,700,7840,0,1],[1258,700,7840,0,1],[1259,750,5700,3,1],[1260,750,3410,3,1],[1261,1000,8470,3,1],[1261,700,7190,3,1],[1262,700,3790,3,1],[1263,750,9830,3,1],[1264,750,3990,7,1],[1265,750,5880,7,1],[1266,750,5600,8,1],[1266,375,2910,8,1],[1267,700,14190,1,1],[1268,750,3570,0,1],[1269,750,6420,0,1],[1270,750,7320,0,1],[1271,750,12320,0,1],[1272,700,9670,0,1],[1273,750,8620,0,1],[1274,700,12620,0,1],[1275,700,4320,0,1],[1276,750,4620,2,1],[1277,750,6170,2,1],[1278,750,9870,2,1],[1279,750,4520,4,1],[1280,750,6770,3,1],[1281,700,23870,3,1],[1282,750,4620,7,1],[1283,750,4620,7,1],[1284,750,10770,7,1],[1285,750,8870,7,1],[1286,700,37020,7,1],[1287,750,11100,7,1],[1288,750,12510,7,1],[1289,750,15520,7,1],[1290,1000,2210,1,1],[1291,1000,3100,1,1],[1292,1000,3830,1,1],[1293,1000,4240,1,1],[1294,700,6540,1,1],[1295,750,3820,0,1],[1296,750,6130,0,1],[1297,750,3080,0,1],[1298,700,7970,0,1],[1299,750,9180,0,1],[1300,750,13560,0,1],[1301,1000,3390,0,1],[1302,700,9970,0,1],[1303,750,4290,0,1],[1304,750,4070,0,1],[1305,700,12500,0,1],[1306,700,3580,0,1],[1307,700,3710,0,1],[1308,700,3920,0,1],[1309,700,2420,0,1],[1310,1000,3120,0,1],[1311,700,3370,0,1],[1312,750,3170,2,1],[1313,750,3480,2,1],[1314,750,3070,4,1],[1315,700,3310,4,1],[1316,750,3060,3,1],[1317,1000,2200,3,1],[1318,750,3230,3,1],[1319,750,3230,3,1],[1320,750,3230,3,1],[1321,750,3230,3,1],[1322,750,3230,3,1],[1323,700,2610,3,1],[1324,700,3000,3,1],[1325,1000,2680,3,1],[1326,700,3770,7,1],[1327,750,3210,8,1],[1328,375,2450,1,1],[1328,1000,5410,1,1],[1328,700,3560,1,1],[1329,700,17030,1,1],[1330,700,4620,1,1],[1331,1000,2980,1,1],[1332,700,7000,1,1],[1333,1000,2500,1,1],[1333,700,1990,1,1],[1334,1000,3500,0,1],[1335,700,25190,0,1],[1336,1000,3410,0,1],[1337,1000,3960,0,1],[1337,700,2970,0,1],[1338,750,6800,0,1],[1339,750,9600,0,1],[1340,750,9460,0,1],[1341,700,6320,0,1],[1342,700,8310,0,1],[1343,750,6200,0,1],[1344,700,6750,0,1],[1345,1000,5390,0,1],[1346,750,5500,0,1],[1347,750,5500,0,1],[1348,700,4200,0,1],[1349,700,3140,0,1],[1350,700,11680,0,1],[1351,700,3000,0,1],[1352,700,21000,0,1],[1353,700,4920,2,1],[1354,700,2500,2,1],[1355,700,2650,2,1],[1356,700,10450,2,1],[1357,700,6890,2,1],[1358,700,8820,4,1],[1359,700,2400,4,1],[1360,700,6710,4,1],[1361,700,6710,4,1],[1362,700,7440,3,1],[1363,700,7510,3,1],[1364,750,3240,7,1],[1365,750,5700,7,1],[1366,750,5780,7,1],[1367,750,12000,7,1],[1368,750,14350,7,1],[1369,700,3790,7,1],[1370,700,3950,7,1],[1371,700,5680,8,1],[1372,1000,3240,1,1],[1373,1000,2740,1,1],[1374,1000,2240,1,1],[1375,1000,2740,0,1],[1376,1000,3240,0,1],[1377,750,8840,0,1],[1378,750,3020,0,1],[1379,750,10890,0,1],[1380,750,10000,0,1],[1381,750,6140,0,1],[1382,750,8250,0,1],[1383,750,10690,0,1],[1384,750,13000,0,1],[1385,750,3020,4,1],[1386,750,5800,3,1],[1387,750,6120,8,1],[1388,750,6120,8,1],[1389,750,6120,8,1],[1390,750,3500,0,1],[1391,750,5500,0,1],[1392,750,4100,0,1],[1393,750,6600,0,1],[1394,750,8600,0,1],[1395,1000,2370,1,1],[1396,1000,3290,1,1],[1397,1000,2670,0,1],[1398,750,2450,0,1],[1399,750,2680,0,1],[1400,700,8460,0,1],[1401,700,12690,0,1],[1402,700,6120,0,1],[1403,700,14900,0,1],[1404,700,6730,4,1],[1405,750,2480,1,1],[1406,750,2890,1,1],[1407,750,2650,1,1],[1408,1000,2320,1,1],[1409,1000,3680,0,1],[1410,1000,2750,0,1],[1411,750,3140,0,1],[1412,750,6180,0,1],[1413,750,6930,0,1],[1414,750,9420,0,1],[1415,750,14490,0,1],[1416,750,30560,0,1],[1417,750,8120,0,1],[1418,750,2450,0,1],[1419,750,2230,0,1],[1420,700,7930,0,1],[1421,700,3770,0,1],[1422,700,5750,0,1],[1423,700,11820,0,1],[1424,700,18490,0,1],[1425,750,20000,0,1],[1426,750,3510,4,1],[1427,1000,7650,4,1],[1428,700,4200,4,1],[1429,700,4200,4,1],[1430,750,3350,3,1],[1431,750,37280,7,1],[1432,700,12500,7,1],[1433,700,11060,7,1],[1434,750,4000,8,1],[1435,750,1920,6,1],[1436,750,1720,6,1],[1437,750,1720,6,1],[1438,750,1920,6,1],[1439,750,1920,6,1],[1440,750,2370,6,1],[1441,750,1890,6,1],[1441,375,940,6,1],[1442,750,1890,6,1],[1442,375,940,6,1],[1443,750,2520,6,1],[1444,750,2820,6,1],[1445,750,2100,6,1],[1446,750,2100,6,1],[1447,750,1870,6,1],[1448,750,2650,6,1],[1449,1000,1560,6,1],[1450,750,1400,6,1],[1451,750,1920,6,1],[1452,750,1400,6,1],[1453,750,1400,6,1],[1454,750,1400,6,1],[1455,750,1400,6,1],[1456,750,1550,6,1],[1457,750,1550,6,1],[1458,750,1380,6,1],[1459,750,1400,6,1],[1460,750,1460,6,1],[1461,750,1880,6,1]]}</script>
+<script>
+(function(){
+"use strict";
+var RM=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+var SIZES=[180,250,330,375,500,650,750,1000];
+var TINT={Whisky:"#e0932f",Brandy:"#e0603c",Rum:"#c8813f",Vodka:"#8fb4d2",
+          Gin:"#5fd8a0",Beer:"#f0c341",Wine:"#e0507a",Tequila:"#cfd05a",Liqueur:"#bb8ce2"};
+/* Classic apothecary line-art bottles, generated from proportions */
+var SHAPE={
+  Whisky :{nw:8.4,sy:25,by:32,bw:22,r:2.2,lab:.34},
+  Brandy :{nw:8.0,sy:22,by:33,bw:23.5,r:8,lab:.32},
+  Rum    :{nw:7.6,sy:23,by:33,bw:21.5,r:3,lab:.34},
+  Vodka  :{nw:7.0,sy:27,by:32,bw:18.5,r:1.4,lab:.30},
+  Gin    :{nw:8.2,sy:22,by:29,bw:22.5,r:2.6,lab:.32},
+  Beer   :{nw:7.0,sy:31,by:37,bw:18.5,r:2,lab:.36,crown:1},
+  Wine   :{nw:6.6,sy:35,by:43,bw:20.5,r:1.4,lab:.40,punt:1},
+  Tequila:{nw:8.2,sy:21,by:26,bw:20.5,r:2,lab:.28},
+  Liqueur:{nw:9.0,sy:21,by:29,bw:23.5,r:9,lab:.30}
+};
+function outline(p){
+  var cx=16,top=8,bot=67,nl=cx-p.nw/2,nr=cx+p.nw/2,
+      bl=cx-p.bw/2,br=cx+p.bw/2,r=p.r,k=(p.by-p.sy)*.55;
+  return "M"+nl+" "+top+"L"+nl+" "+p.sy+
+    "C"+nl+" "+(p.sy+k)+" "+bl+" "+(p.by-k)+" "+bl+" "+p.by+
+    "L"+bl+" "+(bot-r)+"Q"+bl+" "+bot+" "+(bl+r)+" "+bot+
+    "L"+(br-r)+" "+bot+"Q"+br+" "+bot+" "+br+" "+(bot-r)+
+    "L"+br+" "+p.by+
+    "C"+br+" "+(p.by-k)+" "+nr+" "+(p.sy+k)+" "+nr+" "+p.sy+
+    "L"+nr+" "+top+"Z";
+}
+(function build(){
+  var out="";
+  for(var k in SHAPE){
+    var p=SHAPE[k],d=outline(p),cx=16,
+        nl=cx-p.nw/2,bl=cx-p.bw/2,bot=67,
+        lh=(bot-p.by)*p.lab, ly=p.by+(bot-p.by)*.30,
+        liq=p.by+(bot-p.by)*.12;
+    out+='<symbol id="b-'+k+'" viewBox="0 0 32 72">'+
+      '<defs><clipPath id="cp-'+k+'"><path d="'+d+'"/></clipPath></defs>'+
+      '<g clip-path="url(#cp-'+k+')">'+
+        '<rect width="32" height="72" fill="currentColor" opacity=".10"/>'+
+        '<rect y="'+liq+'" width="32" height="72" fill="currentColor" opacity=".20"/>'+
+        '<rect x="'+(bl+1.6)+'" y="'+ly+'" width="'+(p.bw-3.2)+'" height="'+lh+
+          '" fill="currentColor" opacity=".30"/>'+
+        '<rect x="'+(bl+1.6)+'" y="'+ly+'" width="'+(p.bw-3.2)+'" height="'+lh+
+          '" fill="none" stroke="currentColor" stroke-opacity=".55" stroke-width=".7"/>'+
+        '<rect x="'+(cx-p.bw*.30)+'" y="'+(ly+lh*.34)+'" width="'+(p.bw*.44)+
+          '" height=".9" fill="currentColor" opacity=".6"/>'+
+        '<rect x="'+(cx-p.bw*.22)+'" y="'+(ly+lh*.60)+'" width="'+(p.bw*.30)+
+          '" height=".7" fill="currentColor" opacity=".45"/>'+
+      '</g>'+
+      '<path d="'+d+'" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linejoin="round"/>'+
+      (p.crown
+        ? '<rect x="'+(nl-1.5)+'" y="3.4" width="'+(p.nw+3)+'" height="4.6" rx="1" fill="currentColor" opacity=".85"/>'
+        : '<path d="M'+(nl-.9)+' 8V4.6a1.4 1.4 0 0 1 1.4-1.4h'+(p.nw-.9+1.8)+
+          'a1.4 1.4 0 0 1 1.4 1.4V8z" fill="currentColor" opacity=".8"/>')+
+      '<rect x="'+(nl-.4)+'" y="'+(p.crown?9.4:9.2)+'" width="'+(p.nw+.8)+
+        '" height="1.1" fill="currentColor" opacity=".55"/>'+
+      (p.punt?'<path d="M'+(cx-4.5)+' 67q4.5-4 9 0" fill="none" stroke="currentColor" stroke-width=".9" opacity=".6"/>':'')+
+      '<ellipse cx="16" cy="69.4" rx="'+(p.bw*.46)+'" ry="1.5" fill="currentColor" opacity=".18"/>'+
+      '</symbol>';
+  }
+  document.getElementById("symbols").innerHTML=out;
+})();
+function bottle(t,w,h,cls){
+  return '<svg viewBox="0 0 32 72" width="'+w+'" height="'+h+'" class="'+(cls||"")+
+    '" aria-hidden="true" style="color:'+(TINT[t]||"#c8813f")+'"><use href="#b-'+t+'"/></svg>';
+}
+
+/* ---------------- state ---------------- */
+var DB=null,fT=null,fMl=null,fImp=false,q="",terms=[];
+var SORTS=[["cheap","Cheapest"],["dear","Priciest"],["value","Best value"],["az","A \u2013 Z"]];
+var sortI=0,denseOn=false,page=0,PAGE=60,current=[],pins=[],recents=[];
+var PMIN=0,PMAX=0,LMIN=0,LSPAN=1,pLo=0,pHi=0;
+var typeBtns=[],mlBtns=[],impBtn=null,lastTally=0,byBrand={},valStat={},io=null;
+var CODES=null,BREAK=null,HIST=null,byCode={},qty={},sheetOpen=null;
+var FLIP_MAX=90;
+function $(id){return document.getElementById(id)}
+function inr(n){return "\u20B9"+n.toLocaleString("en-IN")}
+function esc(s){return s.replace(/[&<>]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;"}[c]})}
+function per100(r){return r[2]/r[1]*100}
+
+(function(){var s="";for(var i=0;i<9;i++)
+  s+='<li class="sk"><i class="a"></i><i class="b"></i><i class="c"></i></li>';
+  $("list").innerHTML=s})();
+
+function seed(){try{var raw=$("seed").textContent.trim();
+  if(!raw||raw.charAt(0)!=="{")return null;return JSON.parse(raw)}catch(e){return null}}
+fetch("data.json",{cache:"no-cache"})
+  .then(function(r){if(!r.ok)throw 0;return r.json()})
+  .then(function(d){init(d,"live")})
+  .catch(function(){var s=seed();if(s){init(s,"snapshot");return}
+    $("list").innerHTML='<li class="msg">'+bottle("Wine",42,94)+
+      "<p>No price data available.</p><code>cd bevco-site &amp;&amp; python3 -m http.server 8000</code></li>"});
+
+function countUp(el,to){
+  if(RM){el.textContent=to.toLocaleString("en-IN");return}
+  var t0=null;function step(t){if(!t0)t0=t;
+    var p=Math.min(1,(t-t0)/900),e=1-Math.pow(1-p,3);
+    el.textContent=Math.round(to*e).toLocaleString("en-IN");
+    if(p<1)requestAnimationFrame(step)}
+  requestAnimationFrame(step);
+}
+function toast(msg){var t=$("toast");t.textContent=msg;t.classList.add("on");
+  clearTimeout(t._h);t._h=setTimeout(function(){t.classList.remove("on")},1900)}
+function mk(host,label,glyph,cls,fn){
+  var b=document.createElement("button");
+  b.className="tab"+(cls?" "+cls:"");
+  b.innerHTML=(glyph||"")+"<span>"+label+"</span>";
+  b.setAttribute("aria-pressed","false");
+  b.onclick=function(e){ripple(b,e);fn(e)};
+  host.appendChild(b);return b}
+function ripple(el,e){
+  if(RM)return;
+  var r=el.getBoundingClientRect();
+  var x=(e&&e.clientX?e.clientX-r.left:r.width/2);
+  var y=(e&&e.clientY?e.clientY-r.top:r.height/2);
+  var s=document.createElement("span");
+  /* The ripple runs BEFORE the filter flips, so read the state we are heading
+     INTO. Turning a chip on floods it orange — an orange ripple would vanish,
+     so use white. Turning one off leaves it dark, where orange reads best. */
+  s.className="rip"+(el.getAttribute("aria-pressed")==="false"?" onlit":"");
+  s.style.left=x+"px";s.style.top=y+"px";
+  el.appendChild(s);
+  setTimeout(function(){if(s.parentNode)s.parentNode.removeChild(s)},640);
+}
+
+function init(db,mode){
+  DB=db;
+  DB.d.forEach(function(r,i){r[5]=i});
+  countUp($("s-count"),db.count);
+  $("s-eff").textContent=db.effective;
+  $("s-srcwrap").className="stat "+(mode==="live"?"live":"stale");
+  $("s-src").textContent=(mode==="live"?"Live":"Snapshot");
+  $("s-srclabel").textContent=(mode==="live"?"Checked ":"Built ")+db.checked;
+
+  var prices=DB.d.map(function(r){return r[2]});
+  PMIN=Math.min.apply(null,prices);PMAX=Math.max.apply(null,prices);
+  LMIN=Math.log(PMIN);LSPAN=Math.log(PMAX)-LMIN;pLo=PMIN;pHi=PMAX;
+  drawHist(prices);
+
+  /* index: every size of a brand, and per-spirit value spread */
+  DB.d.forEach(function(r){(byBrand[r[0]]=byBrand[r[0]]||[]).push(r)});
+  for(var k in byBrand)byBrand[k].sort(function(a,b){return a[1]-b[1]});
+  DB.t.forEach(function(t,ti){
+    var v=DB.d.filter(function(r){return r[3]===ti}).map(per100).sort(function(a,b){return a-b});
+    valStat[ti]={lo:v[0],hi:v[v.length-1],p10:v[Math.floor(v.length*.1)]};
+  });
+
+  typeBtns=DB.t.map(function(t,i){
+    return mk($("types"),t,bottle(t,13,26),"",function(){fT=(fT===i)?null:i;commit()})});
+  impBtn=mk($("types"),"Imported",null,"imp",function(){fImp=!fImp;commit()});
+  mlBtns=SIZES.map(function(m){
+    return mk($("sizes"),m+" ml",null,"",function(){fMl=(fMl===m)?null:m;commit()})});
+
+  ["rlo","rhi"].forEach(function(id){
+    $(id).addEventListener("input",slide);
+    $(id).addEventListener("pointerdown",function(){$("track").classList.add("dragging")})});
+  window.addEventListener("pointerup",function(){$("track").classList.remove("dragging")});
+  $("q").addEventListener("input",function(e){setQ(e.target.value)});
+  $("q").addEventListener("change",function(){pushRecent()});
+  $("clearq").onclick=function(){setQ("");$("q").value="";$("q").focus()};
+  $("reset").onclick=doReset;
+  $("sort").onclick=function(){sortI=(sortI+1)%SORTS.length;commit()};
+  $("dense").onclick=function(){denseOn=!denseOn;commit()};
+  $("lucky").onclick=lucky;
+  $("share").onclick=share;
+  $("helpbtn").onclick=function(){$("help").classList.add("on")};
+  $("btnbreak").onclick=sheetBreakdown;
+  $("btnbudget").onclick=sheetBudget;
+  $("btntrap").onclick=sheetTraps;
+  $("btnchange").onclick=sheetChanges;
+  $("sheetclose").onclick=closeSheet;
+  $("sheet").addEventListener("click",function(e){if(e.target===$("sheet"))closeSheet()});
+  $("help").onclick=function(){$("help").classList.remove("on")};
+  $("trayclear").onclick=function(){pins=[];drawTray();render()};
+  $("list").addEventListener("click",onCardClick);
+  window.addEventListener("hashchange",function(){readHash();paintControls();render()});
+  document.addEventListener("keydown",onKey);
+
+  CODES=db.k||null;
+  if(CODES)CODES.forEach(function(c,i){byCode[c]=i});
+  /* history is optional garnish: load it after first paint, never block on it */
+  if(CODES)setTimeout(function(){
+    loadHist().then(function(h){if(Object.keys(h.pts).length)render()})
+      .catch(function(){})},1200);
+
+  readHash();
+  $("controls").hidden=false;$("tallybar").hidden=false;$("sumbar").hidden=false;
+  setupIO();paintControls();render();
+}
+
+/* ---------------- URL state ---------------- */
+function writeHash(){
+  var p=[];
+  if(fT!==null)p.push("t="+encodeURIComponent(DB.t[fT]));
+  if(fMl!==null)p.push("ml="+fMl);
+  if(fImp)p.push("imp=1");
+  if(q)p.push("q="+encodeURIComponent(q));
+  if(sortI)p.push("sort="+SORTS[sortI][0]);
+  if(denseOn)p.push("dense=1");
+  if($("rlo").value!=="0"||$("rhi").value!=="1000")
+    p.push("p="+$("rlo").value+"-"+$("rhi").value);
+  var h=p.length?"#"+p.join("&"):"";
+  if(("#"+(location.hash.replace(/^#/,"")))!==(h||"#"))
+    history.replaceState(null,"",location.pathname+location.search+h);
+}
+function readHash(){
+  var h=location.hash.replace(/^#/,"");if(!h)return;
+  var o={};h.split("&").forEach(function(kv){var i=kv.indexOf("=");
+    if(i>0)o[kv.slice(0,i)]=decodeURIComponent(kv.slice(i+1))});
+  if(o.t){var i=DB.t.indexOf(o.t);fT=i<0?null:i}
+  if(o.ml){var m=+o.ml;fMl=SIZES.indexOf(m)<0?null:m}
+  fImp=o.imp==="1";denseOn=o.dense==="1";
+  if(o.sort){SORTS.forEach(function(s,j){if(s[0]===o.sort)sortI=j})}
+  if(o.q){q=o.q.toUpperCase();terms=q.split(/\s+/).filter(Boolean);$("q").value=o.q}
+  if(o.p){var pp=o.p.split("-");if(pp.length===2){$("rlo").value=pp[0];$("rhi").value=pp[1]}}
+}
+function share(){writeHash();copy(location.href,"Link copied")}
+
+/* ---------------- controls ---------------- */
+function setQ(v){q=v.trim().toUpperCase();terms=q.split(/\s+/).filter(Boolean);
+  $("clearq").classList.toggle("on",!!q);commit()}
+function pushRecent(){
+  var v=$("q").value.trim();if(v.length<2)return;
+  recents=[v].concat(recents.filter(function(x){return x.toLowerCase()!==v.toLowerCase()})).slice(0,5);
+  drawRecents();
+}
+function drawRecents(){
+  $("recents").innerHTML=recents.map(function(v){
+    return "<button>"+esc(v)+"</button>"}).join("");
+  Array.prototype.forEach.call($("recents").children,function(b){
+    b.onclick=function(){$("q").value=b.textContent;setQ(b.textContent)}});
+}
+function doReset(){
+  fT=null;fMl=null;fImp=false;q="";terms=[];sortI=0;
+  $("q").value="";$("clearq").classList.remove("on");
+  $("rlo").value=0;$("rhi").value=1000;commit();
+}
+function paintControls(){
+  typeBtns.forEach(function(b,i){b.setAttribute("aria-pressed",fT===i)});
+  mlBtns.forEach(function(b,i){b.setAttribute("aria-pressed",fMl===SIZES[i])});
+  impBtn.setAttribute("aria-pressed",fImp);
+  $("sort").textContent=SORTS[sortI][1];
+  $("dense").textContent=denseOn?"Roomy":"Compact";
+  $("dense").classList.toggle("on",denseOn);
+  $("list").classList.toggle("dense",denseOn);
+  var a=+$("rlo").value,b=+$("rhi").value,t;if(a>b){t=a;a=b;b=t}
+  pLo=(a===0)?PMIN:pos2rs(a);pHi=(b===1000)?PMAX:pos2rs(b);
+  $("lo").textContent=inr(pLo);$("hi").textContent=inr(pHi);
+  $("fill").style.left=(a/10)+"%";$("fill").style.width=((b-a)/10)+"%";
+}
+function commit(){paintControls();writeHash();render()}
+function pos2rs(v){return Math.round(Math.exp(LMIN+LSPAN*v/1000))}
+function slide(){commit()}
+
+function drawHist(prices){
+  var B=60,bk=new Array(B).fill(0),i,b;
+  for(i=0;i<prices.length;i++){
+    b=Math.floor((Math.log(prices[i])-LMIN)/LSPAN*B);
+    if(b<0)b=0;if(b>=B)b=B-1;bk[b]++}
+  var mx=Math.max.apply(null,bk),w=200/B,s="";
+  for(i=0;i<B;i++){var h=bk[i]?Math.max(1,bk[i]/mx*16):0;
+    s+='<rect x="'+(i*w).toFixed(2)+'" y="'+(16-h).toFixed(2)+'" width="'+(w-.35).toFixed(2)+
+       '" height="'+h.toFixed(2)+'" fill="#3a3a48"/>'}
+  $("hist").innerHTML=s;
+}
+
+/* ---------------- keyboard ---------------- */
+function onKey(e){
+  var tag=(e.target.tagName||"").toLowerCase();
+  if(e.key==="Escape"){
+    if($("sheet").classList.contains("on")){closeSheet();return}
+    if($("help").classList.contains("on")){$("help").classList.remove("on");return}
+    if(q){setQ("");$("q").value=""}
+    if(tag==="input")e.target.blur();
+    return;
+  }
+  if(tag==="input"||tag==="textarea")return;
+  if(sheetOpen)return;
+  if(e.key==="/"){e.preventDefault();$("q").focus();return}
+  if(e.key==="?"){$("help").classList.add("on");return}
+  if(e.key==="s"){sortI=(sortI+1)%SORTS.length;commit();return}
+  if(e.key==="d"){denseOn=!denseOn;commit();return}
+  if(e.key==="r"){lucky();return}
+  if(e.key==="0"){fT=null;commit();return}
+  if(/^[1-9]$/.test(e.key)){
+    var i=+e.key-1;if(i<DB.t.length){fT=(fT===i)?null:i;commit()}
+  }
+}
+
+/* ---------------- compare tray ---------------- */
+function onCardClick(e){
+  var li=e.target.closest?e.target.closest(".card"):null;
+  if(!li)return;
+  var k=+li.getAttribute("data-k");
+  var at=pins.indexOf(k),added=false;
+  if(at>-1){pins.splice(at,1)}
+  else{
+    if(pins.length>=4){toast("Four is the limit");return}
+    pins.push(k);added=true;
+  }
+  drawTray();
+  li.classList.toggle("pinned",pins.indexOf(k)>-1);
+  if(added&&!RM)cork(li);
+}
+function cork(li){
+  var c=document.createElement("span");
+  c.className="cork";
+  li.appendChild(c);
+  li.classList.remove("popping");void li.offsetWidth;li.classList.add("popping");
+  setTimeout(function(){
+    if(c.parentNode)c.parentNode.removeChild(c);
+    li.classList.remove("popping");
+  },660);
+}
+function drawTray(){
+  var t=$("tray");
+  if(!pins.length){t.classList.remove("on");return}
+  t.classList.add("on");
+  var rows=pins.map(function(k){return DB.d[k]});
+  var best=Math.min.apply(null,rows.map(per100));
+  var total=rows.reduce(function(a,r){return a+r[2]*(qty[r[5]]||1)},0);
+  var bottles=rows.reduce(function(a,r){return a+(qty[r[5]]||1)},0);
+  $("trayn").textContent=pins.length+" on the list \u00B7 best value in green";
+  $("trayrow").innerHTML=rows.map(function(r){
+    var v=per100(r),win=Math.abs(v-best)<1e-9,n=qty[r[5]]||1;
+    return '<div class="pin'+(win?" win":"")+'"><button class="x" data-x="'+r[5]+
+      '" aria-label="Remove">&times;</button>'+
+      "<b>"+esc(DB.b[r[0]])+"</b><s>"+DB.t[r[3]]+" / "+r[1]+" ml</s>"+
+      "<u>"+inr(r[2]*n)+"</u><em>\u20B9"+v.toFixed(1)+" / 100 ml</em>"+
+      '<span class="qty"><button data-m="'+r[5]+'" aria-label="One fewer">&minus;</button>'+
+      "<span>"+n+'</span><button data-p="'+r[5]+'" aria-label="One more">+</button></span></div>'
+  }).join("");
+  $("traytot").innerHTML="<span>"+bottles+" bottle"+(bottles===1?"":"s")+
+    ' &middot; <button class="act" id="copylist">Copy list</button></span><b>'+inr(total)+"</b>";
+  Array.prototype.forEach.call($("trayrow").querySelectorAll("button"),function(b){
+    b.onclick=function(ev){
+      ev.stopPropagation();
+      var k;
+      if((k=b.getAttribute("data-x"))!==null&&k!==undefined&&b.hasAttribute("data-x")){
+        k=+k;pins.splice(pins.indexOf(k),1);delete qty[k];drawTray();render();return}
+      if(b.hasAttribute("data-p")){k=+b.getAttribute("data-p");
+        qty[k]=Math.min(99,(qty[k]||1)+1);drawTray();return}
+      if(b.hasAttribute("data-m")){k=+b.getAttribute("data-m");
+        qty[k]=Math.max(1,(qty[k]||1)-1);drawTray();return}
+    }});
+  var cl=$("copylist");
+  if(cl)cl.onclick=function(ev){
+    ev.stopPropagation();
+    var txt=rows.map(function(r){var n=qty[r[5]]||1;
+      return n+" x "+DB.b[r[0]]+" "+r[1]+"ml  "+inr(r[2]*n)}).join("\n")+
+      "\nTotal  "+inr(total);
+    copy(txt,"List copied")};
+}
+function copy(txt,ok){
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(txt).then(function(){toast(ok)},function(){toast("Copy failed")})
+  }else{
+    var t=document.createElement("textarea");t.value=txt;document.body.appendChild(t);t.select();
+    try{document.execCommand("copy");toast(ok)}catch(e){toast("Copy failed")}
+    document.body.removeChild(t)}
+}
+
+/* ---------------- surprise ---------------- */
+function lucky(){
+  if(!current.length)return;
+  var r=current[Math.floor(Math.random()*current.length)];
+  var at=current.indexOf(r);
+  revealTo(at);
+  var el=$("list").querySelector('[data-k="'+r[5]+'"]');
+  if(el){el.scrollIntoView({block:"center",behavior:RM?"auto":"smooth"});
+    el.classList.remove("hit");void el.offsetWidth;el.classList.add("hit");
+    toast(DB.b[r[0]].slice(0,28));}
+}
+
+/* ---------------- rendering ---------------- */
+function matches(r){
+  if(fT!==null&&r[3]!==fT)return false;
+  if(fMl!==null&&r[1]!==fMl)return false;
+  if(fImp&&r[4]!==1)return false;
+  if(r[2]<pLo||r[2]>pHi)return false;
+  if(terms.length){
+    var name=DB.b[r[0]].toUpperCase();
+    for(var i=0;i<terms.length;i++)if(name.indexOf(terms[i])<0)return false;
+  }
+  return true;
+}
+function sortRows(a,b){
+  var m=SORTS[sortI][0];
+  if(m==="dear")return b[2]-a[2];
+  if(m==="value")return per100(a)-per100(b);
+  if(m==="az")return DB.b[a[0]]<DB.b[b[0]]?-1:DB.b[a[0]]>DB.b[b[0]]?1:a[1]-b[1];
+  return a[2]-b[2];
+}
+function hl(s){
+  if(!terms.length)return esc(s);
+  var up=s.toUpperCase(),marks=[];
+  terms.forEach(function(t){var i=up.indexOf(t);if(i>-1)marks.push([i,i+t.length])});
+  if(!marks.length)return esc(s);
+  marks.sort(function(a,b){return a[0]-b[0]});
+  var out="",at=0;
+  marks.forEach(function(m){if(m[0]<at)return;
+    out+=esc(s.slice(at,m[0]))+"<mark>"+esc(s.slice(m[0],m[1]))+"</mark>";at=m[1]});
+  return out+esc(s.slice(at));
+}
+function tickTally(n,total){
+  var el=$("tally");
+  function paint(v){el.innerHTML="<b>"+v.toLocaleString("en-IN")+"</b> of "+
+    total.toLocaleString("en-IN")+" \u2014 "+SORTS[sortI][1].toLowerCase()}
+  if(RM){paint(n);lastTally=n;return}
+  var from=lastTally,t0=null;
+  function step(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/380),e=1-Math.pow(1-p,3);
+    paint(Math.round(from+(n-from)*e));if(p<1)requestAnimationFrame(step)}
+  requestAnimationFrame(step);lastTally=n;
+}
+function summary(rows){
+  if(!rows.length){$("sumbar").innerHTML="";return}
+  var pr=rows.map(function(r){return r[2]}).slice().sort(function(a,b){return a-b});
+  var med=pr[Math.floor(pr.length/2)];
+  var vals=rows.map(per100),bestv=Math.min.apply(null,vals);
+  var brands={};rows.forEach(function(r){brands[r[0]]=1});
+  $("sumbar").innerHTML=
+    "<div><b>"+inr(pr[0])+"</b><span>Cheapest</span></div>"+
+    "<div><b>"+inr(med)+"</b><span>Median</span></div>"+
+    "<div><b>"+inr(pr[pr.length-1])+"</b><span>Priciest</span></div>"+
+    "<div><b>\u20B9"+bestv.toFixed(1)+"</b><span>Best per 100 ml</span></div>"+
+    "<div><b>"+Object.keys(brands).length.toLocaleString("en-IN")+"</b><span>Distinct brands</span></div>";
+}
+function cardHTML(r){
+  var type=DB.t[r[3]],v=per100(r),vs=valStat[r[3]],tint=TINT[type];
+  var pos=Math.max(0,Math.min(1,(v-vs.lo)/((vs.hi-vs.lo)||1)));
+  var fam=byBrand[r[0]]||[],famBest=null;
+  if(fam.length>1){famBest=fam.reduce(function(a,b){return per100(a)<=per100(b)?a:b})}
+  var chips="";
+  if(fam.length>1){
+    chips='<span class="sizes">'+fam.map(function(f){
+      var win=famBest&&f[5]===famBest[5];
+      return '<span class="sz'+(win?" best":"")+'">'+f[1]+" ml &middot; "+inr(f[2])+"</span>"
+    }).join("")+"</span>";
+  }
+  var badge=(v<=vs.p10)?'<span class="badge">BEST VALUE</span>':"";
+  return '<li class="card'+(pins.indexOf(r[5])>-1?" pinned":"")+'" data-k="'+r[5]+'">'+
+    '<span class="spine" style="background:'+tint+'"></span>'+
+    bottle(type,78,150,"mark")+
+    sparkFor(r)+
+    '<span class="top"><span class="brand">'+hl(DB.b[r[0]])+"</span>"+badge+"</span>"+
+    '<span class="tagline">'+type+" / "+r[1]+" ml"+
+      (r[4]?' / <span class="imp">imported</span>':"")+"</span>"+
+    chips+
+    '<span class="vbar"><em style="width:'+(pos*100).toFixed(1)+"%;background:"+tint+
+      '"></em><i style="left:'+(pos*100).toFixed(1)+'%"></i></span>'+
+    '<span class="foot"><span class="price">'+inr(r[2])+"</span>"+
+    '<span class="per">\u20B9'+v.toFixed(1)+"<br>per 100 ml</span></span></li>";
+}
+function setupIO(){
+  if(!("IntersectionObserver" in window))return;
+  io=new IntersectionObserver(function(es){
+    if(es[0].isIntersecting)appendPage()},{rootMargin:"600px"});
+}
+function revealTo(upto){
+  /* render every row from the current cursor through `upto`, in one insert */
+  var start=page*PAGE;
+  if(start>=current.length)return;
+  var end=Math.min(current.length,Math.max(start+PAGE,upto+1));
+  var html="";
+  for(var i=start;i<end;i++)html+=cardHTML(current[i]);
+  var sent=$("sentinel");
+  if(sent)sent.insertAdjacentHTML("beforebegin",html);
+  else $("list").insertAdjacentHTML("beforeend",html);
+  page=Math.ceil(end/PAGE);
+  if(sent&&end>=current.length){if(io)io.unobserve(sent);sent.remove()}
+}
+function appendPage(){revealTo(page*PAGE+PAGE-1)}
+function render(){
+  var out=DB.d.filter(matches).sort(sortRows);
+  current=out;page=0;
+  tickTally(out.length,DB.d.length);
+  summary(out);
+
+  var first={};
+  if(!RM){var kids=$("list").children,n=Math.min(kids.length,FLIP_MAX);
+    for(var j=0;j<n;j++){var k=kids[j].getAttribute&&kids[j].getAttribute("data-k");
+      if(k!==null&&k!==undefined)first[k]=kids[j].getBoundingClientRect()}}
+
+  if(!out.length){
+    var wide=(pLo>PMIN||pHi<PMAX);
+    $("list").innerHTML='<li class="msg">'+bottle("Gin",42,94)+
+      "<p>Nothing matches those filters.</p>"+
+      (wide?'<p style="font-size:13px;color:#6f6e7d">The price range is doing most of the excluding.</p>'+
+        '<button class="act" id="widen">Widen the price range</button>'
+        :'<button class="act" id="widen">Reset everything</button>')+"</li>";
+    var w=$("widen");
+    if(w)w.onclick=function(){if(wide){$("rlo").value=0;$("rhi").value=1000;commit()}else doReset()};
+    return;
+  }
+
+  if(io&&$("sentinel"))io.unobserve($("sentinel"));
+  $("list").innerHTML="";
+  appendPage();
+  if(current.length>PAGE){
+    $("list").insertAdjacentHTML("beforeend",'<li id="sentinel"></li>');
+    if(io)io.observe($("sentinel"));
+  }
+
+  if(RM)return;
+  var limit=window.innerHeight*1.2,kids2=$("list").children;
+  var m=Math.min(kids2.length,FLIP_MAX);
+  for(var x=0;x<m;x++){
+    var el=kids2[x],key=el.getAttribute("data-k");
+    if(key===null)continue;
+    var was=first[key];
+    if(!was){el.classList.add("enter");el.style.animationDelay=(Math.min(x,24)*16)+"ms";continue}
+    var now=el.getBoundingClientRect(),dx=was.left-now.left,dy=was.top-now.top;
+    if(!dx&&!dy)continue;
+    if(Math.abs(dy)>limit||Math.abs(dx)>limit){el.classList.add("enter");continue}
+    el.style.transform="translate("+dx+"px,"+dy+"px)";el.style.transition="none";
+    void el.offsetWidth;
+    el.style.transition="transform .42s cubic-bezier(.22,.61,.36,1)";el.style.transform="";
+  }
+  var top=kids2[0];
+  if(top&&top.classList.contains("card")){
+    var pEl=top.querySelector(".price");
+    if(pEl){pEl.classList.remove("flash");void pEl.offsetWidth;pEl.classList.add("flash")}}
+}
+
+/* ================= lazy side-loads: breakdown + history ================= */
+function grab(url,onto){
+  return fetch(url,{cache:"no-cache"}).then(function(r){
+    if(!r.ok)throw new Error(r.status);return r.json()}).then(onto);
+}
+function needCodes(){
+  /* Codes live in data.json only. The offline seed omits them, so the tools
+     that join on code are unavailable when the page was opened from disk. */
+  return !!CODES;
+}
+function loadBreak(){
+  if(BREAK)return Promise.resolve(BREAK);
+  return grab("breakdown.json",function(j){BREAK=j;return j});
+}
+function loadHist(){
+  if(HIST)return Promise.resolve(HIST);
+  return grab("history.json",function(j){
+    HIST=j;
+    HIST.pts={};
+    for(var c in j.series){
+      var v=j.series[c].filter(function(x){return x!==null&&x!==undefined});
+      /* a flat line on every card is noise — only keep series that moved */
+      if(v.length>1&&Math.min.apply(null,v)!==Math.max.apply(null,v))HIST.pts[c]=v;
+    }
+    return j});
+}
+function sparkFor(row){
+  if(!HIST||!HIST.pts||!CODES)return "";
+  var v=HIST.pts[CODES[row[5]]];
+  if(!v||v.length<2)return "";
+  var lo=Math.min.apply(null,v),hi=Math.max.apply(null,v),sp=(hi-lo)||1,pts=[];
+  for(var i=0;i<v.length;i++)
+    pts.push((i/(v.length-1)*42+1).toFixed(1)+","+(15-(v[i]-lo)/sp*13).toFixed(1));
+  var rising=v[v.length-1]>=v[0];
+  return '<svg class="spark" viewBox="0 0 44 16" aria-hidden="true">'+
+    '<polyline points="'+pts.join(" ")+'" fill="none" stroke="'+
+    (rising?"#ff5c2b":"#4ee39a")+'" stroke-width="1.4" stroke-linejoin="round"/></svg>';
+}
+
+/* ========================= sheet plumbing ========================= */
+function openSheet(title,html,after){
+  $("sheettitle").textContent=title;
+  $("sheetbody").innerHTML=html;
+  $("sheet").classList.add("on");
+  sheetOpen=title;
+  if(after)after();
+}
+function closeSheet(){$("sheet").classList.remove("on");sheetOpen=null}
+function offlineNote(what){
+  return '<p class="sheetsub">'+what+' needs the data files, which a page opened '+
+    'straight from disk cannot read. Run <code style="color:var(--mint)">'+
+    'python3 -m http.server 8000</code> in the folder, or open the deployed site.</p>';
+}
+
+/* -------- 7 + 8: where the money goes -------- */
+var WFC=[["Liquor","#8fb4d2"],["Excise duty","#ff5c2b"],["Import fee","#e0932f"],
+         ["Trade margin","#bb8ce2"],["Sales tax","#e0507a"],["Cess","#cfd05a"]];
+function sheetBreakdown(){
+  if(!needCodes()){openSheet("Where the money goes",offlineNote("The price breakdown"));return}
+  openSheet("Where the money goes",
+    '<p class="sheetsub">The official list prints the landed cost, excise duty, import fee, '+
+    'cess and sales tax behind every bottle. Pick one and see the whole stack. '+
+    'Across all '+DB.d.length.toLocaleString("en-IN")+' items the components add up to the '+
+    'shelf price exactly.</p>'+
+    '<input type="search" id="bq" placeholder="Search a brand" autocomplete="off">'+
+    '<div class="pickrow" id="bpick"></div><div id="bout"></div>',
+    function(){
+      loadBreak().then(function(){bpick("")}).catch(function(){
+        $("bout").innerHTML=offlineNote("The price breakdown")});
+      $("bq").addEventListener("input",function(e){bpick(e.target.value)});
+    });
+}
+function bpick(term){
+  var t=term.trim().toUpperCase(),list=[],i;
+  for(i=0;i<DB.d.length&&list.length<80;i++){
+    var r=DB.d[i];
+    if(!t||DB.b[r[0]].toUpperCase().indexOf(t)>-1)list.push(r);
+  }
+  $("bpick").innerHTML=list.map(function(r){
+    return '<button data-i="'+r[5]+'"><strong>'+esc(DB.b[r[0]])+"</strong><em>"+
+      r[1]+" ml &middot; "+inr(r[2])+"</em></button>"}).join("");
+  Array.prototype.forEach.call($("bpick").children,function(b){
+    b.onclick=function(){showStack(+b.getAttribute("data-i"))}});
+  if(list.length)showStack(list[0][5]);
+}
+function showStack(i){
+  if(!BREAK)return;
+  var r=DB.d[i],p=BREAK.d[i],tot=r[2];
+  var state=p[1]+p[2]+p[4]+p[5],pc=state/tot*100;
+  var bar=WFC.map(function(c,j){
+    return '<span style="width:'+(p[j]/tot*100).toFixed(3)+"%;background:"+c[1]+'"></span>'}).join("");
+  var key=WFC.map(function(c,j){
+    return "<div><i style='background:"+c[1]+"'></i>"+c[0]+"</div><b>"+
+      inr(Math.round(p[j]))+"</b><s>"+(p[j]/tot*100).toFixed(1)+"%</s>"}).join("");
+  $("bout").innerHTML=
+    '<div class="grp">'+esc(DB.b[r[0]])+" &middot; "+r[1]+" ml</div>"+
+    '<div class="wf"><div class="wfbar">'+bar+"</div>"+
+    '<div class="wfkey">'+key+
+      '<div class="tot">Shelf price</div><b class="tot">'+inr(tot)+
+      '</b><s class="tot">100%</s></div></div>'+
+    '<div class="headline"><b>'+pc.toFixed(0)+"%</b><span>of this bottle is the state: excise duty, "+
+    "import fee, sales tax and cess. You are paying "+inr(Math.round(p[0]))+
+    " for the liquor itself.</span></div>";
+}
+
+/* -------- 2: budget mode -------- */
+function sheetBudget(){
+  openSheet("What "+inr(1500)+" buys",
+    '<p class="sheetsub">Enter what you want to spend. This shows the best bottle in each '+
+    'spirit at or under that price &mdash; ranked by value per 100&nbsp;ml, not by price, '+
+    'so the answer is the most drink for the money.</p>'+
+    '<input type="number" id="bud" value="1500" min="70" max="40000" step="50">'+
+    '<div id="budout"></div>',
+    function(){
+      var run=function(){
+        var amt=+$("bud").value||0;
+        $("sheettitle").textContent="What "+inr(amt)+" buys";
+        var out="";
+        DB.t.forEach(function(t,ti){
+          var pool=DB.d.filter(function(r){return r[3]===ti&&r[2]<=amt});
+          if(!pool.length)return;
+          pool.sort(function(a,b){return per100(a)-per100(b)});
+          var best=pool[0],dear=pool.reduce(function(a,b){return a[2]>=b[2]?a:b});
+          out+='<div class="grp">'+t+" &middot; "+pool.length.toLocaleString("en-IN")+" within budget</div>"+
+            row(best,"Best value")+ (dear[5]!==best[5]?row(dear,"Priciest you can afford"):"");
+        });
+        $("budout").innerHTML=out||'<p class="sheetsub">Nothing is that cheap. The floor is '+
+          inr(PMIN)+".</p>";
+      };
+      function row(r,tag){
+        return '<div class="rrow"><span class="nm">'+esc(DB.b[r[0]])+
+          "<s>"+tag+" &middot; "+r[1]+" ml</s></span>"+
+          '<span class="vv"><b>'+inr(r[2])+"</b><s>\u20B9"+per100(r).toFixed(1)+" / 100 ml</s></span></div>";
+      }
+      $("bud").addEventListener("input",run);run();
+    });
+}
+
+/* -------- 3: size traps -------- */
+function sheetTraps(){
+  openSheet("Size traps",
+    '<p class="sheetsub">Bigger is usually cheaper per millilitre &mdash; but not always. '+
+    'These are brands where a larger bottle actually costs more per 100&nbsp;ml than a '+
+    'smaller one of the same brand. Buying up costs you money here.</p><div id="trapout"></div>',
+    function(){
+      var found=[];
+      for(var b in byBrand){
+        var fam=byBrand[b];
+        if(fam.length<2)continue;
+        for(var i=1;i<fam.length;i++){
+          var small=fam[i-1],big=fam[i];
+          var d=per100(big)-per100(small);
+          if(d>0.01)found.push([d,small,big]);
+        }
+      }
+      found.sort(function(a,b){return b[0]-a[0]});
+      if(!found.length){$("trapout").innerHTML='<p class="sheetsub">None found.</p>';return}
+      $("trapout").innerHTML='<div class="grp">'+found.length+
+        " size pairs where going bigger costs more per ml</div>"+
+        found.slice(0,60).map(function(f){
+          var s=f[1],g=f[2];
+          return '<div class="rrow"><span class="nm">'+esc(DB.b[s[0]])+
+            "<s>"+s[1]+" ml \u20B9"+per100(s).toFixed(1)+"  \u2192  "+g[1]+" ml \u20B9"+
+            per100(g).toFixed(1)+" per 100 ml</s></span>"+
+            '<span class="vv"><b class="up">+\u20B9'+f[0].toFixed(1)+"</b><s>per 100 ml worse</s></span></div>"
+        }).join("");
+    });
+}
+
+/* -------- 10 + 11: what changed -------- */
+function sheetChanges(){
+  if(!needCodes()){openSheet("Price changes",offlineNote("The price history"));return}
+  openSheet("Price changes",'<div id="chout"><p class="sheetsub">Loading history\u2026</p></div>',
+    function(){
+      loadHist().then(function(h){
+        var n=h.dates.length;
+        if(n<2){
+          $("chout").innerHTML='<p class="sheetsub">Only one snapshot on file so far, taken '+
+            h.dates[0]+'. This page fills in the first time BEVCO revises the list &mdash; '+
+            'the refresh job appends a column to history.json on every change, and each '+
+            'revision also lands as a commit you can diff.</p>'+
+            '<div class="headline"><b>'+Object.keys(h.series).length.toLocaleString("en-IN")+
+            "</b><span>products being tracked, waiting for the next revision.</span></div>";
+          return;
+        }
+        var up=[],down=[],newly=[],gone=[];
+        for(var c in h.series){
+          var v=h.series[c],a=v[n-2],b=v[n-1];
+          if(a===null&&b!==null){newly.push(c);continue}
+          if(a!==null&&b===null){gone.push(c);continue}
+          if(a===null||b===null||a===b)continue;
+          (b>a?up:down).push([c,a,b,(b-a)/a*100]);
+        }
+        up.sort(function(x,y){return y[3]-x[3]});down.sort(function(x,y){return x[3]-y[3]});
+        function blk(list,cls,label){
+          if(!list.length)return "";
+          return '<div class="grp">'+list.length+" "+label+"</div>"+
+            list.slice(0,50).map(function(e){
+              var i=byCode[e[0]],nm=i===undefined?e[0]:DB.b[DB.d[i][0]]+" "+DB.d[i][1]+" ml";
+              return '<div class="rrow"><span class="nm">'+esc(nm)+"<s>"+inr(e[1])+
+                " \u2192 "+inr(e[2])+"</s></span><span class=\"vv\"><b class=\""+cls+
+                '">'+(e[3]>0?"+":"")+e[3].toFixed(1)+"%</b></span></div>"}).join("");
+        }
+        $("chout").innerHTML='<p class="sheetsub">Comparing '+h.dates[n-2]+" with "+
+          h.dates[n-1]+".</p>"+blk(up,"up","went up")+blk(down,"down","came down")+
+          (newly.length?'<div class="grp">'+newly.length+" newly listed</div>":"")+
+          (gone.length?'<div class="grp">'+gone.length+" delisted</div>":"");
+      }).catch(function(){$("chout").innerHTML=offlineNote("The price history")});
+    });
+}
+
+var ticking=false;
+window.addEventListener("scroll",function(){
+  if(ticking)return;ticking=true;
+  requestAnimationFrame(function(){
+    var y=window.scrollY||document.documentElement.scrollTop;
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    $("prog").style.width=(h>0?(y/h*100):0)+"%";
+    $("controls").classList.toggle("compact",y>150);
+    $("top").classList.toggle("on",y>window.innerHeight*2);
+    ticking=false})},{passive:true});
+$("top").onclick=function(){window.scrollTo({top:0,behavior:RM?"auto":"smooth"})};
+
+/* installable + offline. Needs https (or localhost); silently skipped otherwise. */
+if("serviceWorker" in navigator&&location.protocol!=="file:"){
+  window.addEventListener("load",function(){
+    navigator.serviceWorker.register("sw.js").catch(function(){})});
+}
+})();
+</script>
+</body></html>
