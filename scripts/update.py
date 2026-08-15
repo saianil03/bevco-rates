@@ -52,13 +52,19 @@ def find_pdfs():
 
 
 def download(url, dest):
-    r = requests.get(url, headers={"User-Agent": UA}, timeout=180, verify=False)
-    r.raise_for_status()
-    if not r.content.startswith(b"%PDF"):
-        raise SystemExit(f"{url} did not return a PDF.")
-    open(dest, "wb").write(r.content)
-    return dest
-
+    for attempt in range(5):
+        try:
+            print(f"Downloading {url} (Attempt {attempt + 1})...")
+            r = requests.get(url, headers={"User-Agent": UA}, timeout=180, verify=False)
+            r.raise_for_status()
+            if not r.content.startswith(b"%PDF"):
+                raise SystemExit(f"{url} did not return a PDF.")
+            open(dest, "wb").write(r.content)
+            return dest
+        except Exception as e:
+            print(f"Connection dropped: {e}. Retrying in 5 seconds...")
+            time.sleep(5)
+    raise SystemExit(f"Failed to download {url} after 5 attempts.")
 
 # ------------------------------------------------------------------ parsing
 def to_text(pdf):
