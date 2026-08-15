@@ -5,7 +5,7 @@
      - data files              : network-first, falling back to cache, because
                                  a stale price is worse than a slow one
    Bump CACHE when the shell changes; old caches are dropped on activate. */
-var CACHE = "bevco-v1";
+var CACHE = "bevco-v2";
 var SHELL = ["./", "./index.html", "./manifest.json",
              "./icons/icon-192.png", "./icons/icon-512.png"];
 var DATA = ["data.json", "breakdown.json", "history.json"];
