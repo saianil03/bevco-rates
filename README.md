@@ -40,4 +40,4 @@ Requires `pdftotext` (Debian/Ubuntu: `apt install poppler-utils`).
   column is the warehouse price *per case* — roughly 10x larger.
 - Spirit type is derived from the first two digits of the BEVCO product code,
   overridden by the bottle label where the two disagree.
-- Unofficial. The price board at the shop is the authority. 
+- Unofficial. The price board at the shop is the authority.
