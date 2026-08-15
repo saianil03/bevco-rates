@@ -35,7 +35,7 @@ NUM = re.compile(r"^[\d,]+(?:\.\d+)?$")
 # ---------------------------------------------------------------- discovery
 def find_pdfs():
     """Scrape the price-list page for the newest IMFL and FMFL PDF links."""
-    r = requests.get(LIST_PAGE, headers={"User-Agent": UA}, timeout=60)
+    r = requests.get(LIST_PAGE, headers={"User-Agent": UA}, timeout=60, verify=False)
     r.raise_for_status()
     hrefs = re.findall(r'href=["\']([^"\']+\.pdf)["\']', r.text, re.I)
     found = {}
@@ -52,7 +52,7 @@ def find_pdfs():
 
 
 def download(url, dest):
-    r = requests.get(url, headers={"User-Agent": UA}, timeout=180)
+    r = requests.get(url, headers={"User-Agent": UA}, timeout=180, verify=False)
     r.raise_for_status()
     if not r.content.startswith(b"%PDF"):
         raise SystemExit(f"{url} did not return a PDF.")
