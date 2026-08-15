@@ -14,7 +14,7 @@ from urllib.parse import urljoin
 import requests
 
 LIST_PAGE = "https://bevco.in/price-list-2/"
-UA = "bevco-rates-mirror/1.0 (static price mirror; contact via repo issues)"
+UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 ROOT = os.path.join(os.path.dirname(__file__), "..")
 OUT = os.path.join(ROOT, "data.json")
 BREAK = os.path.join(ROOT, "breakdown.json")
