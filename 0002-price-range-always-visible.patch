@@ -1,0 +1,93 @@
+From c4226b22d426f569e59560249bc6c6687dbd30ad Mon Sep 17 00:00:00 2001
+From: saianil03 <saiakhil03.anil@gmail.com>
+Date: Thu, 20 Aug 2026 17:16:03 +0000
+Subject: [PATCH] Keep the price range visible in the compact toolbar
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+cb325d4 added `.bar.compact .range` to the collapse rule alongside the
+recent-search chips, which contradicted the comment directly above it: the
+size filter was kept because hiding an active filter makes it invisible while
+it is still narrowing the list. The price range has exactly the same problem —
+scroll past 150px with a range set and the list is filtered by a control you
+can no longer see.
+
+The range now stays put and only tightens its top margin. Recent-search chips
+still fold away; they are navigation, not filter state.
+
+Dropping .range from the shared collapse rule also removes its overflow:hidden,
+which was clipping the drag thumb's focus ring.
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01U1uF2HWUGZoLNM4ptKsSQZ
+---
+ index.html          | 12 +++++++-----
+ index.template.html | 12 +++++++-----
+ sw.js               |  2 +-
+ 3 files changed, 15 insertions(+), 11 deletions(-)
+
+diff --git a/index.html b/index.html
+index 5bbcd47..653ad4c 100644
+--- a/index.html
++++ b/index.html
+@@ -115,12 +115,14 @@ h1 .ln:nth-child(3){animation-delay:.25s}
+   border-bottom:1px solid var(--line);padding:12px 16px;
+   transition:padding .25s var(--ease),box-shadow .25s var(--ease),border-color .25s}
+ .bar.compact{padding:8px 16px;box-shadow:0 10px 30px -12px #000;border-color:var(--line-2)}
+-/* On scroll the toolbar tightens, but the size filter NEVER collapses —
+-   hiding it made the active size invisible. Only the price range and the
+-   recent-search chips fold away, and the remaining controls get shorter. */
+-.range,.recents{max-height:64px;opacity:1;overflow:hidden;
++/* On scroll the toolbar tightens, but the size filter and the price range
++   NEVER collapse — hiding either one made the active filter invisible while
++   it was still narrowing the list. Only the recent-search chips fold away,
++   and the remaining controls get shorter. */
++.recents{max-height:64px;opacity:1;overflow:hidden;
+   transition:max-height .28s var(--ease),opacity .22s,margin-top .28s var(--ease)}
+-.bar.compact .range,.bar.compact .recents{max-height:0;opacity:0;margin-top:0}
++.bar.compact .recents{max-height:0;opacity:0;margin-top:0}
++.bar.compact .range{margin-top:8px}
+ .bar.compact input[type=search]{padding-top:10px;padding-bottom:10px}
+ .bar.compact .strip{margin-top:8px}
+ .bar.compact .tab{padding-top:6px;padding-bottom:6px}
+diff --git a/index.template.html b/index.template.html
+index 4b286ed..fae671e 100644
+--- a/index.template.html
++++ b/index.template.html
+@@ -115,12 +115,14 @@ h1 .ln:nth-child(3){animation-delay:.25s}
+   border-bottom:1px solid var(--line);padding:12px 16px;
+   transition:padding .25s var(--ease),box-shadow .25s var(--ease),border-color .25s}
+ .bar.compact{padding:8px 16px;box-shadow:0 10px 30px -12px #000;border-color:var(--line-2)}
+-/* On scroll the toolbar tightens, but the size filter NEVER collapses —
+-   hiding it made the active size invisible. Only the price range and the
+-   recent-search chips fold away, and the remaining controls get shorter. */
+-.range,.recents{max-height:64px;opacity:1;overflow:hidden;
++/* On scroll the toolbar tightens, but the size filter and the price range
++   NEVER collapse — hiding either one made the active filter invisible while
++   it was still narrowing the list. Only the recent-search chips fold away,
++   and the remaining controls get shorter. */
++.recents{max-height:64px;opacity:1;overflow:hidden;
+   transition:max-height .28s var(--ease),opacity .22s,margin-top .28s var(--ease)}
+-.bar.compact .range,.bar.compact .recents{max-height:0;opacity:0;margin-top:0}
++.bar.compact .recents{max-height:0;opacity:0;margin-top:0}
++.bar.compact .range{margin-top:8px}
+ .bar.compact input[type=search]{padding-top:10px;padding-bottom:10px}
+ .bar.compact .strip{margin-top:8px}
+ .bar.compact .tab{padding-top:6px;padding-bottom:6px}
+diff --git a/sw.js b/sw.js
+index bb0ad84..7359f1f 100644
+--- a/sw.js
++++ b/sw.js
+@@ -5,7 +5,7 @@
+      - data files              : network-first, falling back to cache, because
+                                  a stale price is worse than a slow one
+    Bump CACHE when the shell changes; old caches are dropped on activate. */
+-var CACHE = "bevco-v3";
++var CACHE = "bevco-v4";
+ var SHELL = ["./", "./index.html", "./manifest.json",
+              "./icons/icon-192.png", "./icons/icon-512.png"];
+ var DATA = ["data.json", "breakdown.json", "history.json"];
+-- 
+2.43.0
+
